@@ -42,6 +42,7 @@
     </div>
     <!--PreLoader Ends-->
 	
+	<!--MENU-->
 	<?php require_once("src/components/menu.php");?>
 	
 	<!-- hero area -->
@@ -297,7 +298,9 @@
 	</div>
 	<!-- end latest news -->
 
+	<!-- FOOTER -->
 	<?php require_once("src/components/footer.php");?>
+
 	<!-- jquery -->
 	<script src="assets/js/jquery-1.11.3.min.js"></script>
 	<!-- bootstrap -->
