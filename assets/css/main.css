@@ -2159,14 +2159,13 @@ a.video-play-btn {
 }
 
 .feature-bg:after {
-  background-image: url(../img/feature-bg.jpg);
+  background-image: url(../img/feature-bg.png);
   position: absolute;
   right: 0;
   top: 0;
   width: 40%;
   height: 100%;
-  content: "";
-  background-size: cover;
+  content: "Mapa de Feira de Santana e região";
   background-position: center;
   border-top-left-radius: 5px;
   -webkit-box-shadow: 0 0 20px #cacaca;
