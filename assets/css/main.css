@@ -864,7 +864,7 @@ a.mobile-show {
 .footer-area {
   background-color: #051922;
   color: #fff;
-  padding: 150px 0;
+  padding: 50px 0;
 }
 
 h2.widget-title {
@@ -2267,7 +2267,12 @@ ul.social-link-team li a {
   border: 1px solid #ddd;
   border-radius: 3px;
 }
-
+.login-form form p input[type=password], .login-form form p input[type=email] {
+  width: 50%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
 .contact-form form p textarea {
   border: 1px solid #ddd;
   padding: 15px;

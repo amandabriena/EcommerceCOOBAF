@@ -15,41 +15,28 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="#">Início</a>
+								<li class="current-list-item"><a href="index.php">Início</a>
 								</li>
-								<li><a href="about.html">Quem Somos</a></li>
-                                <li><a href="shop.html">Produtos</a>
+								<li><a href="sobre.php">Quem Somos</a></li>
+                                <li><a href="produtos.php">Produtos</a>
 									<ul class="sub-menu">
-										<li><a href="shop.html">Shop</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="single-product.html">Single Product</a></li>
-										<li><a href="cart.html">Cart</a></li>
+										<li><a href="produtos.php">Shop</a></li>
+										<li><a href="checkout.php">Check Out</a></li>
+										<li><a href="single-product.php">Single Product</a></li>
+										<li><a href="carrinho.php">Cart</a></li>
 									</ul>
 								</li>
-                                <li><a href="news.html">Notícias</a>
-									<ul class="sub-menu">
-										<li><a href="news.html">News</a></li>
-										<li><a href="single-news.html">Single News</a></li>
-									</ul>
+                                <li><a href="noticias.php">Notícias</a>
 								</li>
-                                <li><a href="contact.php">Contato</a></li>
-								<li><a href="#">Entre ou Cadastre-se</a>
-									<ul class="sub-menu">
-										<li><a href="404.html">404 page</a></li>
-										<li><a href="about.html">About</a></li>
-										<li><a href="cart.html">Cart</a></li>
-										<li><a href="checkout.html">Check Out</a></li>
-										<li><a href="contact.php">Contact</a></li>
-										<li><a href="news.html">News</a></li>
-										<li><a href="shop.html">Shop</a></li>
-									</ul>
+                                <li><a href="contato.php">Contato</a></li>
+								<li><a href="login.php">Entre ou Cadastre-se</a>
 								</li>
 								
 								
 								
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+										<a class="shopping-cart" href="carrinho.php"><i class="fas fa-shopping-cart"></i></a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 									</div>
 								</li>

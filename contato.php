@@ -3,7 +3,7 @@
 <head>
 	<?php require_once("src/components/head.php");?>
 	<!-- title -->
-	<title>Contact</title>
+	<title>Contato</title>
 </head>
 <body>
 	
@@ -14,7 +14,9 @@
         </div>
     </div>
     <!--PreLoader Ends-->
+	<!--MENU-->
 	<?php require_once("src/components/menu.php");?>
+
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
 		<div class="container">
@@ -37,7 +39,7 @@
 				<div class="col-lg-8 mb-5 mb-lg-0">
 					<div class="form-title">
 						<h2>Fale Conosco</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, ratione! Laboriosam est, assumenda. Perferendis, quo alias quaerat aliquid. Corporis ipsum minus voluptate? Dolore, esse natus!</p>
+						<p>Ficaremos felizes em receber o seu contato!</p>
 					</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
@@ -59,16 +61,14 @@
 				<div class="col-lg-4">
 					<div class="contact-form-wrap">
 						<div class="contact-form-box">
-							<h4><i class="fas fa-map"></i> Shop Address</h4>
-							<p>34/8, East Hukupara <br> Gifirtok, Sadan. <br> Country Name</p>
-						</div>
-						<div class="contact-form-box">
-							<h4><i class="far fa-clock"></i> Shop Hours</h4>
-							<p>MON - FRIDAY: 8 to 9 PM <br> SAT - SUN: 10 to 8 PM </p>
+							<h4><i class="fas fa-map"></i> Endereço</h4>
+							<p>Fazenda Lagoa Grande, 250 <br>
+								Feira de Santana – BA <br>
+								CEP: 44.110-000</p>
 						</div>
 						<div class="contact-form-box">
 							<h4><i class="fas fa-address-book"></i> Contact</h4>
-							<p>Phone: +00 111 222 3333 <br> Email: support@fruitkha.com</p>
+							<p>Telefone: (75)3625-9394 <br> Email: coobaf.feira@gmail.com.br</p>
 						</div>
 					</div>
 				</div>

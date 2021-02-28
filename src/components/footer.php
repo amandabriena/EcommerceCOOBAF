@@ -1,13 +1,14 @@
 <div class="footer-area">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-6">
+				<div class="col-lg-6 col-md-6">
 					<div class="footer-box get-in-touch">
 						<h2 class="widget-title">Entre em contato conosco</h2>
 						<ul>
-							<li>Endereço Sede Cooperativa</li>
-							<li>email@coobaf.com.br</li>
-							<li>(75)0000-0000</li>
+							<li>Fazenda Lagoa Grande, 250
+								Feira de Santana – BA CEP: 44.110-000</li>
+							<li>coobaf.feira@gmail.com.br</li>
+							<li>(75)3625-9394 / (75)98116-9187</li>
 						</ul>
 					</div>
 				</div>
