@@ -2273,6 +2273,15 @@ ul.social-link-team li a {
   border: 1px solid #ddd;
   border-radius: 3px;
 }
+.cadastro-form form p input[type=password], .cadastro-form form p input[type=email], .cadastro-form form p input[type=text], .cadastro-form form p input[type=tel] {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+.cadastro-form form div{
+  text-align: center;
+}
 .contact-form form p textarea {
   border: 1px solid #ddd;
   padding: 15px;

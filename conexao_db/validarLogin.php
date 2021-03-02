@@ -11,6 +11,7 @@
     }else{
         unset ($_SESSION['email']);
         echo  "<script>alert('Os dados estão incorretos!');</script>";
+        header('location:../login.php');
     }
 
 ?>

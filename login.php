@@ -24,7 +24,7 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 						<p>COOBAF/FS</p>
-						<h1>Acesse agora<</h1>
+						<h1>Acesse agora</h1>
 					</div>
 				</div>
 			</div>
@@ -32,7 +32,7 @@
 	</div>
 	<!-- end breadcrumb section -->
 
-	<!-- contact form -->
+	<!-- login form -->
 	<div class="contact-from-section mt-150 mb-150">
 		<div class="container">
 				<div class="col-lg-8 offset-lg-2 text-center">
@@ -56,7 +56,7 @@
 				</div>
 		</div>
 	</div>
-	<!-- end contact form -->
+	<!-- end login form -->
     <!--FOOTER-->
 	<?php require_once("src/components/footer.php");?>
 
