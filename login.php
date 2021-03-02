@@ -24,7 +24,7 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 						<p>COOBAF/FS</p>
-						<h1>Entre</h1>
+						<h1>Acesse agora<</h1>
 					</div>
 				</div>
 			</div>
@@ -36,11 +36,8 @@
 	<div class="contact-from-section mt-150 mb-150">
 		<div class="container">
 				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="form-title">
-						<h2>Acesse agora</h2>
-					</div>
 					<div class="login-form">
-						<form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+						<form action = "conexao_db/validarLogin.php" method="POST" id="fruitkha-contact">
 							<p>
                                 <input type="email" placeholder="Email" name="email" id="email">
 							</p>
