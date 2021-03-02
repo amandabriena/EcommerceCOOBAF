@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['erro'])){
+        $_SESSION['erro']="nao";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,10 +39,22 @@
 	<!-- end breadcrumb section -->
 
 	<!-- login form -->
-	<div class="contact-from-section mt-150 mb-150">
+	<div class="contact-from-section mt-80 mb-150">
 		<div class="container">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="login-form">
+						<?php
+							if($_SESSION['erro']=="sim"){
+							echo '
+								<div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
+									<strong>E-mail ou senha incorretos!</strong> 
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									</div>';
+									unset($_SESSION['erro']);
+							}
+						?>
 						<form action = "conexao_db/validarLogin.php" method="POST" id="fruitkha-contact">
 							<p>
                                 <input type="email" placeholder="Email" name="email" id="email">

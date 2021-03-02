@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    if(!isset($_SESSION['erro'])){
+        $_SESSION['erro']="nao";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,8 +47,20 @@
 						<h2>Crie uma conta rápido e fácil</h2>
 						<p>Preencha o formulário abaixo</p>
 					</div>
+					<?php
+						if($_SESSION['erro']=="sim"){
+						echo '
+							<div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
+								<strong>Email ou CPF já cadastrados</strong> 
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								</div>';
+								unset($_SESSION['erro']);
+						}
+					?>
 					<div class="cadastro-form">
-						<form action = "conexao_db/validarLogin.php" method="POST" id="fruitkha-contact">
+						<form action = "conexao_db/incluirUsuario.php" method="POST" id="fruitkha-contact">
 							<p>
                                 <input type="text" placeholder="Nome" name="nome" id="nome">
 							</p>
