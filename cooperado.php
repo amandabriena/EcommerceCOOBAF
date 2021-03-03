@@ -37,45 +37,45 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						<div class="news-text-box">
-							<h3><a href="single-news.html">PEDIDOS DE COMPRA</a></h3>
+							<h3><a href="ger_pedidos.php">PEDIDOS DE COMPRA</a></h3>
                             <p class="excerpt">Veja os pedidos de compra em aberto e finalizados</p>
-							<a href="single-news.html" class="read-more-btn">ACESSAR <i class="fas fa-angle-right"></i></a>
+							<a href="ger_pedidos.php" class="read-more-btn">ACESSAR <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						<div class="news-text-box">
-							<h3><a href="single-news.html">PRODUTOS</a></h3>
+							<h3><a href="ger_produtos.php">PRODUTOS</a></h3>
 							<p class="excerpt">Veja os produtos cadastrados, atualize, exclua ou cadastre novos.</p>
-                            <a href="single-news.html" class="read-more-btn">ACESSAR <i class="fas fa-angle-right"></i></a>
+                            <a href="ger_produtos.php" class="read-more-btn">ACESSAR <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						<div class="news-text-box">
-							<h3><a href="single-news.html">NOTÍCIAS</a></h3>
+							<h3><a href="ger_noticias.php">NOTÍCIAS</a></h3>
 							<p class="excerpt">Adicione novas notícias sobre a COOBAF ou gerencie as já cadastradas.</p>
-                            <a href="single-news.html" class="read-more-btn">leia mais <i class="fas fa-angle-right"></i></a>
+                            <a href="ger_noticias.php" class="read-more-btn">leia mais <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						<div class="news-text-box">
-							<h3><a href="single-news.html">COOPERADOS</a></h3>
+							<h3><a href="ger_cooperados.php">COOPERADOS</a></h3>
 							<p class="excerpt">Veja aqui todos os Cooperados COOBAF cadastrados.</p>
-                            <a href="single-news.html" class="read-more-btn">ACESSAR <i class="fas fa-angle-right"></i></a>
+                            <a href="ger_cooperados.php" class="read-more-btn">ACESSAR <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6">
 					<div class="single-latest-news">
 						<div class="news-text-box">
-							<h3><a href="single-news.html">CLIENTES</a></h3>
+							<h3><a href="ger_clientes.php">CLIENTES</a></h3>
 							<p class="excerpt">Acesse os cadastros dos clientes do site.</p>
-                            <a href="single-news.html" class="read-more-btn">ACESSAR <i class="fas fa-angle-right"></i></a>
+                            <a href="ger_clientes.php" class="read-more-btn">ACESSAR <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>
