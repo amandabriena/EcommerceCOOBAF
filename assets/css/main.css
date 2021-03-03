@@ -493,6 +493,7 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
   margin-top: 20px;
 }
 
+
 .breadcrumb-section {
   padding: 150px 0;
   background-size: cover;
@@ -502,6 +503,7 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
   background-attachment: fixed;
   padding-top: 200px;
 }
+
 
 .breadcrumb-section:after {
   position: absolute;
@@ -513,6 +515,15 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
   background-color: #07212e;
   z-index: -1;
   opacity: 0.8;
+}
+
+.breadcrumb-section2 {
+  padding: 40px 0;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  z-index: 1;
+  background-attachment: fixed;
 }
 
 /* -----------------------------------------------------------------------------

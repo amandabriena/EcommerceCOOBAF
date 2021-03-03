@@ -3,12 +3,14 @@
     $email = $_POST['email'];
     $senha = $_POST['senha'];
     session_start();
-    $verifica = mysqli_query($connect,"SELECT * FROM usuario WHERE email =
+    $nome = mysqli_query($connect,"SELECT * FROM usuario WHERE email =
     '$email' AND senha = '$senha'") or die("erro ao selecionar");
-    if(mysqli_num_rows($verifica)>0){
+    $row = mysqli_fetch_array($nome);
+    if(mysqli_num_rows($nome)>0){
         $_SESSION['email'] = $email;
+        $_SESSION['nome'] = $row['nome'];
         unset($_SESSION['erro']);
-        header('location:../produtos.php');
+        header('location:../cooperado.php');
     }else{
         unset ($_SESSION['email']);
         $_SESSION['erro'] = "sim";

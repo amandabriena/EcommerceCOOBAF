@@ -17,6 +17,7 @@
         $insert = mysqli_query($connect,$query);
         if($insert){
             $_SESSION['email'] = $email;
+            $_SESSION['nome'] = $nome;
             unset($_SESSION['erro']);
             header('location:../produtos.php');
         }else{
