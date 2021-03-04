@@ -5,10 +5,10 @@
 <html lang="en">
 <head>
 	<?php require_once("src/components/head.php");?>
-    <link href="assets\bootstrap\css\bootstrap.min.css" rel="stylesheet">
 	<!-- title -->
 	<title>Espaço do Cooperado</title>
-
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </head>
 <body>
 	
