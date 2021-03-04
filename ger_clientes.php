@@ -8,7 +8,7 @@
 	<!-- title -->
 	<title>Espaço do Cooperado</title>
     <!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
 </head>
 <body>
 	
@@ -29,22 +29,16 @@
 	<!-- menu de gerenciamento de usuários do sistema (cooperados e clientes) -->
 	<div class="latest-news mt-80 mb-150">
         <div class="form-title text-center">
-			<h2>Usuários do Sistema</h2>
+			<h2>Clientes</h2>
 	    </div>
         
 		<div class="container">
             <div class="row text-center w-10">
                 <div class="col-lg-8 offset-lg-2 mx-auto">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Busque um usuário por nome ou CPF" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <input type="text" class="form-control" placeholder="Busque um cliente por nome ou CPF" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
-                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Tipo Usuário
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="#">Cooperado</a></li>
-                        <li><a class="dropdown-item" href="#">Cliente</a></li>
-                        </ul>
+                        
                     </div>
                 </div>
             </div>
