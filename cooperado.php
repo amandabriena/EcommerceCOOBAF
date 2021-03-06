@@ -1,6 +1,5 @@
 <?php 
     session_start();
-    $nome = $_SESSION['nome'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +28,7 @@
 	<!-- menu de gerenciamento do cooperado -->
 	<div class="latest-news mt-80 mb-150">
         <div class="form-title text-center">
-			<h2>Olá, <?php $_SESSION['email'] ?></h2>
+			<h2>Olá, <?php $_SESSION['nome'] ?></h2>
 			<p>O que deseja fazer?</p>
 	    </div>
 		<div class="container">

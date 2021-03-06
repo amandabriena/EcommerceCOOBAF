@@ -6,7 +6,7 @@
 <head>
 	<?php require_once("src/components/head.php");?>
 	<!-- title -->
-	<title>Espaço do Cooperado</title>
+	<title>Clientes</title>
     <!-- JavaScript Bundle with Popper -->
 
 </head>
@@ -29,14 +29,14 @@
 	<!-- menu de gerenciamento de usuários do sistema (cooperados e clientes) -->
 	<div class="latest-news mt-80 mb-150">
         <div class="form-title text-center">
-			<h2>Clientes</h2>
+			<h2>Gerenciamento de Clientes</h2>
 	    </div>
         
 		<div class="container">
             <div class="row text-center w-10">
                 <div class="col-lg-8 offset-lg-2 mx-auto">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Busque um cliente por nome ou CPF" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <input type="text" class="form-control" placeholder="Busque um cooperado por nome ou CPF" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
                         
                     </div>
