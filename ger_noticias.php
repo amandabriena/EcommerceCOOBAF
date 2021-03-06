@@ -4,7 +4,7 @@
 <head>
     <?php require_once("src/components/head.php");?>
 	<!-- title -->
-	<title>Pedidos de Compra</title>
+	<title>Gerenciamento de Notícias</title>
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
