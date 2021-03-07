@@ -1,133 +1,179 @@
-
 <!DOCTYPE html>
-<html lang="PT">
+<html lang="en">
 <head>
-    <?php require_once("src/components/head.php");?>
+    <?php require_once("conexao_db/logado_coop.php");?>
+	<?php require_once("src/components/head.php");?>
 	<!-- title -->
 	<title>Gerenciamento de Notícias</title>
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
-    <script src="assets/js/datatable.js"></script>
-    
-   
 </head>
 <body>
-    <?php require_once("src/components/menu_coop.php");?>
-
-    <!-- breadcrumb-section -->
-    <div class="breadcrumb-section2 breadcrumb-bg">
-    </div>
-    <!-- end breadcrumb section -->
-
-    <!-- menu de gerenciamento de notícias -->
-    <div class="content mt-80 mb-150">
-        <div class="form-title text-center">
-			<h2>Gerenciamento de Notícias</h2>
-	    </div>
-		<div class="container">
-            <div class="col-lg-8 offset-lg-3 text-center">
-                <table id="tabela" class="table table-responsive table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th data-orderable="false">ID da notícias</th>
-                            <th data-orderable="false">Título</th>
-                            <th data-orderable="false">Data</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                        </tr>
-                        <tr>
-                            <td>Colleen Hurst</td>
-                            <td>Javascript Developer</td>
-                            <td>San Francisco</td>
-                        </tr>
-                        <tr>
-                            <td>Sonya Frost</td>
-                            <td>Software Engineer</td>
-                            <td>Edinburgh</td>
-                        </tr>
-                        <tr>
-                            <td>Jena Gaines</td>
-                            <td>Office Manager</td>
-                            <td>London</td>
-                        </tr>
-                        <tr>
-                            <td>Quinn Flynn</td>
-                            <td>Support Lead</td>
-                            <td>Edinburgh</td>
-                        </tr>
-                        </tbody>
-                </table>
-            </div>
+	
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
         </div>
     </div>
-    <?php require_once("src/components/footer.php");?>
-	<!-- bootstrap -->
-    <script>
-    $(document).ready(function(){
-        $('#tabela').dataTable();
-    });
-    </script>
+    <!--PreLoader Ends-->
+	<?php require_once("src/components/menu_coop.php");?>
+
+	<!-- breadcrumb-section -->
+    <div class="breadcrumb-section2 breadcrumb-bg">
+    </div>
     
-    <!-- bootstrap -->
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<!-- count down -->
-	<script src="assets/js/jquery.countdown.js"></script>
-	<!-- isotope -->
-	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-	<!-- waypoints -->
-	<script src="assets/js/waypoints.js"></script>
-    <!-- owl carousel -->
-	<script src="assets/js/owl.carousel.min.js"></script>
-	<!-- magnific popup -->
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <!-- mean menu -->
-	<script src="assets/js/jquery.meanmenu.min.js"></script>
-	<!-- sticker js -->
-	<script src="assets/js/sticker.js"></script>
-	<!-- main js -->
-	<script src="assets/js/main.js"></script>
+	<!-- latest news -->
+	<div class="latest-news mt-150 mb-150">
+        <div class="container">
+            <div class=" text-center input-group mb-3 mt-80">
+                <input type="text" class="form-control" placeholder="Busque uma notícia pelo título"  aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
+                            
+            </div>
+            <div class = "text-right mt-80 mb-80">
+                <a href="cadastro_noticia.php" class="cart-btn"><i class="fa fa-plus-circle"></i> Adicionar Nova Notícia</a>
+            </div>
+        </div>
+
+		<div class="container">
+			<div class="row">
+            <div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
+						<div class="news-text-box">
+							<h3><a href="single-news.html">You will vainly look for fruit on it in autumn.</a></h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+							</p>
+							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
+							<div class="text-center">
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+						        <a href="cart.html" class="cart-btn"><i class="fas fa-wrench"></i> Editar</a>
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-trash"></i> Excluir</a>
+                            </div>
+                            
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+						<a href="single-news.html"><div class="latest-news-bg news-bg-2"></div></a>
+						<div class="news-text-box">
+							<h3><a href="single-news.html">A man's worth has its season, like tomato.</a></h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+							</p>
+							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
+							<div class="text-center">
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+						        <a href="cart.html" class="cart-btn"><i class="fas fa-wrench"></i> Editar</a>
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-trash"></i> Excluir</a>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+						<a href="single-news.html"><div class="latest-news-bg news-bg-3"></div></a>
+						<div class="news-text-box">
+							<h3><a href="single-news.html">Good thoughts bear good fresh juicy fruit.</a></h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+							</p>
+							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
+							<div class="text-center">
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+						        <a href="cart.html" class="cart-btn"><i class="fas fa-wrench"></i> Editar</a>
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-trash"></i> Excluir</a>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+						<a href="single-news.html"><div class="latest-news-bg news-bg-4"></div></a>
+						<div class="news-text-box">
+							<h3><a href="single-news.html">Fall in love with the fresh orange</a></h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+							</p>
+							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
+							<div class="text-center">
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+						        <a href="cart.html" class="cart-btn"><i class="fas fa-wrench"></i> Editar</a>
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-trash"></i> Excluir</a>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+						<a href="single-news.html"><div class="latest-news-bg news-bg-5"></div></a>
+						<div class="news-text-box">
+							<h3><a href="single-news.html">Why the berries always look delecious</a></h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
+							</p>
+							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
+							<div class="text-center">
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+						        <a href="cart.html" class="cart-btn"><i class="fas fa-wrench"></i> Editar</a>
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-trash"></i> Excluir</a>
+                            </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="single-latest-news">
+						<a href="single-news.html"><div class="latest-news-bg news-bg-6"></div></a>
+						<div class="news-text-box">
+							<h3><a href="single-news.html">Love for fruits are genuine of John Doe</a></h3>
+							<p class="blog-meta">
+								<span class="author"><i class="fas fa-user"></i> Admin</span>
+								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2018</span>
+							</p>
+							<p class="excerpt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus laborum autem, dolores inventore, beatae nam.</p>
+							<div class="text-center">
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+						        <a href="cart.html" class="cart-btn"><i class="fas fa-wrench"></i> Editar</a>
+                                <a href="cart.html" class="cart-btn"><i class="fas fa-trash"></i> Excluir</a>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 text-center">
+							<div class="pagination-wrap">
+								<ul>
+									<li><a href="#"><</a></li>
+									<li><a href="#">1</a></li>
+									<li><a class="active" href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end latest news -->
+
+	<!-- FOOTER -->
+	<?php require_once("src/components/footer.php");?>
+
+	<!-- EXTENSOES -->
+	<?php require_once("src/components/extensoes.php");?>
+
 </body>
 </html>

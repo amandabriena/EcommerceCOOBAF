@@ -40,7 +40,7 @@
 						<h2>Cadastro de Nova Notícia</h2>
 					</div>
 					<div class="cadastro-form">
-						<form action = "conexao_db/incluirNoticia.php" method="POST" >
+						<form action = "conexao_db/incluirNoticia.php" method="POST" enctype="multipart/form-data" >
 							<p>
                                 <input type="text" placeholder="Título" name="titulo" id="titulo">
 							</p>
@@ -51,12 +51,15 @@
                                 <input type="date" placeholder="Data" name="data" id="data" value='<?php echo date("Y-m-d"); ?>'>
                             </p>
 							<p>
-								<input name="imagem_noticia" type="file">
+							<div class= "text-left">
+								<h6>Selecione uma imagem para a notícia:</h6>
+								<input required name="arquivo" type="file">
+							</div>
 							</p>
-							<p>
+							<div class= "text-right">
 								<input name = "status" type="checkbox" checked>
 								<label class="form-check-label"> Publicar Notícia</label>
-							</p>
+							</div>
 							<div>
 							<input type="submit" value="Cadastrar!"></div>
 						</form>

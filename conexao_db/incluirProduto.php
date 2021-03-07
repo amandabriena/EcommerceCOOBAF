@@ -16,7 +16,7 @@
     }else{
         $status = 0;
     }
-    //Inclusao da Imagem do Produto
+    //Inclusao da Imagem da Notícia
     $arquivo_tmp = $_FILES[ 'arquivo' ][ 'tmp_name' ];
     $nome_arq = $_FILES[ 'arquivo' ][ 'name' ];
     $destino = incluirImagem($nome_arq, $arquivo_tmp);

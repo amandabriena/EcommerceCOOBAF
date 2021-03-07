@@ -1,6 +1,6 @@
 <?php
     include_once("conexao.php");
-
+    include_once("incluirImagem.php");
     $titulo = $_POST['titulo'];
     $corpo = $_POST['corpo'];
     $data = $_POST['data'];
