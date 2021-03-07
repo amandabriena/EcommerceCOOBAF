@@ -1,9 +1,12 @@
-<?php 
-    session_start();
+<?php
+    //CONEXÃO COM O BANCO DE DADOS
+    include("conexao_db/conexao.php");
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php require_once("conexao_db/logado_coop.php");?>
 	<?php require_once("src/components/head.php");?>
 	<!-- title -->
 	<title>Espaço do Cooperado</title>
@@ -42,29 +45,40 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-hover table-light">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr class="table-success">
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
+                    <?php
+                    $sql="SELECT * FROM usuarios where tipo_usuario = 0";
+                    $resultado_usuario = mysqli_query($connect, $sql);
+                    if($sql === FALSE) { 
+                        die(mysqli_error());
+                    }
+                    while($row = mysqli_fetch_assoc($resultado_usuario)){
+                    echo "<tr>";
+                    echo "<td>" . $row['nome'] ."</td>";
+                    echo "<td>" . $row['email'] ."</td>";
+                    echo "<td>" . $row['cpf'] ."</td>";
+                    echo "<td>" . $row['telefone'] ."</td>";
+                    if(($row['status'])==1){
+                        echo "<td> Ativo </td>";
+                    }else{
+                        echo "<td> Inativo </td>";
+                    }              
+                    echo "</tr>";
+                    }
+                    ?>
                 </tbody>
             </table>
 
-			
 		</div>
 	</div>
 	<!-- end latest news -->

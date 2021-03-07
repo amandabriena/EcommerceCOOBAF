@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<?php require_once("conexao_db/logado_coop.php");?>
 	<?php require_once("src/components/head.php");?>
 	<script type="text/javascript" src="js/jquery.mask.min.js"></script>
     <script type="text/javascript">
