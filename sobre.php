@@ -44,44 +44,40 @@
 							<div class="col-lg-6 col-md-6 mb-4 mb-md-5">
 								<div class="list-box d-flex">
 									<div class="list-icon">
-										<i class="fas fa-shipping-fast"></i>
+										<i class="fas fa-home"></i>
 									</div>
 									<div class="content">
 										<h3>Agricultura Familiar</h3>
-										<p>X</p>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 mb-5 mb-md-5">
 								<div class="list-box d-flex">
 									<div class="list-icon">
-										<i class="fas fa-money-bill-alt"></i>
+										<i class="fas fa-handshake"></i>
 									</div>
 									<div class="content">
 										<h3>Pequenos Comerciantes</h3>
-										<p>X</p>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6 mb-5 mb-md-5">
 								<div class="list-box d-flex">
 									<div class="list-icon">
-										<i class="fas fa-briefcase"></i>
+										<i class="fas fa-leaf"></i>
 									</div>
 									<div class="content">
 										<h3>Menos Agrotóxicos</h3>
-										<p>X</p>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-6 col-md-6">
 								<div class="list-box d-flex">
 									<div class="list-icon">
-										<i class="fas fa-sync-alt"></i>
+										<i class="fas fa-globe"></i>
 									</div>
 									<div class="content">
 										<h3>Fortalecendo a Região</h3>
-										<p>X</p>
 									</div>
 								</div>
 							</div>
@@ -102,7 +98,7 @@
 						<h3>Nossa <span class="orange-text">História</span></h3>
 						<h5 class="text-justify"> 
 						A Cooperativa de Beneficiamento e Comercialização de Produtos da Agricultura Familiar de Feira de Santana (COOBAF-FS)
-						foi fundada em 20XX, a partir da união de associações rurais da região.</h5>
+						foi fundada em 2018, a partir da união de associações rurais da região.</h5>
 						<h5>
 						A COOBAF/FS é uma cooperativa de trabalhadores/as rurais de Feira de Santana (2º maior município da Bahia e 2º maior entroncamento rodoviário do país),
 						composta por 87 membros, em sua maioria mulheres, oriundos de todos os oito distritos rurais do município. A sua irradiação nos quatro cantos
@@ -121,7 +117,7 @@
 	<!-- end HISTORIA -->
 
 	<!-- team section -->
-	<div class="mt-150">
+	<div class="mt-150 mb-80">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
@@ -132,33 +128,37 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="single-team-item">
-						<div class="team-bg team-bg-1"></div>
-						<h4>Jimmy Doe <span>Farmer</span></h4>
-						
-					</div>
+			<div class="row text-center">
+				<div class="col-lg-6 col-md-6 mb-4 mb-md-5">
+					<h5>Diretoria Executiva</h5>
+					<p> Luzinete Assis Barreto da Silva (Diretora Presidente) </p>
+					<p> Elizabete Oliveira Silva (Diretora Vice-Presidente) </p>
+					<p> Jailson Moraes Ferreira (Diretor Secretário) </p>
 				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-team-item">
-						<div class="team-bg team-bg-2"></div>
-						<h4>Marry Doe <span>Farmer</span></h4>
-						
-					</div>
+				<div class="col-lg-6 col-md-6 mb-4 mb-md-5">
+					<h5>Conselho Administrativo</h5>
+					<p> Lindimalva Barbosa de Jesus Santana </p>
+					<p> Maria José Cerqueira Santana </p>
+					<p> Elisângela Neri dos Santos </p>
+					<p> Josela Caetano Vaz Moreira </p>
 				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-					<div class="single-team-item">
-						<div class="team-bg team-bg-3"></div>
-						<h4>Simon Joe <span>Farmer</span></h4>
-						
-					</div>
+				<div class="col-lg-6 col-md-6 mb-4 mb-md-5">
+					<h5>Conselho Fiscal Efetivo</h5>
+					<p> José Caetano Pereira da Silva </p>
+					<p> Maria Gorete Santos Souza Cardoso </p>
+					<p> Viviane Santos Lima Teles </p>
+				</div>
+				<div class="col-lg-6 col-md-6 mb-4 mb-md-5">
+					<h5>Conselho Fiscal Suplente</h5>
+					<p> Marlene Torquato de Jesus </p>
+					<p> Mismara de Jesus Silva Souza </p>
+					<p> Claudia das Virgens </p>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- end team section -->
-
+	
 	<!-- FOOTER -->
 	<?php require_once("src/components/footer.php");?>
 

@@ -14,7 +14,7 @@
         $_SESSION['erro'] = "sim";
         header('location:../cadastro.php');
     }else{
-        $query = "INSERT INTO usuarios(id_usuario, cpf, nome, senha, email, status, telefone) VALUES (NULL, '$cpf', '$nome', '$senha', '$email', 1, '$telefone')";
+        $query = "INSERT INTO usuarios(id_usuario, cpf, nome, senha, email, status, telefone, tipo_usuario) VALUES (NULL, '$cpf', '$nome', '$senha', '$email', 1, '$telefone', 1)";
         $insert = mysqli_query($connect,$query);
         if($insert){
             $_SESSION['email'] = $email;

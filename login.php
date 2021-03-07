@@ -53,6 +53,15 @@
 									</button>
 									</div>';
 									unset($_SESSION['erro']);
+							}else if($_SESSION['erro']=="erro_login"){
+								echo '
+								<div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
+									<strong>Por gentileza faça o login para acessar!</strong> 
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									</div>';
+									unset($_SESSION['erro']);
 							}
 						?>
 						<form action = "conexao_db/validarLogin.php" method="POST" id="fruitkha-contact">

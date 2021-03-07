@@ -29,7 +29,7 @@
                                 <li><a href="noticias.php">Notícias</a>
 								</li>
                                 <li><a href="contato.php">Contato</a></li>
-								<li><a href="sair.php">Sair</a>
+								<li><a href="conexao_db/sair.php">Sair</a>
 								</li>
 
 							</ul>

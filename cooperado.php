@@ -1,9 +1,7 @@
-<?php 
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<?php require_once("conexao_db/logado_coop.php");?>
 	<?php require_once("src/components/head.php");?>
 	<!-- title -->
 	<title>Espaço do Cooperado</title>
@@ -18,7 +16,7 @@
         </div>
     </div>
     <!--PreLoader Ends-->
-	<?php require_once("src/components/menu.php");?>
+	<?php require_once("src/components/menu_coop.php");?>
 
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section2 breadcrumb-bg">
@@ -28,7 +26,7 @@
 	<!-- menu de gerenciamento do cooperado -->
 	<div class="latest-news mt-80 mb-150">
         <div class="form-title text-center">
-			<h2>Olá, <?php $_SESSION['nome'] ?></h2>
+			<h2>Olá, <?php echo $_SESSION['nome'] ?></h2>
 			<p>O que deseja fazer?</p>
 	    </div>
 		<div class="container">

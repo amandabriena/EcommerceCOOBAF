@@ -1,0 +1,13 @@
+<?php
+    include_once("conexao.php");
+    session_start();
+    if(isset($_SESSION['email'])){
+        unset($_SESSION['email']);
+        unset($_SESSION['senha']);
+        unset($_SESSION['cooperado']);
+        session_destroy();
+        header('location:../login.php');
+    }else{
+        header('location:../produtos.php');
+    }
+?>
