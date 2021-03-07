@@ -8,9 +8,9 @@
 <html lang="en">
 <head>
 	<?php require_once("src/components/head.php");?>
-	<script type="text/javascript" src="js/jquery.mask.min.js"/></script>
+	<script type="text/javascript" src="js/jquery.mask.min.js"></script>
 	<!-- title -->
-	<title>Entre</title>
+	<title>Cadastre-se</title>
 </head>
 <body>
 	
@@ -78,7 +78,7 @@
                                 <input type="password" placeholder="Confirme sua senha" name="confsenha" id="confsenha">
                             </p>
                             <p>
-                                <input type="tel" placeholder="Número para contato" name="telefone" id="telefone" onkeypress="mask(this, mphone);" onblur="mask(this, mphone);" >
+                                <input type="tel" placeholder="Número para contato" name="telefone" id="telefone" onkeydown="javascript: fMasc( this, mTel );">
 							</p>
 							<div><input type="submit" value="Cadastrar!"></div>
 						</form>
@@ -91,28 +91,10 @@
     <!--FOOTER-->
 	<?php require_once("src/components/footer.php");?>
 
-	<!-- jquery -->
-	<script src="assets/js/jquery-1.11.3.min.js"></script>
-	<!-- bootstrap -->
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<!-- count down -->
-	<script src="assets/js/jquery.countdown.js"></script>
-	<!-- isotope -->
-	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-	<!-- waypoints -->
-	<script src="assets/js/waypoints.js"></script>
-	<!-- owl carousel -->
-	<script src="assets/js/owl.carousel.min.js"></script>
-	<!-- magnific popup -->
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
-	<!-- mean menu -->
-	<script src="assets/js/jquery.meanmenu.min.js"></script>
-	<!-- sticker js -->
-	<script src="assets/js/sticker.js"></script>
+	<!-- EXTENSOES -->
+	<?php require_once("src/components/extensoes.php");?>
 	<!-- form validation js -->
 	<script src="assets/js/form-validate.js"></script>
-	<!-- main js -->
-	<script src="assets/js/main.js"></script>
 	
 </body>
 </html>

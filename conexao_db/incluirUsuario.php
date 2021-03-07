@@ -1,5 +1,6 @@
 <?php
     include_once("conexao.php");
+    
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $cpf = $_POST['cpf'];

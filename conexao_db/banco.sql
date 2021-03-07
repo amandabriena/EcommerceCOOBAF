@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS produto (
 	id_produto smallint(10) not null primary key AUTO_INCREMENT,
 	nome varchar(15) not null,
 	descricao varchar(20),
-	tipo varchar(15) not null,
-	valor float(15),
+	categoria varchar(15) not null,
+	preco float(15),
 	status tinyint(1) NOT NULL
 );
 
