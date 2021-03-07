@@ -27,7 +27,6 @@
 	<!-- products -->
 	<div class="product-section mt-150 mb-150">
 		<div class="container">
-
 			<div class="row">
                 <div class="col-md-12">
                     <div class="product-filters">
@@ -40,7 +39,9 @@
                     </div>
                 </div>
             </div>
-
+			<div class = "text-right mb-80">
+				<a href="cadastro_produto.php" class="cart-btn"><i class="fa fa-plus-circle"></i> Adicionar Novo Produto</a>
+			</div>
 			<div class="row product-lists">
 				<div class="col-lg-4 col-md-6 text-center strawberry">
 					<div class="single-product-item">

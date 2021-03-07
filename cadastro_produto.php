@@ -1,9 +1,7 @@
-<?php 
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<?php require_once("conexao_db/logado_coop.php");?>
 	<?php require_once("src/components/head.php");?>
 	<script type="text/javascript" src="js/jquery.mask.min.js"></script>
 	<script type="text/javascript">
@@ -44,7 +42,7 @@
 						<h2>Cadastro de Novo Produto</h2>
 					</div>
 					<div class="cadastro-form">
-						<form action = "conexao_db/incluirProduto.php" method="POST" >
+						<form action = "conexao_db/incluirProduto.php" method="POST" enctype="multipart/form-data" >
 							<p>
                                 <input type="text" placeholder="Nome" name="nome" id="nome">
 							</p>
@@ -68,13 +66,14 @@
 							<p>
                                 <input type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" placeholder="Preço" name="preco" id="preco">
                             </p>
-							<p>
-								<input name="imagem_produto" type="file">
-							</p>
-							<p>
+							<div class= "text-left">
+								<h6>Selecione uma imagem para o produto:</h6>
+								<input required name="arquivo" type="file">
+							</div>
+							<div class= "text-right">
 								<input name = "status" type="checkbox" checked>
 								<label class="form-check-label"> Ativar Produto</label>
-							</p>
+							</div>
 							<div>
 							<input type="submit" value="Cadastrar!"></div>
 						</form>

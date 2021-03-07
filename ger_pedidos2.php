@@ -53,7 +53,7 @@
                 
             </div>
 
-            <div class= "text-center mx-auto d-block" id="aberto">
+            <div class= "text-right mb-80 d-block" id="aberto">
                 <a href="cart.html" class="bt-pedidos"><i class="fas fa-eye"></i> Visualizar Todos em Aberto</a>
             </div>
             
@@ -83,7 +83,7 @@
                 
 			</div>
 
-            <div class= "text-center mx-auto d-block" id="finalizado">
+            <div class= "text-right d-block" id="finalizado">
                 <a href="cart.html" class="bt-pedidos"><i class="fas fa-eye"></i> Visualizar Todos Finalizados</a>
             </div>
 		</div>
