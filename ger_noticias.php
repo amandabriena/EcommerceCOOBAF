@@ -28,7 +28,7 @@
 			<h2>Gerenciamento de Notícias</h2>
 	    </div>
 		<div class="container">
-            <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="col-lg-8 offset-lg-3 text-center">
                 <table id="tabela" class="table table-responsive table-bordered table-hover">
                     <thead>
                         <tr>

@@ -439,7 +439,7 @@ a.read-more-btn:hover {
   color: #008B00;
 }
 
-a.boxed-btn, a.bordered-btn, a.cart-btn {
+a.boxed-btn, a.bordered-btn, a.cart-btn, .bt-pedidos {
   border-radius: 50px;
 }
 
@@ -2395,7 +2395,70 @@ ul.social-link-team li a {
   margin-bottom: 10px;
 }
 
+/*
+      PÁGINA DE PEDIDOS
+*/
+.pedido {
+  padding-top: 10%;
+  margin-bottom: 30px;
+}
+.pedido h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+#aberto .pedido {
+  -webkit-box-shadow: 0 0 20px #e4e4e4;
+  box-shadow: 0 0 10px #32CD32;
+  padding-bottom: 50px;
+  border-radius: 5px;
+}
+#fechado .pedido {
+  -webkit-box-shadow: 0 0 20px #e4e4e4;
+  box-shadow: 0 0 10px #8B0000;
+  padding-bottom: 50px;
+  border-radius: 5px;
+}
+.pedido {
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.pedido:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+a.bt-pedidos {
+  font-family: 'Poppins', sans-serif;
+  display: inline-block;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+#aberto .bt-pedidos {
+  background-color: #008B00;
+}
+
+#finalizado .bt-pedidos {
+  background-color: #8B0000;
+}
+a.bt-pedidos i {
+  margin-right: 5px;
+}
+a.bt-pedidos {
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+a.bt-pedidos:hover {
+  filter: brightness(70%);
+}
 /* -----------------------------------------------------------------------------
+
+
 
 # Shop Page Styles
 
@@ -2792,3 +2855,4 @@ table.order-details tbody td {
     display: flex;
     align-items: center;
 }
+
