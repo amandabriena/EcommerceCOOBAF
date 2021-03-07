@@ -33,9 +33,9 @@ CREATE TABLE IF NOT EXISTS item_pedido (
 );
 
 CREATE TABLE IF NOT EXISTS noticia (
-  id_noticia smallint(10) not null primary key,
+  id_noticia smallint(10) not null primary key AUTO_INCREMENT,
   titulo varchar(45) NOT NULL,
-  descricao varchar(1000) NOT NULL,
+  corpo varchar(1500) NOT NULL,
   imagem varchar(100) not null,
   data date not null,
   status tinyint(1) NOT NULL

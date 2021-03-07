@@ -2286,7 +2286,7 @@ ul.social-link-team li a {
 }
 .cadastro-form form p input[type=password], .cadastro-form form p input[type=email], 
 .cadastro-form form p input[type=text], .cadastro-form form p input[type=tel], 
-.cadastro-form form p input[type=textarea], .cadastro-form form p select, .cadastro-form form p input[type=number]{
+.cadastro-form form p select, .cadastro-form form p input[type=number]{
   width: 100%;
   padding: 15px;
   border: 1px solid #ddd;
@@ -2296,7 +2296,7 @@ ul.social-link-team li a {
 .cadastro-form form div{
   text-align: center;
 }
-.contact-form form p textarea {
+.contact-form form p textarea, .cadastro-form form p textarea {
   border: 1px solid #ddd;
   padding: 15px;
   height: 200px;

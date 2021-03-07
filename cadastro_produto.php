@@ -49,7 +49,7 @@
                                 <input type="text" placeholder="Nome" name="nome" id="nome">
 							</p>
                             <p>
-                                <input type="textarea" placeholder="Descricao" name="descricao" id="descricao">
+                                <textarea placeholder="Descrição" name="descricao" id="descricao"></textarea>
 							</p>
                             <p>
 								<select name="categoria" id="categoria" onchange="verifica(this.value)">
