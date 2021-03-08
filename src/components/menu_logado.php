@@ -7,7 +7,7 @@
 						<!-- logo -->
 						<div class="site-logo">
 							<a href="../../index.php">
-								<img src="assets\img\logo.png" alt="">
+								<img src="assets/img/logo.png" alt="">
 							</a>
 						</div>
 						<!-- logo -->
@@ -29,10 +29,24 @@
                                 <li><a href="noticias.php">Notícias</a>
 								</li>
                                 <li><a href="contato.php">Contato</a></li>
-								<li><a href="cooperado.php">Espaço do Cooperado</a></li>
+								<?php 
+									if(isset($_SESSION['cooperado'])){
+										echo '<li><a href="cooperado.php">Espaço Cooperado</a></li>';
+									}
+								?>
+								
+
 								<li><a href="conexao_db/sair.php">Sair</a>
 								</li>
-
+								
+								
+								
+								<li>
+									<div class="header-icons">
+										<a class="shopping-cart" href="carrinho.php"><i class="fas fa-shopping-cart"></i></a>
+										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+									</div>
+								</li>
 							</ul>
 						</nav>
 						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
@@ -44,3 +58,21 @@
 		</div>
 </div>
 <!-- end header -->
+<!-- search area -->
+<div class="search-area">
+	<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<h3>Busque produtos:</h3>
+							<input type="text" placeholder="">
+							<button type="submit">Buscar<i class="fas fa-search"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+<!-- end search area -->

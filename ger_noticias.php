@@ -25,6 +25,17 @@
 	<!-- latest news -->
 	<div class="latest-news mt-150 mb-150">
         <div class="container">
+			<?php
+				if(isset($_SESSION['sucesso']) and ($_SESSION['sucesso']== "sim")){
+					echo '
+						<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
+						<strong>Notícia cadastrada com sucesso!</strong> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						</button>
+						</div>';
+						unset($_SESSION['sucesso']);
+			}?>
             <div class=" text-center input-group mb-3 mt-80">
                 <input type="text" class="form-control" placeholder="Busque uma notícia pelo título"  aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>

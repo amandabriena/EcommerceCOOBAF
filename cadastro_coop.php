@@ -22,20 +22,10 @@
     </div>
     <!--PreLoader Ends-->
     <!--MENU-->
-	<?php require_once("src/components/menu.php");?>
+	<?php require_once("src/components/menu_coop.php");?>
 
 	<!-- breadcrumb-section -->
-	<div class="breadcrumb-section breadcrumb-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-						<p>COOBAF/FS</p>
-						<h1>Cadastre-se e aproveite nossas ofertas!</h1>
-					</div>
-				</div>
-			</div>
-		</div>
+	<div class="breadcrumb-section2 breadcrumb-bg">
 	</div>
 	<!-- end breadcrumb section -->
 
@@ -44,8 +34,8 @@
 		<div class="container">
 				<div class="col-lg-8 offset-lg-2">
 					<div class="form-title text-center">
-						<h2>Crie uma conta rápido e fácil</h2>
-						<p>Preencha o formulário abaixo</p>
+						<h2>Cadastro de Cooperado/h2>
+						<p>Preencha o formulário abaixo:</p>
 					</div>
 					<?php
 						if($_SESSION['erro']=="sim"){
@@ -80,7 +70,7 @@
                             <p>
                                 <input type="tel" placeholder="Número para contato" name="telefone" id="telefone" onkeydown="javascript: fMasc( this, mTel );">
 							</p>
-							<div><input type="submit" name="cadastro_cliente" value="Cadastrar"></div>
+							<div><input type="submit" name="cadastro_cooperado" value="Cadastrar"></div>
 						</form>
                         
 					</div>

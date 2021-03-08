@@ -27,6 +27,17 @@
 	<!-- products -->
 	<div class="product-section mt-150 mb-150">
 		<div class="container">
+			<?php
+				if(isset($_SESSION['sucesso']) and ($_SESSION['sucesso']== "sim")){
+					echo '
+						<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
+						<strong>Produto cadastrado com sucesso!</strong> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						</button>
+						</div>';
+						unset($_SESSION['sucesso']);
+			}?>
 			<div class="row">
                 <div class="col-md-12">
                     <div class="product-filters">
@@ -119,6 +130,9 @@
 						</ul>
 					</div>
 				</div>
+			</div>
+			<div class = "text-left mb-80">
+				<a href="cooperado.php" class="cart-btn"><i class="fa fa-arrow-left"></i> Voltar</a>
 			</div>
 		</div>
 	</div>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,14 @@
     <!--PreLoader Ends-->
 	
 	<!--MENU-->
-	<?php require_once("src/components/menu.php");?>
+	<?php 
+		session_start();
+		if(isset($_SESSION['nome'])){
+			require_once("src/components/menu_logado.php");
+		}else{
+			require_once("src/components/menu.php");
+		}
+	?>
 	
 	<!-- hero area -->
 	<div class="hero-area hero-bg">

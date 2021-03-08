@@ -1,8 +1,17 @@
 <?php 
     session_start();
+
     if(!isset($_SESSION['erro'])){
         $_SESSION['erro']="nao";
     }
+
+	if(isset($_SESSION['email'])){
+		if(isset($_SESSION['cooperado'])){
+			header('location:cooperado.php');
+		}else{
+			header('location:index.php');
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +66,15 @@
 								echo '
 								<div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
 									<strong>Por gentileza faça o login para acessar!</strong> 
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									</div>';
+									unset($_SESSION['erro']);
+							}else if($_SESSION['erro'] == "inativo"){
+								echo '
+								<div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
+									<strong>Usuário se encontra inativo!</strong> 
 									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>

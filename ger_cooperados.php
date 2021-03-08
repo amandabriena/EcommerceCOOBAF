@@ -1,7 +1,6 @@
 <?php
     //CONEXÃO COM O BANCO DE DADOS
     include("conexao_db/conexao.php");
-    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,18 +33,30 @@
         <div class="form-title text-center">
 			<h2>Cooperados</h2>
 	    </div>
-        
+            <?php
+				if(isset($_SESSION['sucesso']) and ($_SESSION['sucesso']== "sim")){
+					echo '
+						<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
+						<strong>Cooperado cadastrado com sucesso!</strong> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						</button>
+						</div>';
+						unset($_SESSION['sucesso']);
+				}?>
 		<div class="container">
-            <div class="row text-center w-10">
+            <div class="row">
                 <div class="col-lg-8 offset-lg-2 mx-auto">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Busque um cooperado por nome ou CPF" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
-                        
                     </div>
                 </div>
-            </div>
-            <table class="table table-bordered table-hover">
+                <div class="mb-5">
+                    <a href="cadastro_coop.php" class="cart-btn"><i class="fa fa-plus-circle"></i> Cadastrar Cooperado</a>
+                </div>
+                
+            <table class="table table-bordered table-hover table-responsive-sm">
                 <thead>
                     <tr class="table-success">
                         <th>Nome</th>
@@ -78,7 +89,10 @@
                     ?>
                 </tbody>
             </table>
-
+            </div>
+            <div class = "text-left mb-80">
+				<a href="cooperado.php" class="cart-btn"><i class="fa fa-arrow-left"></i> Voltar</a>
+			</div>
 		</div>
 	</div>
 	<!-- end latest news -->

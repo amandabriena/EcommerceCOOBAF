@@ -15,7 +15,16 @@
         </div>
     </div>
     <!--PreLoader Ends-->
-	<?php require_once("src/components/menu.php");?>
+	
+	<!--MENU-->
+	<?php 
+		session_start();
+		if(isset($_SESSION['nome'])){
+			require_once("src/components/menu_logado.php");
+		}else{
+			require_once("src/components/menu.php");
+		}
+	?>
 
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">

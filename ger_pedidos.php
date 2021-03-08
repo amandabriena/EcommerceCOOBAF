@@ -1,146 +1,103 @@
-
 <!DOCTYPE html>
-<html lang="PT">
+<html lang="en">
 <head>
-    <?php require_once("src/components/head.php");?>
+	<?php require_once("src/components/head.php");?>
 	<!-- title -->
-	<title>Pedidos de Compra</title>
+	<title>Gerenciamento de Produtos</title>
 
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.js"></script>
-    <script src="assets/js/datatable.js"></script>
-    
-   
 </head>
 <body>
-    <?php require_once("src/components/menu_coop.php");?>
+	
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
 
-    <!-- breadcrumb-section -->
+	<!--MENU-->
+	<?php require_once("src/components/menu_coop.php");?>
+
+	<!-- breadcrumb-section -->
     <div class="breadcrumb-section2 breadcrumb-bg">
     </div>
     <!-- end breadcrumb section -->
 
-    <!-- menu de gerenciamento de pedidos -->
-    <div class="latest-news mt-80 mb-150">
-        <div class="form-title text-center">
-			<h2>Pedidos de Compra</h2>
-	    </div>
+	<!-- products -->
+	<div class="product-section mt-80 mb-150">
 		<div class="container">
-            <div class="col-lg-10 offset-lg-2 text-center">
-                <table id="tabela" class="table table-responsive table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th data-orderable="false">ID do Pedido</th>
-                            <th data-orderable="false">Cliente</th>
-                            <th data-orderable="false">Data</th>
-                            <th  data-orderable="false">Valor Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                        </tr>
-                        <tr>
-                            <td>Garrett Winters</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>63</td>
-                        </tr>
-                        <tr>
-                            <td>Ashton Cox</td>
-                            <td>Junior Technical Author</td>
-                            <td>San Francisco</td>
-                            <td>66</td>
-                        </tr>
-                        <tr>
-                            <td>Cedric Kelly</td>
-                            <td>Senior Javascript Developer</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                        </tr>
-                        <tr>
-                            <td>Airi Satou</td>
-                            <td>Accountant</td>
-                            <td>Tokyo</td>
-                            <td>33</td>
-                        </tr>
-                        <tr>
-                            <td>Brielle Williamson</td>
-                            <td>Integration Specialist</td>
-                            <td>New York</td>
-                            <td>61</td>
-                        </tr>
-                        <tr>
-                            <td>Herrod Chandler</td>
-                            <td>Sales Assistant</td>
-                            <td>San Francisco</td>
-                            <td>59</td>
-                        </tr>
-                        <tr>
-                            <td>Rhona Davidson</td>
-                            <td>Integration Specialist</td>
-                            <td>Tokyo</td>
-                            <td>55</td>
-                        </tr>
-                        <tr>
-                            <td>Colleen Hurst</td>
-                            <td>Javascript Developer</td>
-                            <td>San Francisco</td>
-                            <td>39</td>
-                        </tr>
-                        <tr>
-                            <td>Sonya Frost</td>
-                            <td>Software Engineer</td>
-                            <td>Edinburgh</td>
-                            <td>23</td>
-                        </tr>
-                        <tr>
-                            <td>Jena Gaines</td>
-                            <td>Office Manager</td>
-                            <td>London</td>
-                            <td>30</td>
-                        </tr>
-                        <tr>
-                            <td>Quinn Flynn</td>
-                            <td>Support Lead</td>
-                            <td>Edinburgh</td>
-                            <td>22</td>
-                        </tr>
-                        </tbody>
-                </table>
+			<div class="row product-lists" id="aberto">
+
+				<div class="col-lg-4 col-md-6 pt-4 text-center berry">
+					<div class="pedido">
+                        <h3>Cliente</h3>
+						<p class="product-price"><span>ID do Pedido</span> 07/03/2021 </p>
+                        <a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 pt-4 text-center berry">
+					<div class="pedido">
+						<h3>Berry</h3>
+						<p class="product-price"><span>Per Kg</span> 70$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 pt-4 text-center lemon">
+					<div class="pedido">
+						<h3>Lemon</h3>
+						<p class="product-price"><span>Per Kg</span> 35$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+					</div>
+				</div>
+                
             </div>
-        </div>
-    </div>
-    <?php require_once("src/components/footer.php");?>
-	<!-- bootstrap -->
-    <script>
-    $(document).ready(function(){
-        $('#tabela').dataTable();
-    });
-    </script>
-    
-    <!-- bootstrap -->
-	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<!-- count down -->
-	<script src="assets/js/jquery.countdown.js"></script>
-	<!-- isotope -->
-	<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-	<!-- waypoints -->
-	<script src="assets/js/waypoints.js"></script>
-    <!-- owl carousel -->
-	<script src="assets/js/owl.carousel.min.js"></script>
-	<!-- magnific popup -->
-	<script src="assets/js/jquery.magnific-popup.min.js"></script>
-    <!-- mean menu -->
-	<script src="assets/js/jquery.meanmenu.min.js"></script>
-	<!-- sticker js -->
-	<script src="assets/js/sticker.js"></script>
-	<!-- main js -->
-	<script src="assets/js/main.js"></script>
+
+            <div class= "text-right mb-80 d-block" id="aberto">
+                <a href="cart.html" class="bt-pedidos"><i class="fas fa-eye"></i> Visualizar Todos em Aberto</a>
+            </div>
+            
+            <div class="row product-lists" id="fechado">
+
+				<div class="col-lg-4 col-md-6 pt-4 text-center">
+					<div class="pedido">
+						<h3>Avocado</h3>
+						<p class="product-price"><span>Per Kg</span> 50$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 pt-4 text-center">
+					<div class="pedido">
+						<h3>Green Apple</h3>
+						<p class="product-price"><span>Per Kg</span> 45$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+					</div>
+				</div>
+				<div class="col-lg-4  col-md-6 pt-4 text-center strawberry">
+					<div class="pedido">
+						<h3>Strawberry</h3>
+						<p class="product-price"><span>Per Kg</span> 80$ </p>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+					</div>
+				</div>
+                
+			</div>
+
+            <div class= "text-right d-block" id="finalizado">
+                <a href="cart.html" class="bt-pedidos"><i class="fas fa-eye"></i> Visualizar Todos Finalizados</a>
+            </div>
+			<div class = "text-left mb-80">
+				<a href="cooperado.php" class="cart-btn"><i class="fa fa-arrow-left"></i> Voltar</a>
+			</div>
+		</div>
+	</div>
+	<!-- end products -->
+
+	<!-- FOOTER -->
+	<?php require_once("src/components/footer.php");?>
+	
+	<!-- EXTENSOES -->
+	<?php require_once("src/components/extensoes.php");?>
+
 </body>
 </html>

@@ -17,7 +17,14 @@
     <!--PreLoader Ends-->
 
 	<!--MENU-->
-	<?php require_once("src/components/menu.php");?>
+	<?php 
+		session_start();
+		if(isset($_SESSION['nome'])){
+			require_once("src/components/menu_logado.php");
+		}else{
+			require_once("src/components/menu.php");
+		}
+	?>
 
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -37,7 +44,17 @@
 	<!-- products -->
 	<div class="product-section mt-150 mb-150">
 		<div class="container">
-
+			<?php
+				if(isset($_SESSION['sucesso']) and ($_SESSION['sucesso']== "sim")){
+					echo '
+						<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
+						<strong>Cadastro realizado com sucesso! Continue conferindo nossas ofertas!</strong> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						</button>
+						</div>';
+						unset($_SESSION['sucesso']);
+			}?>
 			<div class="row">
                 <div class="col-md-12">
                     <div class="product-filters">
