@@ -2849,8 +2849,8 @@ table.order-details tbody td {
 #tabela_filter{
   display: none
 }
-.central{
-    width: 100%;
+.teste{
+    width: 50%;
     margin: 0 auto;
     display: flex;
     align-items: center;

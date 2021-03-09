@@ -39,9 +39,8 @@
             <div class="row text-center w-10">
                 <div class="col-lg-8 offset-lg-2 mx-auto">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Busque um cliente por nome ou CPF" aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
-                        
+                        <input name= "pesquisa" id= "pesquisa" type="text" class="form-control" placeholder="Busque um cooperado por nome ou CPF" >
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
                     </div>
                 </div>
             </div>
@@ -55,7 +54,7 @@
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class = "resultado">
                     <?php
                     $sql="SELECT * FROM usuarios where tipo_usuario = 1";
                     $resultado_usuario = mysqli_query($connect, $sql);

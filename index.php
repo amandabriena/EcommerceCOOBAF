@@ -106,7 +106,7 @@
 				</div>
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-text">
-						<p class="top-sub">Desde 20XX</p>
+						<p class="top-sub">Desde 2018</p>
 						<h2>Nós somos <span class="orange-text">COOBAF</span></h2>
 						<p>
 						A Cooperativa de Beneficiamento e Comercialização de Produtos da Agricultura Familiar de Feira de Santana (COOBAF-FS)

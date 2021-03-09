@@ -102,25 +102,37 @@
         // isotop inner
         $(".product-lists").isotope();
 
-        //campo de busca
+        //Função de pesquisa de usuário sem refresh
         $(function(){
             $("#pesquisa").keyup(function(){
                 var pesquisa = $(this).val();
-                //Verificar se há algo digitado
-                if(pesquisa != ''){
-                    var dados = {
-                        palavra : pesquisa
-                    }
-                    $.post('conexao_db/buscarUsuario.php', dados, function(retorna){
-                        //Mostra noa ul os resultados da pesquisa
-                        $(".resultado").html(retorna);
-                    });
-                }else{
-                    $(".resultado").html('<tr></tr>');
+                //coletando o que foi informado no campo de pesquisa para buscar no db
+                var dados = {
+                    palavra : pesquisa
                 }
+                $.post('conexao_db/buscarUsuario.php', dados, function(retorna){
+                    //Mostra noa ul os resultados da pesquisa
+                    $(".resultado").html(retorna);
+                });
+                
             });
         });
 
+        //Função de pesquisa de produto sem refresh
+        $(function(){
+            $("#pesquisa_produto").keyup(function(){
+                var pesquisa_produto = $(this).val();
+                //coletando o que foi informado no campo de pesquisa para buscar no db
+                var dados = {
+                    palavra : pesquisa_produto
+                }
+                $.post('conexao_db/buscarProduto.php', dados, function(retorna){
+                    //Mostra noa ul os resultados da pesquisa
+                    $(".resultado_produto").html(retorna);
+                });
+                
+            });
+        });
         // magnific popup
         $('.popup-youtube').magnificPopup({
             disableOn: 700,

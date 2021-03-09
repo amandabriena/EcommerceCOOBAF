@@ -58,10 +58,30 @@
                             <th>E-mail</th>
                             <th>CPF</th>
                             <th>Telefone</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody class = "resultado">
-                        
+                        <?php
+                            $sql="SELECT * FROM usuarios where tipo_usuario = 0";
+                            $resultado_usuario = mysqli_query($connect, $sql);
+                            if($sql === FALSE) { 
+                                die(mysqli_error());
+                            }
+                            while($row = mysqli_fetch_assoc($resultado_usuario)){
+                            echo "<tr>";
+                            echo "<td>" . $row['nome'] ."</td>";
+                            echo "<td>" . $row['email'] ."</td>";
+                            echo "<td>" . $row['cpf'] ."</td>";
+                            echo "<td>" . $row['telefone'] ."</td>";
+                            if(($row['status'])==1){
+                                echo "<td> Ativo </td>";
+                            }else{
+                                echo "<td> Inativo </td>";
+                            }              
+                            echo "</tr>";
+                            }
+                        ?>
                     </tbody>
                 </table>
                 
