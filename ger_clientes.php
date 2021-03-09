@@ -39,8 +39,8 @@
             <div class="row text-center w-10">
                 <div class="col-lg-8 offset-lg-2 mx-auto">
                     <div class="input-group mb-3">
-                    <input name= "pesquisa" id= "pesquisa" type="text" class="form-control" placeholder="Busque um cooperado por nome ou CPF" >
-                    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+                        <input name= "pesquisa" id= "pesquisa" type="text" class="form-control" placeholder="Busque um cooperado por nome ou CPF" >
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
                     </div>
                 </div>
             </div>
