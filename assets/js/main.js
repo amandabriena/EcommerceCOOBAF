@@ -102,22 +102,19 @@
         // isotop inner
         $(".product-lists").isotope();
 
-        //campo de busca
+        //Função de pesquisa de usuário sem refresh
         $(function(){
             $("#pesquisa").keyup(function(){
                 var pesquisa = $(this).val();
-                //Verificar se há algo digitado
-                if(pesquisa != ''){
-                    var dados = {
-                        palavra : pesquisa
-                    }
-                    $.post('conexao_db/buscarUsuario.php', dados, function(retorna){
-                        //Mostra noa ul os resultados da pesquisa
-                        $(".resultado").html(retorna);
-                    });
-                }else{
-                    $(".resultado").html('<tr></tr>');
+                //coletando o que foi informado no campo de pesquisa para buscar no db
+                var dados = {
+                    palavra : pesquisa
                 }
+                $.post('conexao_db/buscarUsuario.php', dados, function(retorna){
+                    //Mostra noa ul os resultados da pesquisa
+                    $(".resultado").html(retorna);
+                });
+                
             });
         });
 
