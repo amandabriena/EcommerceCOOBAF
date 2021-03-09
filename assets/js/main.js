@@ -102,6 +102,25 @@
         // isotop inner
         $(".product-lists").isotope();
 
+        //campo de busca
+        $(function(){
+            $("#pesquisa").keyup(function(){
+                var pesquisa = $(this).val();
+                //Verificar se há algo digitado
+                if(pesquisa != ''){
+                    var dados = {
+                        palavra : pesquisa
+                    }
+                    $.post('conexao_db/buscarUsuario.php', dados, function(retorna){
+                        //Mostra noa ul os resultados da pesquisa
+                        $(".resultado").html(retorna);
+                    });
+                }else{
+                    $(".resultado").html('<tr></tr>');
+                }
+            });
+        });
+
         // magnific popup
         $('.popup-youtube').magnificPopup({
             disableOn: 700,

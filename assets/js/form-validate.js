@@ -1,10 +1,10 @@
 function valid_datas( f ){
 	
 	if( f.name.value == '' ){
-		jQuery('#form_status').html('<span class="wrong">Your name must not be empty!</span>');
+		jQuery('#form_status').html('<span class="wrong">O campo nome não pode estar vazio!</span>');
 		notice( f.name );
 	}else if( f.email.value == '' ){
-		jQuery('#form_status').html('<span class="wrong">Your email must not be empty and correct format!</span>');
+		jQuery('#form_status').html('<span class="wrong">O campo email deve estar no formato e não pode estar vazio!</span>');
 		notice( f.email );
 	//}else if( f.phone.value == '' ){
 		//jQuery('#form_status').html('<span class="wrong">Your phone must not be empty and correct format!</span>');

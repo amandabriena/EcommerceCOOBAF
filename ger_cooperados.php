@@ -10,17 +10,12 @@
 	<!-- title -->
 	<title>Espaço do Cooperado</title>
     <!-- JavaScript Bundle with Popper -->
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
 
 </head>
 <body>
 	
-	<!--PreLoader-->
-    <div class="loader">
-        <div class="loader-inner">
-            <div class="circle"></div>
-        </div>
-    </div>
-    <!--PreLoader Ends-->
+	
 	<?php require_once("src/components/menu.php");?>
 
 	<!-- breadcrumb-section -->
@@ -44,62 +39,46 @@
 						</div>';
 						unset($_SESSION['sucesso']);
 				}?>
-		<div class="container">
+		<div class="container mb-5">
             <div class="row">
-                <div class="col-lg-8 offset-lg-2 mx-auto">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Busque um cooperado por nome ou CPF" aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Buscar</button>
-                    </div>
-                </div>
-                <div class="mb-5">
-                    <a href="cadastro_coop.php" class="cart-btn"><i class="fa fa-plus-circle"></i> Cadastrar Cooperado</a>
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <form method="POST" action="">
+                        <div class="input-group mb-3">
+                            <input name= "pesquisa" id= "pesquisa" type="text" class="form-control" placeholder="Busque um cooperado por nome ou CPF" >
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
+                        </div>
+                    </form>
+                    
                 </div>
                 
-            <table class="table table-bordered table-hover table-responsive-sm">
-                <thead>
-                    <tr class="table-success">
-                        <th>Nome</th>
-                        <th>E-mail</th>
-                        <th>CPF</th>
-                        <th>Telefone</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $sql="SELECT * FROM usuarios where tipo_usuario = 0";
-                    $resultado_usuario = mysqli_query($connect, $sql);
-                    if($sql === FALSE) { 
-                        die(mysqli_error());
-                    }
-                    while($row = mysqli_fetch_assoc($resultado_usuario)){
-                    echo "<tr>";
-                    echo "<td>" . $row['nome'] ."</td>";
-                    echo "<td>" . $row['email'] ."</td>";
-                    echo "<td>" . $row['cpf'] ."</td>";
-                    echo "<td>" . $row['telefone'] ."</td>";
-                    if(($row['status'])==1){
-                        echo "<td> Ativo </td>";
-                    }else{
-                        echo "<td> Inativo </td>";
-                    }              
-                    echo "</tr>";
-                    }
-                    ?>
-                </tbody>
-            </table>
+                <table class="table table-bordered table-hover table-responsive-sm table-responsive-md">
+                    <thead>
+                        <tr class="table-success">
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>CPF</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody class = "resultado">
+                        
+                    </tbody>
+                </table>
+                
+                
+            </div>
+            <div class="text-center mb-5 mt-5">
+                <a href="cadastro_coop.php" class="cart-btn"><i class="fa fa-plus-circle"></i> Cadastrar Cooperado</a>
             </div>
             <div class = "text-left mb-80">
-				<a href="cooperado.php" class="cart-btn"><i class="fa fa-arrow-left"></i> Voltar</a>
-			</div>
-		</div>
+			    <a href="cooperado.php" class="cart-btn"><i class="fa fa-arrow-left"></i> Voltar</a>
+		    </div>
+        </div>
+        
 	</div>
 	<!-- end latest news -->
 
 	<?php require_once("src/components/footer.php");?>
-	<!-- jquery -->
-	<script src="assets/js/jquery-1.11.3.min.js"></script>
 	<!-- bootstrap -->
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<!-- count down -->
