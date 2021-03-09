@@ -36,8 +36,8 @@
 							<p class="subtitle">Cooperativa de Agricultura Familiar De Feira De Santana</p>
 							<h1>COOBAF-FS</h1>
 							<div class="hero-btns">
-								<a href="shop.html" class="boxed-btn">Nossos Produtos</a>
-								<a href="contact.php" class="bordered-btn">Entre em Contato</a>
+								<a href="produtos.php" class="boxed-btn">Nossos Produtos</a>
+								<a href="contato.php" class="bordered-btn">Entre em Contato</a>
 							</div>
 						</div>
 					</div>
@@ -67,7 +67,7 @@
 						</div>
 						<h3>Strawberry</h3>
 						<p class="product-price"><span>Per Kg</span> R$8,00 </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</a>
+						<a href="carrinho.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 text-center">
@@ -77,7 +77,7 @@
 						</div>
 						<h3>Berry</h3>
 						<p class="product-price"><span>Per Kg</span> R$5,00 </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</a>
+						<a href="carrinho.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
@@ -87,7 +87,7 @@
 						</div>
 						<h3>Lemon</h3>
 						<p class="product-price"><span>Per Kg</span> R$7,00 </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</a>
+						<a href="carrinho.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</a>
 					</div>
 				</div>
 			</div>
@@ -115,7 +115,7 @@
 						Os cooperados estão dispostos nos quatro cantos da zona rural de Feira de Santana-BA, sendo parte de ação integrada, 
 						que conta com o apoio das respectivas Associações Comunitárias Rurais e com infraestrutura em cada localidade.
 						</p>
-						<a href="about.php" class="boxed-btn mt-4">saiba mais</a>
+						<a href="sobre.php" class="boxed-btn mt-4">saiba mais</a>
 					</div>
 				</div>
 			</div>
@@ -181,7 +181,7 @@
 			</div>
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<a href="news.html" class="boxed-btn">Mais Notícias</a>
+					<a href="noticias.php" class="boxed-btn">Mais Notícias</a>
 				</div>
 			</div>
 		</div>

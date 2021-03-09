@@ -51,7 +51,7 @@
 							<form action="index.html">
 								<input type="number" placeholder="0">
 							</form>
-							<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+							<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</a>
 							<p><strong>Categories: </strong>Fruits, Organic</p>
 						</div>
 					</div>
@@ -80,7 +80,7 @@
 						</div>
 						<h3>Strawberry</h3>
 						<p class="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</a>
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 text-center">
