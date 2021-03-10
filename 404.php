@@ -3,7 +3,7 @@
 <head>
 	<?php require_once("src/components/head.php");?>
 	<!-- title -->
-	<title>404!</title>
+	<title>404</title>
 </head>
 <body>
 	
