@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `email` varchar(45) NOT NULL,
   `telefone` varchar(15) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `tipo_usuario` tinyint(1) NOT NULL,
+  `tipo_usuario` tinyint(1) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `pedido` (
@@ -45,3 +45,6 @@ ALTER TABLE pedido ADD FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
 ALTER TABLE item_pedido ADD FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido);
 ALTER TABLE item_pedido ADD FOREIGN KEY (id_produto) REFERENCES produto(id_produto);
 
+/*INSERT USUÁRIO ADMIN COOBAF*/
+INSERT INTO `usuarios` (`id_usuario`, `nome`, `cpf`, `senha`, `email`, `telefone`, `status`, `tipo_usuario`) 
+VALUES (NULL, 'COOBAF', '000.000.000-00', 'admin', 'coobaf.fsa@gmail.com', '(75)3625-9394', '1', '0');

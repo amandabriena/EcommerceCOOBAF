@@ -133,6 +133,23 @@
                 
             });
         });
+
+        //Função de pesquisa de notícia sem refresh
+        $(function(){
+            $("#pesquisa_noticia").keyup(function(){
+                var pesquisa_noticia = $(this).val();
+                //coletando o que foi informado no campo de pesquisa para buscar no db
+                var dados = {
+                    palavra : pesquisa_noticia
+                }
+                $.post('conexao_db/buscarNoticia.php', dados, function(retorna){
+                    //Mostra noa ul os resultados da pesquisa
+                    $(".resultado_noticia").html(retorna);
+                });
+                
+            });
+        });
+
         // magnific popup
         $('.popup-youtube').magnificPopup({
             disableOn: 700,

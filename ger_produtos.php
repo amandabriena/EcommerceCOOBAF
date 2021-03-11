@@ -41,18 +41,7 @@
 						</div>';
 						unset($_SESSION['sucesso']);
 			}?>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="product-filters">
-							<ul>
-								<li class="active" data-filter="*">Todos</li>
-								<li data-filter=".Farinha">Farinha</li>
-								<li data-filter=".Bolo">Bolo</li>
-								<li data-filter=".Biscoito">Biscoito</li>
-							</ul>
-						</div>
-					</div>
-				</div>
+				
 				<div class="teste input-group">
 					<input name= "pesquisa_produto" id= "pesquisa_produto" type="text" class="form-control" placeholder="Busca algum produto específico?" >
 					<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
