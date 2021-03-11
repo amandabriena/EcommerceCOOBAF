@@ -1,7 +1,7 @@
 <?php
     //CONEXÃO COM O BANCO DE DADOS
     include("conexao_db/conexao.php");
-	//PEGAR INFORMAÇÃO DO ID DA NOTICIA PELO GET
+	//PEGAR INFORMAÇÃO DO ID DO PRODUTO PELO GET
 	$id_produto = $_GET['produto'];
     
 ?>
@@ -9,6 +9,8 @@
 <html lang="en">
 <head>
 	<?php require_once("src/components/head.php");?>
+	<script type ="text/javascript" src="assets/js/jquery.js"></script>
+	<script type ="text/javascript" src="assets/js/functions.js"></script>
 	<!-- title -->
 	<title>Nosso Produtos</title>
 
@@ -30,6 +32,16 @@
 		}else{
 			require_once("src/components/menu.php");
 		}
+
+		$array_produtos = array();
+
+			if(isset($_SESSION['cont'])){
+				$_SESSION['cont'] +=1;
+			} else{
+				$_SESSION['cont'] = 1;
+			}
+
+			
 	?>
 
 	<!-- breadcrumb-section -->
@@ -101,11 +113,17 @@
 							</div>
 							<h3>".$row['nome']."</h3>
 							<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
-							<a href='carrinho.php' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
+							<a href='carrinho.php?adicionar=' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
 							</div>
 						</div>";
 									
 				}
+				if(isset($_GET['adicionar'])){
+					$_SESSION['idProduto'] = $id_produto;
+				}
+				
+							
+							
 				?>
 			</div>
 		</div>

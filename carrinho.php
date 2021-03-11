@@ -18,6 +18,7 @@
 
 	<!--MENU-->
 	<?php require_once("src/components/menu.php");?>
+	<?php session_start(); ?>
 
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -44,21 +45,29 @@
 							<thead class="cart-table-head">
 								<tr class="table-head-row">
 									<th class="product-remove"></th>
-									<th class="product-image">Product Image</th>
-									<th class="product-name">Name</th>
-									<th class="product-price">Price</th>
-									<th class="product-quantity">Quantity</th>
+									<th class="product-image"></th>
+									<th class="product-name">Nome</th>
+									<th class="product-price">Preço</th>
+									<th class="product-quantity">Quantidade</th>
 									<th class="product-total">Total</th>
 								</tr>
 							</thead>
 							<tbody id = "resultado_carrinho">
 								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-1.jpg" alt=""></td>
-									<td class="product-name">Strawberry</td>
-									<td class="product-price">$85</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
+									<?php 
+										if(isset($_GET['adicionar'])){
+											$idProduto = $_SESSION['idProduto'];
+											$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $idProduto") or die("erro ao selecionar");
+											while($row = mysqli_fetch_assoc($resultadoCodigo)){
+													<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
+													<td class="product-image">".$row['id_produto']."><img src="assets/img-upload/"".$row['imagem']."</td>
+													<td class="product-name">".$row['nome']."</td>
+													<td class="product-price">".$row['preco']."</td>
+													<td class="product-quantity"><input type="number" placeholder="0"></td>
+													<td class="product-total">1</td>
+											}
+										}
+									?>		
 								</tr>
 								<tr class="table-body-row">
 									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
@@ -87,7 +96,7 @@
 							<thead class="total-table-head">
 								<tr class="table-total-row">
 									<th>Total</th>
-									<th>Price</th>
+									<th>Valor</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -96,7 +105,7 @@
 									<td>$500</td>
 								</tr>
 								<tr class="total-data">
-									<td><strong>Shipping: </strong></td>
+									<td><strong>Entrega: </strong></td>
 									<td>$45</td>
 								</tr>
 								<tr class="total-data">

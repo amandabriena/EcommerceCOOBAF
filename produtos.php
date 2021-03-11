@@ -67,6 +67,7 @@
 				<?php 
 					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1") or die("erro ao selecionar");
 					while($row = mysqli_fetch_assoc($resultadogeral)){
+						$_SESSION['idProduto'] = $row['id_produto'];
 						echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
 								<div class='single-product-item'>
 								<div class='product-image'>
@@ -74,13 +75,15 @@
 								</div>
 								<h3>".$row['nome']."</h3>
 								<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
-								<a href='carrinho.php' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
+								<a href='carrinho.php?adicionar=' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
 								</div>
 							</div>";
 									
 					}
+					
 				?>
 			</div>
+			<?php echo $_SESSION['idProduto'];?>
 
 			<div class="row">
 				<div class="col-lg-12 text-center">
