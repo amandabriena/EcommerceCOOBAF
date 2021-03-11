@@ -49,7 +49,7 @@
 	<!-- latest news -->
 	<div class="latest-news mt-80 mb-150">
 		<div class="container">
-			<div class="teste input-group mb-5">
+			<div class="central input-group mb-5">
 				<input name= "pesquisa_noticia" id= "pesquisa_noticia" type="text" class="form-control" placeholder="Busque uma notícia pelo título..." >
 				<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
 			</div>

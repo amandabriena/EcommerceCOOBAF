@@ -124,7 +124,7 @@
 	<!-- end HISTORIA -->
 
 	<!-- team section -->
-	<div class="mt-150 mb-80">
+	<div class="mt-80 mb-80">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
