@@ -25,12 +25,11 @@
     VALUES (NULL, '$nome', '$descricao', '$destino', '$preco', '$categoria', '$status')";
     $insert = mysqli_query($connect,$query);
     if($insert){
-        //$_SESSION['erro'] = "nao";
+        $_SESSION['sucesso'] = "sim";
         header('location:../ger_produtos.php');
     }else{
-        //$_SESSION['erro'] = "sim";
-        echo mysqli_error($connect);
-        //header('location:../404.php');
+        //echo mysqli_error($connect);
+        header('location:../404.php');
     }
     
     

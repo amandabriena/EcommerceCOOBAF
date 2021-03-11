@@ -31,7 +31,7 @@
 	<div class="product-section mt-4 mb-150">
 		<div class="container">
 			<?php
-				if(isset($_SESSION['sucesso']) and ($_SESSION['sucesso']== "sim")){
+				if(isset($_SESSION['sucesso'])){
 					echo '
 						<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
 						<strong>Produto cadastrado com sucesso!</strong> 

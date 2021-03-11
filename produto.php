@@ -1,3 +1,10 @@
+<?php
+    //CONEXÃO COM O BANCO DE DADOS
+    include("conexao_db/conexao.php");
+	//PEGAR INFORMAÇÃO DO ID DA NOTICIA PELO GET
+	$id_produto = $_GET['produto'];
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +23,14 @@
     </div>
     <!--PreLoader Ends-->
 	<!--MENU-->
-	<?php require_once("src/components/menu.php");?>
+	<?php 
+		session_start();
+		if(isset($_SESSION['nome'])){
+			require_once("src/components/menu_logado.php");
+		}else{
+			require_once("src/components/menu.php");
+		}
+	?>
 
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -39,20 +53,24 @@
 			<div class="row">
 				<div class="col-md-5">
 					<div class="single-product-img">
-						<img src="assets/img/products/product-img-5.jpg" alt="">
+						<?php 
+							$resultado = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$id_produto'") or die("erro ao selecionar");
+							while($row = mysqli_fetch_assoc($resultado)){
+						?>
+						<img src='assets/img-upload/<?php echo $row['imagem'];  ?>' alt="">
 					</div>
 				</div>
 				<div class="col-md-7">
 					<div class="single-product-content">
-						<h3>Green apples have polyphenols</h3>
-						<p class="single-product-pricing"><span>Per Kg</span> $50</p>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta sint dignissimos, rem commodi cum voluptatem quae reprehenderit repudiandae ea tempora incidunt ipsa, quisquam animi perferendis eos eum modi! Tempora, earum.</p>
+						<h3><?php echo $row['nome']; ?></h3>
+						<p class="single-product-pricing"><span>Por quilo</span>R$<?php echo $row['preco']; ?></p>
+						<p><?php echo $row['descricao']; ?></p>
 						<div class="single-product-form">
 							<form action="index.html">
 								<input type="number" placeholder="0">
 							</form>
 							<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</a>
-							<p><strong>Categories: </strong>Fruits, Organic</p>
+							<p><strong>Categoria: </strong><?php echo $row['categoria']; } ?></p>
 						</div>
 					</div>
 				</div>
@@ -67,42 +85,28 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="section-title">	
-						<h3><span class="orange-text">Related</span> Products</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
+						<h3><span class="orange-text">Produtos</span> Relacionados</h3>
+						<p>Talvez você também possa se interessar:</p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-						</div>
-						<h3>Strawberry</h3>
-						<p class="product-price"><span>Per Kg</span> 85$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-						</div>
-						<h3>Berry</h3>
-						<p class="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-lg-0 offset-md-3 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-						</div>
-						<h3>Lemon</h3>
-						<p class="product-price"><span>Per Kg</span> 35$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-					</div>
-				</div>
+			<?php 
+				$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1") or die("erro ao selecionar");
+				while($row = mysqli_fetch_assoc($resultadogeral)){
+					echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
+							<div class='single-product-item'>
+							<div class='product-image'>
+								<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
+							</div>
+							<h3>".$row['nome']."</h3>
+							<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
+							<a href='carrinho.php' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
+							</div>
+						</div>";
+									
+				}
+				?>
 			</div>
 		</div>
 	</div>

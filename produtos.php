@@ -59,18 +59,18 @@
 						</div>';
 						unset($_SESSION['sucesso']);
 			}?>
-			<div class="central input-group">
+			<div class="central input-group mb-5">
 				<input name= "pesquisa_produto" id= "pesquisa_produto" type="text" class="form-control" placeholder="Busca algum produto específico?" >
 				<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
 			</div>
 			<div class="resultado_produto row product-lists">
 				<?php 
-					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto") or die("erro ao selecionar");
+					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1") or die("erro ao selecionar");
 					while($row = mysqli_fetch_assoc($resultadogeral)){
 						echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
 								<div class='single-product-item'>
 								<div class='product-image'>
-									<a href='single-product.html'><img src='assets/img-upload/".$row['imagem']."' ></a>
+									<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
 								</div>
 								<h3>".$row['nome']."</h3>
 								<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>

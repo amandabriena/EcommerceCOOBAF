@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS `pedido` (
 CREATE TABLE IF NOT EXISTS produto (
 	id_produto smallint(10) not null primary key AUTO_INCREMENT,
 	nome varchar(15) not null,
+  imagem varchar(100) not null,
 	descricao varchar(20),
 	categoria varchar(15) not null,
 	preco float(15),
@@ -48,3 +49,6 @@ ALTER TABLE item_pedido ADD FOREIGN KEY (id_produto) REFERENCES produto(id_produ
 /*INSERT USUÁRIO ADMIN COOBAF*/
 INSERT INTO `usuarios` (`id_usuario`, `nome`, `cpf`, `senha`, `email`, `telefone`, `status`, `tipo_usuario`) 
 VALUES (NULL, 'COOBAF', '000.000.000-00', 'admin', 'coobaf.fsa@gmail.com', '(75)3625-9394', '1', '0');
+
+INSERT INTO `noticia` (`id_noticia`, `titulo`, `corpo`, `imagem`, `data`, `status`) 
+VALUES (NULL, 'oi', 'teste', '161542106860495e8c234b6.jpg', '2021-03-11', '1');
