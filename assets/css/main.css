@@ -2588,6 +2588,12 @@ ul.product-share li a {
   margin-left: 30px;
 }
 
+.cadastro-form .single-product-img img{
+  max-width:300px;
+  width: auto;
+  height: auto;
+}
+
 table.cart-table {
   border: 1px solid #f9f9f9;
   width: 100%;

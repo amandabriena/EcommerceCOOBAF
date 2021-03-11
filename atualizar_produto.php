@@ -54,6 +54,11 @@
 							while($row = mysqli_fetch_assoc($resultado)){
 						?>
 						<form action = "conexao_db/incluirProduto.php" method="POST" enctype="multipart/form-data" >
+							<div class="single-product-img mb-4">
+								<img src='assets/img-upload/<?php echo $row['imagem'];  ?>' alt="">
+								<h6>Altere a imagem para o produto:</h6>
+								<input required name="arquivo" type="file">
+							</div>
 							<p>
                                 <input type="text" placeholder="Nome" name="nome" id="nome" value="<?php echo $row['nome']; ?>">
 							</p>
@@ -77,10 +82,6 @@
 							<p>
                                 <input type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" placeholder="Preço" name="preco" id="preco" value="<?php echo $row['preco']; ?>">
                             </p>
-							<div class= "text-left">
-								<h6>Selecione uma imagem para o produto:</h6>
-								<input required name="arquivo" type="file">
-							</div>
 							<div class= "text-right">
 								<input name = "status" type="checkbox" <?php if($row['status']==1) echo 'checked';}?>>
 								<label class="form-check-label">Produto Ativo</label>
