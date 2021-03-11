@@ -60,7 +60,7 @@
 									<span class='date'><i class='fas fa-calendar'></i>".$row['data']."</span>
 								</p>
 								<div class='text-center'>
-									<a href='cart.html' class='cart-btn'><i class='fas fa-eye'></i> Ver</a>
+									<a href='noticia.php?noticia=".$row['id_noticia']."' class='cart-btn'><i class='fas fa-eye'></i> Ver</a>
 									<a href='cart.html' class='cart-btn'><i class='fas fa-wrench'></i> Editar</a>
 									<a href='cart.html' class='cart-btn'><i class='fas fa-trash'></i> Excluir</a>
 								</div>
