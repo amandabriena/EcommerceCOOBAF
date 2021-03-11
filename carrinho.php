@@ -51,7 +51,7 @@
 									<th class="product-total">Total</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id = "resultado_carrinho">
 								<tr class="table-body-row">
 									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
 									<td class="product-image"><img src="assets/img/products/product-img-1.jpg" alt=""></td>
