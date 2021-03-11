@@ -4,8 +4,8 @@
     
     $resultado = mysqli_query($connect,"SELECT * FROM noticia WHERE titulo LIKE '%$titulo%'") or die("erro ao selecionar");
     if(mysqli_num_rows($resultado)<=0){
-        echo "Nenhum notícia encontrado!";
-    }else if($nome == ''){
+        echo "Nenhum notícia encontrada com este título!";
+    }else if($titulo == ''){
         $resultadogeral = mysqli_query($connect,"SELECT * FROM noticia") or die("erro ao selecionar");
         while($row = mysqli_fetch_assoc($resultadogeral)){
             echo "<div class='col-lg-4 col-md-6'>
