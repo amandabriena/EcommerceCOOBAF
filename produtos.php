@@ -59,7 +59,7 @@
 						</div>';
 						unset($_SESSION['sucesso']);
 			}?>
-			<div class="teste input-group">
+			<div class="central input-group">
 				<input name= "pesquisa_produto" id= "pesquisa_produto" type="text" class="form-control" placeholder="Busca algum produto específico?" >
 				<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
 			</div>
