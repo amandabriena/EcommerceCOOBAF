@@ -7,6 +7,7 @@
 <html lang="en">
 <head>
 	<?php require_once("src/components/head.php");?>
+	<?php require_once("conexao_db/logado_coop.php");?>
 	<!-- title -->
 	<title>Gerenciamento de Produtos</title>
 

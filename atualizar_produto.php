@@ -3,7 +3,8 @@
     include("conexao_db/conexao.php");
 	//PEGAR INFORMAÇÃO DO ID DA NOTICIA PELO GET
 	$id_produto = $_GET['atualizar_produto'];
-    
+	$resultado = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$id_produto'") or die("erro ao selecionar");
+	while($row = mysqli_fetch_assoc($resultado)){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +20,10 @@
 			}else{
 				document.getElementById("outraCat").disabled = true;
 			}
+		};
+		function selectElement(valueCategoria) {    
+			let element = document.getElementById(id);
+			element.value = valueCategoria;
 		};
 	</script>
 	<!-- title -->
@@ -49,10 +54,6 @@
 						<h2>Atualizar Produto</h2>
 					</div>
 					<div class="cadastro-form">
-                        <?php 
-							$resultado = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$id_produto'") or die("erro ao selecionar");
-							while($row = mysqli_fetch_assoc($resultado)){
-						?>
 						<form action = "conexao_db/incluirProduto.php" method="POST" enctype="multipart/form-data" >
 							<div class="single-product-img mb-4">
 								<img src='assets/img-upload/<?php echo $row['imagem'];  ?>' alt="">
@@ -63,11 +64,11 @@
                                 <input type="text" placeholder="Nome" name="nome" id="nome" value="<?php echo $row['nome']; ?>">
 							</p>
                             <p>
-                                <textarea placeholder="Descrição" name="descricao" id="descricao" value="<?php echo $row['descricao']; ?>"></textarea>
+                                <textarea placeholder="Descrição" name="descricao" id="descricao"><?php echo $row['descricao']; ?></textarea>
 							</p>
                             <p>
 								<select name="categoria" id="categoria" onchange="verifica(this.value)">
-									<option selected="true" disabled="disabled">Categoria</option>
+									<option disabled="disabled">Categoria</option>
 									<option value="Biscoito">Biscoito</option>
 									<option value="Bolo">Bolo</option>
 									<option value="Farinha">Farinha</option>
@@ -83,7 +84,7 @@
                                 <input type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" placeholder="Preço" name="preco" id="preco" value="<?php echo $row['preco']; ?>">
                             </p>
 							<div class= "text-right">
-								<input name = "status" type="checkbox" <?php if($row['status']==1) echo 'checked';}?>>
+								<input name = "status" type="checkbox" <?php if($row['status']==1) echo 'checked'; }?>>
 								<label class="form-check-label">Produto Ativo</label>
 							</div>
 							<div>
@@ -91,6 +92,9 @@
 						</form>
                         
 					</div>
+				</div>
+				<div class = "text-left mb-80">
+					<a href="ger_produtos.php" class="cart-btn"><i class="fa fa-arrow-left"></i> Cancelar Atualização</a>
 				</div>
 		</div>
 	</div>
