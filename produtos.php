@@ -83,7 +83,6 @@
 					
 				?>
 			</div>
-			<?php echo $_SESSION['idProduto'];?>
 
 			<div class="row">
 				<div class="col-lg-12 text-center">

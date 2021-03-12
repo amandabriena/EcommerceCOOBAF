@@ -8,17 +8,11 @@
 </head>
 <body>
 	
-	<!--PreLoader-->
-    <div class="loader">
-        <div class="loader-inner">
-            <div class="circle"></div>
-        </div>
-    </div>
-    <!--PreLoader Ends-->
 
 	<!--MENU-->
 	<?php require_once("src/components/menu.php");?>
-	<?php session_start(); ?>
+	<?php session_start();?>
+	<?php include_once('conexao_db/conexao.php');?>
 
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -60,13 +54,17 @@
 											$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $idProduto") or die("erro ao selecionar");
 											while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
 													<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-													<td class="product-image"> <?php echo $row['id_produto']; ?> <img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
+													<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
 													<td class="product-name"> <?php echo $row['nome']; ?> </td>
-													<td class="product-price"> <?php echo$row['preco']; ?></td>
-													<td class="product-quantity"><input type="number" placeholder="0"></td>
-													<td class="product-total">1</td>
+													<td class="product-price"> <?php echo $row['preco']; ?></td>
+													<td class="product-quantity"><input type="number" placeholder="1" name="qtprod"></td>
+													<?php
+														$qtprod = $_GET["qtprod"];
+														$preco = $row['preco'] * $qtprod;
+													?>
+													<td class="product-total"> <?php echo /*$row['preco'] = $row['preco'] * */$qtprod ?> </td>
 													<?php 
-											} 
+											}
 										} ?>		
 								</tr>
 								<tr class="table-body-row">
