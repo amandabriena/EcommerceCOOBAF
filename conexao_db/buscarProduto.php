@@ -18,7 +18,6 @@
                     <a href='carrinho.php' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
                     </div>
                 </div>";
-                    
         }
     }else{
         while($row = mysqli_fetch_assoc($resultado)){

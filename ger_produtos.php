@@ -29,9 +29,8 @@
     <!-- end breadcrumb section -->
 
 	<!-- products -->
-	<div class="product-section mt-4 mb-150">
-		<div class="container">
-			<?php
+	<div class="product-section mt-80 mb-150">
+		<?php
 				if(isset($_SESSION['sucesso'])){
 					echo '
 						<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
@@ -42,11 +41,12 @@
 						</div>';
 						unset($_SESSION['sucesso']);
 			}?>
-				
-				<div class="central input-group">
+		<div class="container">
+		<div class="central input-group">
 					<input name= "pesquisa_produto" id= "pesquisa_produto" type="text" class="form-control" placeholder="Busca algum produto específico?" >
 					<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>
 				</div>
+			
 			<div class = "text-right mt-4 mb-4">
 				<a href="cadastro_produto.php" class="cart-btn"><i class="fa fa-plus-circle"></i> Adicionar Novo Produto</a>
 			</div>
@@ -64,7 +64,6 @@
 									<div class='text-center'>
 										<a href='produto.php?produto=".$row['id_produto']."' class='cart-btn'><i class='fas fa-eye'></i> Ver</a>
 										<a href='atualizar_produto.php?atualizar_produto=".$row['id_produto']."' class='cart-btn'><i class='fas fa-wrench'></i> Editar</a>
-										<a href='cart.html' class='cart-btn'><i class='fas fa-trash'></i> Excluir</a>
 									</div>
 									</div>
 								</div>";

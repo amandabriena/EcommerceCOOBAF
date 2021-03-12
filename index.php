@@ -1,4 +1,8 @@
-
+<?php
+    //CONEXÃO COM O BANCO DE DADOS
+    include("conexao_db/conexao.php");
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,43 +64,31 @@
 			</div>
 
 			<div class="row">
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-						</div>
-						<h3>Strawberry</h3>
-						<p class="product-price"><span>Per Kg</span> R$8,00 </p>
-						<a href="carrinho.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-						</div>
-						<h3>Berry</h3>
-						<p class="product-price"><span>Per Kg</span> R$5,00 </p>
-						<a href="carrinho.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-					<div class="single-product-item">
-						<div class="product-image">
-							<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-						</div>
-						<h3>Lemon</h3>
-						<p class="product-price"><span>Per Kg</span> R$7,00 </p>
-						<a href="carrinho.php" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</a>
-					</div>
-				</div>
+				<?php 
+					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1");
+					while($row = mysqli_fetch_assoc($resultadogeral)){
+						$_SESSION['idProduto'] = $row['id_produto'];
+						echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
+								<div class='single-product-item'>
+									<div class='product-image'>
+										<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
+									</div>
+									<h3>".$row['nome']."</h3>
+									<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
+									<a href='carrinho.php?adicionar=' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
+								</div>
+							</div>";
+										
+						}
+						
+					?>
 			</div>
 		</div>
 	</div>
 	<!-- end product section -->
 
 	<!-- advertisement section -->
-	<div class="abt-section mb-150">
+	<div class="abt-section mb-80">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
@@ -136,48 +128,23 @@
 			</div>
 
 			<div class="row">
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href="single-news.html"><div class="latest-news-bg news-bg-1"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.html">You will vainly look for fruit on it in autumn.</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+			<?php 
+				$resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1 limit 3");
+				while($row = mysqli_fetch_assoc($resultadogeral)){
+					echo "<div class='col-lg-4 col-md-6'>
+							<div class='single-latest-news'>
+								<a href='single-news.html'><div class='latest-news-bg'><img src='assets/img-upload/".$row['imagem']."' ></div></a>
+								<div class='news-text-box'>
+								<h3><a href='single-news.html'>".$row['titulo']."</a></h3>
+								<p class='blog-meta'>
+									<span class='date'><i class='fas fa-calendar'></i>".$row['data']."</span>
+								</p>
+								<a href='noticia.php?noticia=".$row['id_noticia']."' class='read-more-btn'>leia mais <i class='fas fa-angle-right'></i></a>
+							</div>
 						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6">
-					<div class="single-latest-news">
-						<a href="single-news.html"><div class="latest-news-bg news-bg-2"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.html">A man's worth has its season, like tomato.</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0">
-					<div class="single-latest-news">
-						<a href="single-news.html"><div class="latest-news-bg news-bg-3"></div></a>
-						<div class="news-text-box">
-							<h3><a href="single-news.html">Good thoughts bear good fresh juicy fruit.</a></h3>
-							<p class="blog-meta">
-								<span class="author"><i class="fas fa-user"></i> Admin</span>
-								<span class="date"><i class="fas fa-calendar"></i> 27 December, 2019</span>
-							</p>
-							<p class="excerpt">Vivamus lacus enim, pulvinar vel nulla sed, scelerisque rhoncus nisi. Praesent vitae mattis nunc, egestas viverra eros.</p>
-							<a href="single-news.html" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
-						</div>
-					</div>
-				</div>
+					</div>";
+				}
+			?>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -188,6 +155,7 @@
 	</div>
 	<!-- end latest news -->
 
+	<!-- end logo carousel -->
 	<!-- FOOTER -->
 	<?php require_once("src/components/footer.php");?>
 	<?php require_once("src/components/extensoes.php");?>
