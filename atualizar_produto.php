@@ -2,7 +2,7 @@
     //CONEXÃO COM O BANCO DE DADOS
     include("conexao_db/conexao.php");
 	//PEGAR INFORMAÇÃO DO ID DA NOTICIA PELO GET
-	$id_produto = $_GET['atualizar_produto'];
+	$id_produto = $_GET['produto'];
 	$resultado = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$id_produto'") or die("erro ao selecionar");
 	while($row = mysqli_fetch_assoc($resultado)){
 ?>
