@@ -54,7 +54,7 @@
 						<div class="news-text-box">
 							<h3><a href="ger_noticias.php">NOTÍCIAS</a></h3>
 							<p class="excerpt">Adicione novas notícias sobre a COOBAF ou gerencie as já cadastradas.</p>
-                            <a href="ger_noticias.php" class="read-more-btn">leia mais <i class="fas fa-angle-right"></i></a>
+                            <a href="ger_noticias.php" class="read-more-btn">ACESSAR <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>

@@ -91,7 +91,7 @@
 				</div>
 			</div>
 
-			<div class = "text-left mb-80">
+			<div class = " row text-left mb-80">
 				<a href="cooperado.php" class="cart-btn"><i class="fa fa-arrow-left"></i> Voltar</a>
 			</div>
 		</div>
