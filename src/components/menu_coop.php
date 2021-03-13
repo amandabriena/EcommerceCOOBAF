@@ -15,21 +15,13 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="index.php">Início</a>
-								</li>
-								<li><a href="sobre.php">Quem Somos</a></li>
-                                <li><a href="produtos.php">Produtos</a>
-									<ul class="sub-menu">
-										<li><a href="produtos.php">Shop</a></li>
-										<li><a href="checkout.php">Check Out</a></li>
-										<li><a href="single-product.php">Single Product</a></li>
-										<li><a href="carrinho.php">Cart</a></li>
-									</ul>
-								</li>
-                                <li><a href="noticias.php">Notícias</a>
-								</li>
-                                <li><a href="contato.php">Contato</a></li>
 								<li><a href="cooperado.php">Espaço do Cooperado</a></li>
+								</li>
+                                <li><a href="ger_produtos.php">Produtos</a>
+								</li>
+                                <li><a href="ger_noticias.php">Notícias</a>
+								</li>
+                                <li><a href="ger_pedidos.php">Pedidos</a></li>
 								<li><a href="conexao_db/sair.php">Sair</a>
 								</li>
 
