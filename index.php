@@ -65,7 +65,7 @@
 
 			<div class="row">
 				<?php 
-					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1");
+					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 limit 3");
 					while($row = mysqli_fetch_assoc($resultadogeral)){
 						$_SESSION['idProduto'] = $row['id_produto'];
 						echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
