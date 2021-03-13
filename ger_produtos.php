@@ -59,10 +59,14 @@
 									<div class='product-image'>
 										<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
 									</div>
-									<h3>".$row['nome']."</h3>
-									<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
-									<div class='text-center'>
-										<a href='produto.php?produto=".$row['id_produto']."' class='cart-btn'><i class='fas fa-eye'></i> Ver</a>
+									<h3>".$row['nome']."</h3>";
+									if($row['status'] == 1){
+										echo "<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>";
+									}else{
+										echo "<p class='product-price'><span style='background-color: red; color: white;'>PRODUTO INATIVO</span> R$".$row['preco']."  </p>";
+									}									
+									echo "<div class='text-center'>
+									<a href='produto.php?produto=".$row['id_produto']."' class='cart-btn'><i class='fas fa-eye'></i> Ver</a>
 										<a href='atualizar_produto.php?atualizar_produto=".$row['id_produto']."' class='cart-btn'><i class='fas fa-wrench'></i> Editar</a>
 									</div>
 									</div>

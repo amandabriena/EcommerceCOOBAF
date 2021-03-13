@@ -70,12 +70,13 @@
 						$_SESSION['idProduto'] = $row['id_produto'];
 						echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
 								<div class='single-product-item'>
-								<div class='product-image'>
-									<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
-								</div>
-								<h3>".$row['nome']."</h3>
-								<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
-								<a href='carrinho.php?adicionar=' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
+									<div class='product-image'>
+										<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
+									</div>
+									<h3>".$row['nome']."</h3>
+									<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
+									<a href='carrinho.php?adicionar=' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
+									
 								</div>
 							</div>";
 									

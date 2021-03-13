@@ -13,6 +13,7 @@
                 <p class='blog-meta'>
                     <span class='date'><i class='fas fa-calendar'></i>".$data."</span>
                 </p>";
+                //verificando se o usuário é um cooperado na página de gerenciamento ou cliente
                 if(isset($_SESSION['cooperado'])){
                     $result .= "<div class='text-center'>
                     <a href='noticia.php?noticia=".$id_noticia."' class='cart-btn'><i class='fas fa-eye'></i> Ver</a>
