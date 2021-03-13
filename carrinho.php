@@ -7,8 +7,6 @@
 
 </head>
 <body>
-	
-
 	<!--MENU-->
 	<?php require_once("src/components/menu.php");?>
 	<?php session_start(); ?>
