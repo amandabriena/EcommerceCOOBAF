@@ -31,7 +31,7 @@
 	<!-- products -->
 	<div class="product-section mt-80 mb-150">
 		<?php
-				if(isset($_SESSION['sucesso'])){
+				if(isset($_SESSION['mensagem']) and $_SESSION['mensagem'] == "cadastro"){
 					echo '
 						<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
 						<strong>Produto cadastrado com sucesso!</strong> 
@@ -39,8 +39,18 @@
 						    <span aria-hidden="true">&times;</span>
 						</button>
 						</div>';
-						unset($_SESSION['sucesso']);
-			}?>
+						unset($_SESSION['mensagem']);
+			}else if(isset($_SESSION['mensagem']) and $_SESSION['mensagem'] == "excluir"){
+				echo '
+						<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
+						<strong>Produto excluído com sucesso!</strong> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						</button>
+						</div>';
+						unset($_SESSION['mensagem']);
+			}
+			?>
 		<div class="container">
 		<div class="central input-group">
 					<input name= "pesquisa_produto" id= "pesquisa_produto" type="text" class="form-control" placeholder="Busca algum produto específico?" >
@@ -68,7 +78,7 @@
 									echo "<div class='text-center'>
 											<a href='produto.php?produto=".$row['id_produto']."' class='cart-btn'><i class='fas fa-eye'></i> Ver</a>
 											<a href='atualizar_produto.php?produto=".$row['id_produto']."' class='cart-btn'><i class='fas fa-wrench'></i> Editar</a>
-											<a href='cart.html' data-toggle='modal' data-target='#exampleModal".$row['id_produto']."' class='cart-btn''><i class='fas fa-trash'></i> Excluir</a>
+											<a data-toggle='modal' data-target='#exampleModal".$row['id_produto']."' class='cart-btn''><i class='fas fa-trash'></i> Excluir</a>
 											<!-- Modal -->
 												<form id = 'deletar_produto' name = 'deletar_produto' action='conexao_db/deletarProduto.php' method='POST'>
 												<div class='modal fade' id='exampleModal".$row['id_produto']."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
@@ -86,7 +96,7 @@
 													<input type='hidden' name='id_produto' value = '".$row['id_produto']."' >
 													<div class='modal-footer'>
 														<button type='submit' name = 'upload' value = 'Cadastrar' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
-														<button type='submit' name = 'upload' value = 'Cancelar' class='btn btn-primary'>Excluir</button>
+														<button type='submit' name = 'upload' value = 'Cancelar' class='btn btn-outline-danger'>Excluir</button>
 													</div>
 													</div>
 												</div>

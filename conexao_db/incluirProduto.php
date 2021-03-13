@@ -25,7 +25,7 @@
     VALUES (NULL, '$nome', '$descricao', '$destino', '$preco', '$categoria', '$status')";
     $insert = mysqli_query($connect,$query);
     if($insert){
-        $_SESSION['sucesso'] = "sim";
+        $_SESSION['mensagem'] = "cadastro";
         header('location:../ger_produtos.php');
     }else{
         //echo mysqli_error($connect);
