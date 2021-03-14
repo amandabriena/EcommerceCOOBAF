@@ -43,7 +43,13 @@
 									<li><a href='noticias.php'>Notícias</a>
 									</li>
 									<li><a href='contato.php'>Contato</a></li>
-									<li><a href='conexao_db/sair.php'>Sair</a></li>
+									<li><a class='shopping-cart' href='carrinho.php'>MINHA CONTA <i class= 'fa fa-user'></i></a>
+										<ul class= 'sub-menu'>
+											<li><a href= 'produtos.php'>Atualizar Dados</a></li>
+											<li><a href= 'produtos.php'>Meus Pedidos</a></li>
+											<li><a href= 'conexao_db/sair.php'>Sair</a></li>
+										</ul>
+									</li>
 									<li>
 										<div class='header-icons'>
 											<a class='shopping-cart' href='carrinho.php'><i class='fas fa-shopping-cart'></i></a>

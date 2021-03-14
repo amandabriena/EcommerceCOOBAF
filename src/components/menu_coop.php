@@ -22,8 +22,13 @@
                                 <li><a href="ger_noticias.php">Notícias</a>
 								</li>
                                 <li><a href="ger_pedidos.php">Pedidos</a></li>
-								<li><a href="conexao_db/sair.php">Sair</a>
+								<li><a class='shopping-cart' href='carrinho.php'>MINHA CONTA <i class="fa fa-user"></i></a>
+									<ul class="sub-menu">
+										<li><a href="produtos.php">Atualizar Dados</a></li>
+										<li><a href="conexao_db/sair.php">Sair</a></li>
+									</ul>
 								</li>
+								
 
 							</ul>
 						</nav>
