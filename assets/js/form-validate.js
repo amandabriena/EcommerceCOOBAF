@@ -77,3 +77,21 @@ function mNum(num){
 	num=num.replace(/\D/g,"")
 	return num
 }
+
+
+
+function validatePassword(){
+	var password = document.getElementById("senha");
+	var confirm_password = document.getElementById("confsenha");
+	var erro = document.getElementById("erro_senha");
+
+  if((password.value != confirm_password.value) && (confirm_password.value != "")) {
+	erro.style.display = "block";
+	password.style.backgroundColor = "rgba(255,0,0,0.4)";
+	confirm_password.style.backgroundColor = "rgba(255,0,0,0.4)";
+  } else {
+    erro.style.display = "none";
+	password.style.backgroundColor = "white";
+	confirm_password.style.backgroundColor = "white";
+  }
+}
