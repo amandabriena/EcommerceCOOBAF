@@ -70,8 +70,9 @@
 								while($row = mysqli_fetch_assoc($resultado)){
 							?>
 							<ul>
-								<li><a href="noticia.php?noticia=<?php echo $row['id_noticia']; ?>"><?php echo $row['titulo']; }?></a></li>
+								<li><a href="noticia.php?noticia=<?php echo $row['id_noticia']; ?>"><?php echo $row['titulo']; ?></a></li>
 							</ul>
+							<?php } ?>
 						</div>
 					</div>
 				</div>
