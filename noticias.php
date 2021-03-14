@@ -51,7 +51,7 @@
 			</div>
 			<div class="resultado_noticia row">
 				<?php 
-					$resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1") or die("erro ao selecionar");
+					$resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1 and visibilidade = 1") or die("erro ao selecionar");
 					while($row = mysqli_fetch_assoc($resultadogeral)){
 						echo "<div class='col-lg-4 col-md-6'>
 						<div class='single-latest-news'>

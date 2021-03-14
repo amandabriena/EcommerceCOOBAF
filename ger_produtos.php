@@ -62,7 +62,7 @@
 			</div>
 			<div class="resultado_produto row product-lists">
 					<?php 
-						$resultadogeral = mysqli_query($connect,"SELECT * FROM produto") or die("erro ao selecionar");
+						$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where visibilidade = 1") or die("erro ao selecionar");
 						while($row = mysqli_fetch_assoc($resultadogeral)){
 							echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
 									<div class='single-product-item'>

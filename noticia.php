@@ -66,7 +66,7 @@
 						<div class="recent-posts">
 							<h4>Notícias Relacionadas</h4>
 							<?php 
-								$resultado = mysqli_query($connect,"SELECT * FROM noticia") or die("erro ao selecionar");
+								$resultado = mysqli_query($connect,"SELECT * FROM noticia where visibilidade = 1") or die("erro ao selecionar");
 								while($row = mysqli_fetch_assoc($resultado)){
 							?>
 							<ul>

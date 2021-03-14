@@ -30,11 +30,11 @@
     }
 
     if(isset($_SESSION['cooperado'])){
-        $resultado = mysqli_query($connect,"SELECT * FROM noticia WHERE titulo LIKE '%$titulo%'") or die("erro ao selecionar");
+        $resultado = mysqli_query($connect,"SELECT * FROM noticia WHERE titulo LIKE '%$titulo%' and visibilidade = 1") or die("erro ao selecionar");
         if(mysqli_num_rows($resultado)<=0){
             echo "Nenhum notícia encontrada com este título!";
         }else if($titulo == ''){
-            $resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1") or die("erro ao selecionar");
+            $resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1 and visibilidade = 1") or die("erro ao selecionar");
             while($row = mysqli_fetch_assoc($resultadogeral)){
                 echo resultado_html($row['id_noticia'],$row['titulo'],$row['imagem'],$row['data']);                    
             }
@@ -44,11 +44,11 @@
             }
         }
     }else{
-        $resultado = mysqli_query($connect,"SELECT * FROM noticia WHERE titulo LIKE '%$titulo%' and status = 1") or die("erro ao selecionar");
+        $resultado = mysqli_query($connect,"SELECT * FROM noticia WHERE titulo LIKE '%$titulo%' and status = 1 and visibilidade = 1") or die("erro ao selecionar");
         if(mysqli_num_rows($resultado)<=0){
             echo "Nenhum notícia encontrada com este título!";
         }else if($titulo == ''){
-            $resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1") or die("erro ao selecionar");
+            $resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1 and visibilidade = 1") or die("erro ao selecionar");
             while($row = mysqli_fetch_assoc($resultadogeral)){
                 echo resultado_html($row['id_noticia'],$row['titulo'],$row['imagem'],$row['data']);                    
             }

@@ -5,10 +5,10 @@
 
     session_start();
 
-    $query = "UPDATE noticia SET status=0 where id_noticia = '$id_noticia'";
-    $inativar = mysqli_query($connect,$query);
+    $query = "UPDATE noticia SET visibilidade = 0 where id_noticia = '$id_noticia'";
+    $delete = mysqli_query($connect,$query);
 
-    if($inativar){
+    if($delete){
         $_SESSION['mensagem'] = "excluir";
         header('location:../ger_noticias.php');
     }else{

@@ -31,11 +31,11 @@
     }
 
     if(isset($_SESSION['cooperado'])){
-        $resultado = mysqli_query($connect,"SELECT * FROM produto WHERE nome LIKE '%$nome%'");
+        $resultado = mysqli_query($connect,"SELECT * FROM produto WHERE nome LIKE '%$nome%' and visibilidade = 1");
         if(mysqli_num_rows($resultado)<=0){
             echo "Nenhum produto encontrado!";
         }else if($nome == ''){
-            $resultadogeral = mysqli_query($connect,"SELECT * FROM produto") or die("erro ao selecionar");
+            $resultadogeral = mysqli_query($connect,"SELECT * FROM produto where visibilidade = 1") or die("erro ao selecionar");
             while($row = mysqli_fetch_assoc($resultadogeral)){
                 echo retorno_html($row['id_produto'], $row['nome'], $row['imagem'], $row['preco'], $row['categoria'], $row['status']);
             }
@@ -45,11 +45,11 @@
             }
         }
     }else{
-        $resultado = mysqli_query($connect,"SELECT * FROM produto WHERE nome LIKE '%$nome%' and status = 1");
+        $resultado = mysqli_query($connect,"SELECT * FROM produto WHERE nome LIKE '%$nome%' and status = 1 and visibilidade = 1");
         if(mysqli_num_rows($resultado)<=0){
             echo "<p class = text-center> Nenhum produto encontrado!</p>";
         }else if($nome == ''){
-            $resultadogeral = mysqli_query($connect,"SELECT * FROM produto") or die("erro ao selecionar");
+            $resultadogeral = mysqli_query($connect,"SELECT * FROM produto where visibilidade = 1") or die("erro ao selecionar");
             while($row = mysqli_fetch_assoc($resultadogeral)){
                 echo retorno_html($row['id_produto'], $row['nome'], $row['imagem'], $row['preco'], $row['categoria'], $row['status']);
             }

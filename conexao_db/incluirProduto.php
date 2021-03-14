@@ -21,8 +21,8 @@
     $nome_arq = $_FILES[ 'arquivo' ][ 'name' ];
     $destino = incluirImagem($nome_arq, $arquivo_tmp);
     
-    $query = "INSERT INTO produto(id_produto, nome, descricao, imagem, preco, categoria, status) 
-    VALUES (NULL, '$nome', '$descricao', '$destino', '$preco', '$categoria', '$status')";
+    $query = "INSERT INTO produto(id_produto, nome, descricao, imagem, preco, categoria, status, visibilidade) 
+    VALUES (NULL, '$nome', '$descricao', '$destino', '$preco', '$categoria', '$status', 1)";
     $insert = mysqli_query($connect,$query);
     if($insert){
         $_SESSION['mensagem'] = "cadastro";

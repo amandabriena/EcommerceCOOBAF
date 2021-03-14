@@ -61,7 +61,7 @@
 			</div>
 			<div class="resultado_produto row product-lists">
 				<?php 
-					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1") or die("erro ao selecionar");
+					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 and visibilidade = 1") or die("erro ao selecionar");
 					while($row = mysqli_fetch_assoc($resultadogeral)){
 						$_SESSION['idProduto'] = $row['id_produto'];
 						echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
