@@ -53,14 +53,17 @@
 								<input name="arquivo" type="file">
 							</div>
                             <input type='hidden' name='imagem' value = "<?php echo $row['imagem']; ?>">
-                            
+
                             <input type='hidden' name='id_noticia' value = "<?php echo $row['id_noticia']; ?>">
-							<p>
+							<h6>Título:</h6>
+                            <p>
                                 <input type="text" placeholder="Título" name="titulo" id="titulo" value = "<?php echo $row['titulo']; ?>">
 							</p>
+                            <h6>Corpo da notícia:</h6>
                             <p>
                                 <textarea placeholder="Corpo" name="corpo" id="corpo"><?php echo $row['corpo']; ?></textarea>
 							</p>
+                            <h6>Data:</h6>
 							<p>
                                 <input type="date" placeholder="Data" name="data" id="data" value='<?php echo $row['data']; date("Y-m-d"); ?>'>
                             </p>
