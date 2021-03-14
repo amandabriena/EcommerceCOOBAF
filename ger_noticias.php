@@ -44,6 +44,15 @@
 						</button>
 						</div>';
 						unset($_SESSION['mensagem']);
+			}else if(isset($_SESSION['mensagem']) and $_SESSION['mensagem']=="atualizar"){
+			echo '
+				<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
+					<strong>Atualização realizada com sucesso!</strong> 
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					</div>';
+					unset($_SESSION['mensagem']);
 			}
 			?>
             <div class="central input-group mb-5">
@@ -70,8 +79,7 @@
 									<span class='date'><i class='fas fa-calendar'></i>".$row['data']."</span>
 								</p>
 								<div class='text-center'>
-									<a href='noticia.php?noticia=".$row['id_noticia']."' class='cart-btn'><i class='fas fa-eye'></i> Ver</a>
-									<a href='atualizar_noticia.php?noticia=".$row['id_noticia']."' class='cart-btn'><i class='fas fa-wrench'></i> Editar</a>
+									<a href='atualizar_noticia.php?noticia=".$row['id_noticia']."' class='cart-btn'><i class='fas fa-wrench'></i> Ver</a>
 									<a data-toggle='modal' data-target='#exampleModal".$row['id_noticia']."' class='cart-btn''><i class='fas fa-trash'></i> Excluir</a>
 											<!-- Modal -->
 												<form id = 'deletar_noticia' name = 'deletar_noticia' action='conexao_db/deletarNoticia.php' method='POST'>

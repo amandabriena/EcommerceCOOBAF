@@ -46,7 +46,7 @@ function incluirImagem($nome, $arquivo_tmp){
             echo 'Você poderá enviar apenas arquivos "*.jpg;*.jpeg;*.gif;*.png"<br />';
     }
     else{
-        echo 'Você não enviou nenhum arquivo!';
+        echo 0;
     }
     
 }

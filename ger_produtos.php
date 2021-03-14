@@ -76,8 +76,7 @@
 										echo "<p class='product-price'><span style='background-color: red; color: white;'>PRODUTO INATIVO</span> R$".$row['preco']."  </p>";
 									}									
 									echo "<div class='text-center'>
-											<a href='produto.php?produto=".$row['id_produto']."' class='cart-btn'><i class='fas fa-eye'></i> Ver</a>
-											<a href='atualizar_produto.php?produto=".$row['id_produto']."' class='cart-btn'><i class='fas fa-wrench'></i> Editar</a>
+											<a href='atualizar_produto.php?produto=".$row['id_produto']."' class='cart-btn'><i class='fas fa-wrench'></i> Ver</a>
 											<a data-toggle='modal' data-target='#exampleModal".$row['id_produto']."' class='cart-btn''><i class='fas fa-trash'></i> Excluir</a>
 											<!-- Modal -->
 												<form id = 'deletar_produto' name = 'deletar_produto' action='conexao_db/deletarProduto.php' method='POST'>
