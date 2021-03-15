@@ -1,7 +1,7 @@
 <?php
     //CONEXÃO COM O BANCO DE DADOS
     include("conexao_db/conexao.php");
-	//PEGAR INFORMAÇÃO DO ID DA NOTICIA PELO GET
+	//PEGAR INFORMAÇÃO DO ID DO PRODUTO PELO GET
 	$id_produto = $_GET['produto'];
 	$resultado = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$id_produto'") or die("erro ao selecionar");
 	while($row = mysqli_fetch_assoc($resultado)){
@@ -60,12 +60,15 @@
 								<h6>Altere a imagem para o produto:</h6>
 								<input required name="arquivo" type="file">
 							</div>
+							<h6>Nome:</h6>
 							<p>
                                 <input type="text" placeholder="Nome" name="nome" id="nome" value="<?php echo $row['nome']; ?>">
 							</p>
+							<h6>Descrição:</h6>
                             <p>
                                 <textarea placeholder="Descrição" name="descricao" id="descricao"><?php echo $row['descricao']; ?></textarea>
 							</p>
+							<h6>Categoria:</h6>
                             <p>
 								<select name="categoria" id="categoria" onchange="verifica(this.value)">
 									<option disabled="disabled">Categoria</option>
@@ -80,6 +83,7 @@
 							<p>
 								<input type="text" name="outraCat" id="outraCat" disabled>
 							</p>
+							<h6>Preço:</h6>
 							<p>
                                 <input type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" placeholder="Preço" name="preco" id="preco" value="<?php echo $row['preco']; ?>">
                             </p>

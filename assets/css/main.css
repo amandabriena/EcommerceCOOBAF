@@ -2099,6 +2099,12 @@ a.video-play-btn {
   margin-bottom: 0;
 }
 
+.imagem_coobaf{
+  float:left;
+  max-width: 50%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+}
 /* -----------------------------------------------------------------------------
 
 # Shop Banner Styles
@@ -2257,7 +2263,7 @@ ul.social-link-team li a {
   border-radius: 3px;
 }
 .login-form form p input[type=password], .login-form form p input[type=email] {
-  width: 50%;
+  width: 60%;
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 3px;

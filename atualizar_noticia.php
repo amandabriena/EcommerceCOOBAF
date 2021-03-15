@@ -46,7 +46,7 @@
 						<h2>Atualizar Notícia</h2>
 					</div>
 					<div class="cadastro-form">
-						<form action = "conexao_db/atualizar_noticia.php" method="POST" enctype="multipart/form-data" >
+						<form action = "conexao_db/atualizarNoticia.php" method="POST" enctype="multipart/form-data" >
                             <div class="single-product-img mb-4">
 								<img src='assets/img-upload/<?php echo $row['imagem'];  ?>' alt="">
 								<h6>Altere a imagem da notícia:</h6>
@@ -75,6 +75,28 @@
 							</div>
 							<div>
 							<input type="submit" value="Atualizar"></div>
+						</form>
+                        <a data-toggle='modal' data-target='#exampleModal<?php echo $row['id_noticia'];?>' class='cart-btn'><i class='fas fa-trash'></i> Excluir</a>
+						<!-- Modal -->
+						<form id = 'deletar_noticia' name = 'deletar_noticia' action='conexao_db/deletarNoticia.php' method='POST'>
+							<div class='modal fade' id='exampleModal<?php echo $row['id_noticia']; ?>' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+								<div class='modal-dialog' role='document'>
+									<div class='modal-content'>
+										<div class='modal-header'>
+											<h5 class='modal-title' id='exampleModalLabel'>Excluir Notícia</h5>
+												<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+												    <span aria-hidden='true'>&times;</span>
+											    </button>
+											</div>
+										<div class='modal-body'>Deseja mesmo exluir esta notícia ?</div>
+										<input type='hidden' name='id_noticia' value = "<?php echo $row['id_noticia']; ?>" >
+										<div class='modal-footer'>
+										    <button type='submit' name = 'upload' value = 'Cadastrar' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+										    <button type='submit' name = 'upload' value = 'Cancelar' class='btn btn-outline-danger'>Excluir</button>
+									    </div>
+								    </div>
+							    </div>
+							</div>
 						</form>
                         
 					</div>
