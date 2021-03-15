@@ -24,11 +24,7 @@
 	<!--MENU-->
 	<?php 
 		session_start();
-		if(isset($_SESSION['nome'])){
-			require_once("src/components/menu_logado.php");
-		}else{
-			require_once("src/components/menu.php");
-		}
+		require_once("src/components/menu.php");
 	?>
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -70,12 +66,13 @@
 						<div class="recent-posts">
 							<h4>Notícias Relacionadas</h4>
 							<?php 
-								$resultado = mysqli_query($connect,"SELECT * FROM noticia") or die("erro ao selecionar");
+								$resultado = mysqli_query($connect,"SELECT * FROM noticia where visibilidade = 1") or die("erro ao selecionar");
 								while($row = mysqli_fetch_assoc($resultado)){
 							?>
 							<ul>
-								<li><a href="noticia.php?noticia=<?php echo $row['id_noticia']; ?>"><?php echo $row['titulo']; }?></a></li>
+								<li><a href="noticia.php?noticia=<?php echo $row['id_noticia']; ?>"><?php echo $row['titulo']; ?></a></li>
 							</ul>
+							<?php } ?>
 						</div>
 					</div>
 				</div>

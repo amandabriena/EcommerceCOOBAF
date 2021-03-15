@@ -15,13 +15,13 @@
     $destino = incluirImagem($nome_arq, $arquivo_tmp);
     session_start();
     
-    $query = "INSERT INTO noticia(id_noticia, titulo, corpo, imagem, data, status) VALUES (NULL, '$titulo', '$corpo', '$destino', '$data', '$status')";
+    $query = "INSERT INTO noticia(id_noticia, titulo, corpo, imagem, data, status, visibilidade) 
+    VALUES (NULL, '$titulo', '$corpo', '$destino', '$data', '$status', 1)";
     $insert = mysqli_query($connect,$query);
     if($insert){
-        $_SESSION['sucesso'] = "sim";
+        $_SESSION['mensagem'] = "cadastro";
         header('location:../ger_noticias.php');
     }else{
-        //echo mysqli_error($connect);
         header('location:../404.php');
     }
     

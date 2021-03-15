@@ -23,11 +23,7 @@
 	<!--MENU-->
 	<?php 
 		session_start();
-		if(isset($_SESSION['nome'])){
-			require_once("src/components/menu_logado.php");
-		}else{
-			require_once("src/components/menu.php");
-		}
+		require_once("src/components/menu.php");
 	?>
 
 	<!-- breadcrumb-section -->
@@ -65,17 +61,18 @@
 			</div>
 			<div class="resultado_produto row product-lists">
 				<?php 
-					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1") or die("erro ao selecionar");
+					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 and visibilidade = 1") or die("erro ao selecionar");
 					while($row = mysqli_fetch_assoc($resultadogeral)){
 						$_SESSION['idProduto'] = $row['id_produto'];
 						echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
 								<div class='single-product-item'>
-								<div class='product-image'>
-									<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
-								</div>
-								<h3>".$row['nome']."</h3>
-								<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
-								<a href='carrinho.php?adicionar=' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
+									<div class='product-image'>
+										<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
+									</div>
+									<h3>".$row['nome']."</h3>
+									<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
+									<a href='carrinho.php?adicionar=' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
+									
 								</div>
 							</div>";
 									

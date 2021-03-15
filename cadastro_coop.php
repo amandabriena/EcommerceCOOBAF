@@ -34,7 +34,7 @@
 		<div class="container">
 				<div class="col-lg-8 offset-lg-2">
 					<div class="form-title text-center">
-						<h2>Cadastro de Cooperado/h2>
+						<h2>Cadastro de Cooperado</h2>
 						<p>Preencha o formulário abaixo:</p>
 					</div>
 					<?php
@@ -69,6 +69,32 @@
                             </p>
                             <p>
                                 <input type="tel" placeholder="Número para contato" name="telefone" id="telefone" onkeydown="javascript: fMasc( this, mTel );">
+							</p>
+							<div class = "endereco mb-80">
+								<h4 class = "text-center">Endereço</h4>
+								
+								<p>
+									<input name="cep" placeholder="CEP" type="text" id="cep" value="" size="10" maxlength="9"
+									onblur="pesquisacep(this.value);" required/>
+								</p>
+								<p>
+									<input name="rua" placeholder="Rua" type="text" id="rua" size="60" required/>
+								</p>
+								<p>
+									<input name="bairro" placeholder="Bairro" type="text" id="bairro" size="40" required/>
+								</p>
+								<p>
+									<input name="cidade" placeholder="Cidade" type="text" id="cidade" size="40" required/>
+								</p>
+								<p>
+									<input name="uf" placeholder="Estado" type="text" id="uf" size="2" required/>	
+								</p>
+								<p>
+									<input name="numero" placeholder="Número" type="text" id="numero" required/>
+								</p>
+							</div>
+							<p>
+								<input name="logradouro" placeholder="Logradouro" type="text" id="logradouro" required/>
 							</p>
 							<div><input type="submit" name="cadastro_cooperado" value="Cadastrar"></div>
 						</form>

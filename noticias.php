@@ -24,11 +24,7 @@
 	<!--MENU-->
 	<?php 
 		session_start();
-		if(isset($_SESSION['nome'])){
-			require_once("src/components/menu_logado.php");
-		}else{
-			require_once("src/components/menu.php");
-		}
+		require_once("src/components/menu.php");
 	?>
 
 	<!-- breadcrumb-section -->
@@ -55,7 +51,7 @@
 			</div>
 			<div class="resultado_noticia row">
 				<?php 
-					$resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1") or die("erro ao selecionar");
+					$resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1 and visibilidade = 1") or die("erro ao selecionar");
 					while($row = mysqli_fetch_assoc($resultadogeral)){
 						echo "<div class='col-lg-4 col-md-6'>
 						<div class='single-latest-news'>
@@ -65,15 +61,11 @@
 								<p class='blog-meta'>
 									<span class='date'><i class='fas fa-calendar'></i>".$row['data']."</span>
 								</p>
-								<div class='text-center'>
-									<a href='noticia.php?noticia=".$row['id_noticia']."' class='cart-btn'><i class='fas fa-eye'></i> Ver</a>
-									<a href='cart.html' class='cart-btn'><i class='fas fa-wrench'></i> Editar</a>
-									<a href='cart.html' class='cart-btn'><i class='fas fa-trash'></i> Excluir</a>
-								</div>
-								
+								<a href='noticia.php?noticia=".$row['id_noticia']."' class='read-more-btn'>leia mais <i class='fas fa-angle-right'></i></a>
 							</div>
 						</div>
 					</div>";
+					
 					}
 				?>
 

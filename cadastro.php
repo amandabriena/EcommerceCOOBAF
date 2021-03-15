@@ -9,6 +9,9 @@
 <head>
 	<?php require_once("src/components/head.php");?>
 	<script type="text/javascript" src="js/jquery.mask.min.js"></script>
+	<script type="text/javascript" src="assets/js/consultacep.js"></script>
+	<!-- form validation js -->
+	<script src="assets/js/form-validate.js"></script>
 	<!-- title -->
 	<title>Cadastre-se</title>
 </head>
@@ -62,25 +65,54 @@
 					<div class="cadastro-form">
 						<form action = "conexao_db/incluirUsuario.php" method="POST" id="Cadastrar">
 							<p>
-                                <input type="text" placeholder="Nome" name="nome" id="nome">
+                                <input type="text" placeholder="Nome" name="nome" id="nome" required >
 							</p>
                             <p>
                                 <input type="email" placeholder="Email" name="email" id="email">
 							</p>
                             <p>
-                                <input type="text" placeholder="CPF" name="cpf" id="cpf" onkeydown="javascript: fMasc( this, mCPF );">
+                                <input type="text" placeholder="CPF" name="cpf" id="cpf" onkeydown="javascript: fMasc( this, mCPF );" required>
 							</p>
 							<p>
-                                <input type="password" placeholder="Senha" name="senha" id="senha">
+                                <input type="password" placeholder="Senha" name="senha" id="senha" onchange="validatePassword()" required>
                                 <small class="form-text text-muted">A senha deve conter no mínimo 8 caracteres.</small>
                             </p>
                             <p>
-                                <input type="password" placeholder="Confirme sua senha" name="confsenha" id="confsenha">
+                                <input type="password" placeholder="Confirme sua senha" name="confsenha" id="confsenha" onchange="validatePassword()" required>
+								<small id= "erro_senha" style='color: red; font-weight: bold; display: none;' class="text-center">AS SENHAS NÃO CONFEREM!</small>
                             </p>
                             <p>
-                                <input type="tel" placeholder="Número para contato" name="telefone" id="telefone" onkeydown="javascript: fMasc( this, mTel );">
+                                <input type="tel" placeholder="Número para contato" name="telefone" id="telefone" onkeydown="javascript: fMasc( this, mTel );" required>
 							</p>
-							<div><input type="submit" name="cadastro_cliente" value="Cadastrar"></div>
+
+							<div class = "endereco mb-80">
+								<h4 class = "text-center">Endereço</h4>
+								
+								<p>
+									<input name="cep" placeholder="CEP" type="text" id="cep" value="" size="10" maxlength="9"
+									onblur="pesquisacep(this.value);" required/>
+								</p>
+								<p>
+									<input name="rua" placeholder="Rua" type="text" id="rua" size="60" required/>
+								</p>
+								<p>
+									<input name="bairro" placeholder="Bairro" type="text" id="bairro" size="40" required/>
+								</p>
+								<p>
+									<input name="cidade" placeholder="Cidade" type="text" id="cidade" size="40" required/>
+								</p>
+								<p>
+									<input name="uf" placeholder="Estado" type="text" id="uf" size="2" required/>	
+								</p>
+								<p>
+									<input name="numero" placeholder="Número" type="text" id="numero" required/>
+								</p>
+							</div>
+							<p>
+								<input name="logradouro" placeholder="Logradouro" type="text" id="logradouro" required/>
+							</p>
+
+							<div class = "mt-80"><input type="submit" name="cadastro_cliente" value="Cadastrar"></div>
 						</form>
                         
 					</div>
@@ -93,8 +125,7 @@
 
 	<!-- EXTENSOES -->
 	<?php require_once("src/components/extensoes.php");?>
-	<!-- form validation js -->
-	<script src="assets/js/form-validate.js"></script>
+	
 	
 </body>
 </html>

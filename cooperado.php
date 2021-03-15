@@ -29,6 +29,18 @@
 			<h2>Olá, <?php echo $_SESSION['nome'] ?></h2>
 			<p>O que deseja fazer?</p>
 	    </div>
+		<?php
+			if(isset($_SESSION['mensagem']) and $_SESSION['mensagem']=="atualizar"){
+				echo '
+				<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
+					<strong>Atualização realizada com sucesso!</strong> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+				</div>';
+				unset($_SESSION['mensagem']);
+			}
+		?>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-6">
@@ -54,7 +66,7 @@
 						<div class="news-text-box">
 							<h3><a href="ger_noticias.php">NOTÍCIAS</a></h3>
 							<p class="excerpt">Adicione novas notícias sobre a COOBAF ou gerencie as já cadastradas.</p>
-                            <a href="ger_noticias.php" class="read-more-btn">leia mais <i class="fas fa-angle-right"></i></a>
+                            <a href="ger_noticias.php" class="read-more-btn">ACESSAR <i class="fas fa-angle-right"></i></a>
 						</div>
 					</div>
 				</div>

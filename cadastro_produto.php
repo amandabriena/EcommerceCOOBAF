@@ -1,3 +1,7 @@
+<?php
+    //CONEXÃO COM O BANCO DE DADOS
+    include("conexao_db/conexao.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,11 +56,13 @@
                             <p>
 								<select name="categoria" id="categoria" onchange="verifica(this.value)">
 									<option selected="true" disabled="disabled">Categoria</option>
-									<option value="Biscoito">Biscoito</option>
-									<option value="Bolo">Bolo</option>
-									<option value="Farinha">Farinha</option>
-									<option value="Fruta">Fruta</option>
-									<option value="Verdura">Verdura</option>
+									<?php 
+										$resultado = mysqli_query($connect,"SELECT * FROM categoria_produto") or die("erro ao selecionar");
+		
+										while($row = mysqli_fetch_assoc($resultado)){
+											echo '<option value="'.$row['id_categoria'].'">'.$row['nome'].'</option>';
+										}
+									?>
 									<option value='Outra'>Outra</option>
 								</select>
 							</p>

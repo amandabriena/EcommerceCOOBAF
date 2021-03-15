@@ -1,10 +1,11 @@
 <?php
     //CONEXÃO COM O BANCO DE DADOS
     include("conexao_db/conexao.php");
-	//PEGAR INFORMAÇÃO DO ID DA NOTICIA PELO GET
-	$id_produto = $_GET['atualizar_produto'];
+	//PEGAR INFORMAÇÃO DO ID DO PRODUTO PELO GET
+	$id_produto = $_GET['produto'];
 	$resultado = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$id_produto'") or die("erro ao selecionar");
 	while($row = mysqli_fetch_assoc($resultado)){
+		$id_categoria_produto = $row['id_categoria'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,26 +61,33 @@
 								<h6>Altere a imagem para o produto:</h6>
 								<input required name="arquivo" type="file">
 							</div>
+							<h6>Nome:</h6>
 							<p>
                                 <input type="text" placeholder="Nome" name="nome" id="nome" value="<?php echo $row['nome']; ?>">
 							</p>
+							<h6>Descrição:</h6>
                             <p>
                                 <textarea placeholder="Descrição" name="descricao" id="descricao"><?php echo $row['descricao']; ?></textarea>
 							</p>
+							<h6>Categoria:</h6>
                             <p>
 								<select name="categoria" id="categoria" onchange="verifica(this.value)">
 									<option disabled="disabled">Categoria</option>
-									<option value="Biscoito">Biscoito</option>
-									<option value="Bolo">Bolo</option>
-									<option value="Farinha">Farinha</option>
-									<option value="Fruta">Fruta</option>
-									<option value="Verdura">Verdura</option>
+									<?php 
+										$resultado = mysqli_query($connect,"SELECT * FROM categoria_produto") or die("erro ao selecionar");
+		
+										while($row = mysqli_fetch_assoc($resultado)){
+											echo '<option' if()
+											echo '<option value="'.$row['id_categoria'].'">'.$row['nome'].'</option>';
+										}
+									?>
 									<option value='Outra'>Outra</option>
 								</select>
 							</p>
 							<p>
 								<input type="text" name="outraCat" id="outraCat" disabled>
 							</p>
+							<h6>Preço:</h6>
 							<p>
                                 <input type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" placeholder="Preço" name="preco" id="preco" value="<?php echo $row['preco']; ?>">
                             </p>

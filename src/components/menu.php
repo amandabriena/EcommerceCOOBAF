@@ -14,26 +14,51 @@
 
 						<!-- menu start -->
 						<nav class="main-menu">
-							<ul>
-								<li class="current-list-item"><a href="index.php">Início</a>
+							<?php
+
+							if(!isset($_SESSION['email'])){
+								echo "<ul>
+								<li class='current-list-item'><a href='index.php'>Início</a>
 								</li>
-								<li><a href="sobre.php">Quem Somos</a></li>
-                                <li><a href="produtos.php">Produtos</a></li>
-                                <li><a href="noticias.php">Notícias</a>
+								<li><a href='sobre.php'>Quem Somos</a></li>
+                                <li><a href='produtos.php'>Produtos</a></li>
+                                <li><a href='noticias.php'>Notícias</a>
 								</li>
-                                <li><a href="contato.php">Contato</a></li>
-								<li><a href="login.php">Entre ou Cadastre-se</a>
-								</li>
-								
-								
-								
+                                <li><a href='contato.php'>Contato</a></li>
+								<li><a href='login.php'>Entre ou Cadastre-se</a></li>
 								<li>
-									<div class="header-icons">
-										<a class="shopping-cart" href="carrinho.php"><i class="fas fa-shopping-cart"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+									<div class='header-icons'>
+										<a class='shopping-cart' href='carrinho.php'><i class='fas fa-shopping-cart'></i></a>
+										<a class='mobile-hide search-bar-icon' href='#'><i class='fas fa-search'></i></a>
 									</div>
 								</li>
-							</ul>
+							</ul>";
+							}else{
+								echo "<ul>
+									<li class='current-list-item'><a href='index.php'>Início</a>
+									</li>
+									<li><a href='sobre.php'>Quem Somos</a></li>
+									<li><a href='produtos.php'>Produtos</a>
+									</li>
+									<li><a href='noticias.php'>Notícias</a>
+									</li>
+									<li><a href='contato.php'>Contato</a></li>
+									<li><a class='shopping-cart' href='carrinho.php'>MINHA CONTA <i class= 'fa fa-user'></i></a>
+										<ul class= 'sub-menu'>
+											<li><a href= 'atualizar_usuario.php'>Atualizar Dados</a></li>
+											<li><a href= 'produtos.php'>Meus Pedidos</a></li>
+											<li><a href= 'conexao_db/sair.php'>Sair</a></li>
+										</ul>
+									</li>
+									<li>
+										<div class='header-icons'>
+											<a class='shopping-cart' href='carrinho.php'><i class='fas fa-shopping-cart'></i></a>
+											<a class='mobile-hide search-bar-icon' href='#'><i class='fas fa-search'></i></a>
+										</div>
+									</li>
+								</ul>";
+							}
+							?>
 						</nav>
 						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 						<div class="mobile-menu"></div>

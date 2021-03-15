@@ -27,11 +27,7 @@
 	<!--MENU-->
 	<?php 
 		session_start();
-		if(isset($_SESSION['nome'])){
-			require_once("src/components/menu_logado.php");
-		}else{
-			require_once("src/components/menu.php");
-		}
+		require_once("src/components/menu.php");
 
 		$array_produtos = array();
 
@@ -104,7 +100,7 @@
 			</div>
 			<div class="row">
 			<?php 
-				$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1") or die("erro ao selecionar");
+				$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 and visibilidade = 1 limit 3") or die("erro ao selecionar");
 				while($row = mysqli_fetch_assoc($resultadogeral)){
 					echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
 							<div class='single-product-item'>

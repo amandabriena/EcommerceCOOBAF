@@ -18,11 +18,7 @@
 	<!--MENU-->
 	<?php 
 		session_start();
-		if(isset($_SESSION['nome'])){
-			require_once("src/components/menu_logado.php");
-		}else{
-			require_once("src/components/menu.php");
-		}
+		require_once("src/components/menu.php");
 	?>
 
 	<!-- breadcrumb-section -->
@@ -100,22 +96,28 @@
 	<div class="mt-150">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="col-lg-10 offset-lg-1 text-center">
+					
 					<div class="section-title">
 						<h3>Nossa <span class="orange-text">História</span></h3>
-						<h5 class="text-justify"> 
-						A Cooperativa de Beneficiamento e Comercialização de Produtos da Agricultura Familiar de Feira de Santana (COOBAF-FS)
-						foi fundada em 2018, a partir da união de associações rurais da região.</h5>
-						<h5>
-						A COOBAF/FS é uma cooperativa de trabalhadores/as rurais de Feira de Santana (2º maior município da Bahia e 2º maior entroncamento rodoviário do país),
-						composta por 87 membros, em sua maioria mulheres, oriundos de todos os oito distritos rurais do município. A sua irradiação nos quatro cantos
-						da zona rural de Feira de Santana é parte de sua ação integrada, que conta com apoio de Associações Comunitárias Rurais e com infraestrutura de trabalho em cada
-						localidade, passando pela produção, beneficiamentos dos produtos e comercialização.
-						</h5>
-						<h5>
-						Os cooperados estão dispostos nos quatro cantos da zona rural, sendo parte de ação integrada, 
-						que conta com o apoio das respectivas Associações Comunitárias Rurais e com infraestrutura em cada localidade.
-						</h5>
+						<div class="imagem_coobaf">
+							<img src="assets/img/coobaf-7.jpeg" class="rounded float-left">
+						</div>
+						<div class="text-justify">
+							<h5> 
+							A Cooperativa de Beneficiamento e Comercialização de Produtos da Agricultura Familiar de Feira de Santana (COOBAF-FS)
+							foi fundada em 2018, a partir da união de associações rurais da região.</h5>
+							<h5>
+							A COOBAF/FS é uma cooperativa de trabalhadores/as rurais de Feira de Santana (2º maior município da Bahia e 2º maior entroncamento rodoviário do país),
+							composta por 87 membros, em sua maioria mulheres, oriundos de todos os oito distritos rurais do município. A sua irradiação nos quatro cantos
+							da zona rural de Feira de Santana é parte de sua ação integrada, que conta com apoio de Associações Comunitárias Rurais e com infraestrutura de trabalho em cada
+							localidade, passando pela produção, beneficiamentos dos produtos e comercialização.
+							</h5>
+							<h5>
+							Os cooperados estão dispostos nos quatro cantos da zona rural, sendo parte de ação integrada, 
+							que conta com o apoio das respectivas Associações Comunitárias Rurais e com infraestrutura em cada localidade.
+							</h5>
+						</div>
 					</div>
 				</div>
 			</div>
