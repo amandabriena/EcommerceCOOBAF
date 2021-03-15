@@ -5,6 +5,7 @@
 	$id_produto = $_GET['produto'];
 	$resultado = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$id_produto'") or die("erro ao selecionar");
 	while($row = mysqli_fetch_assoc($resultado)){
+		$id_categoria_produto = $row['id_categoria'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,11 +73,14 @@
                             <p>
 								<select name="categoria" id="categoria" onchange="verifica(this.value)">
 									<option disabled="disabled">Categoria</option>
-									<option value="Biscoito">Biscoito</option>
-									<option value="Bolo">Bolo</option>
-									<option value="Farinha">Farinha</option>
-									<option value="Fruta">Fruta</option>
-									<option value="Verdura">Verdura</option>
+									<?php 
+										$resultado = mysqli_query($connect,"SELECT * FROM categoria_produto") or die("erro ao selecionar");
+		
+										while($row = mysqli_fetch_assoc($resultado)){
+											echo '<option' if()
+											echo '<option value="'.$row['id_categoria'].'">'.$row['nome'].'</option>';
+										}
+									?>
 									<option value='Outra'>Outra</option>
 								</select>
 							</p>
