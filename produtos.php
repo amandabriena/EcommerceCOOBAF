@@ -12,14 +12,6 @@
 </head>
 <body>
 	
-	<!--PreLoader-->
-    <div class="loader">
-        <div class="loader-inner">
-            <div class="circle"></div>
-        </div>
-    </div>
-    <!--PreLoader Ends-->
-
 	<!--MENU-->
 	<?php 
 		session_start();
@@ -61,24 +53,39 @@
 			</div>
 			<div class="resultado_produto row product-lists">
 				<?php 
+					$quantProd = 0;
 					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 and visibilidade = 1") or die("erro ao selecionar");
 					while($row = mysqli_fetch_assoc($resultadogeral)){
+						$quantProd++;
+						
 						$_SESSION['idProduto'] = $row['id_produto'];
-						echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
+						if(isset($_GET['continuar'])){
+							$_SESSION['idProduto'] =+ $row['id_produto'];
+						}
+						$idProduto = $row['id_produto'];
+						$nomeCategoria = mysqli_query($connect,"SELECT nome FROM categoria_produto where id_categoria = select id_categoria from produto
+						where id_produto = $idProduto");
+						echo "<div class='col-lg-4 col-md-6 text-center ".$nomeCategoria."'>
 								<div class='single-product-item'>
 									<div class='product-image'>
 										<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
 									</div>
 									<h3>".$row['nome']."</h3>
 									<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
-									<a href='carrinho.php?adicionar=' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
-									
+									<a href='carrinho.php?adicionar=' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>  
+
 								</div>
 							</div>";
-									
-					}
+						if(isset($_GET['adicionar'])){
+							$_SESSION['idProduto'] = $row['id_produto'];
+						}			
+					}echo $quantProd;
 					
 				?>
+				var btn= document.getElementById('id-do-botao');
+       			btn.addEventListener('click', function(e){
+					// função aqui
+				});    
 			</div>
 
 			<div class="row">

@@ -46,41 +46,41 @@
 							</thead>
 							<tbody id = "resultado_carrinho">
 								<tr class="table-body-row">
-									<?php 
+									<?php
 										if(isset($_GET['adicionar'])){
 											$idProduto = $_SESSION['idProduto'];
+											echo $idProduto;
 											$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $idProduto") or die("erro ao selecionar");
 											while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
+												<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
+												<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
+												<td class="product-name"> <?php echo $row['nome']; ?> </td>
+												<td class="product-price"> <?php echo $row['preco']; ?></td>
+												<td class="product-quantity"><input type="number" placeholder="1" name="qtprod"></td>
+												<td class="product-total"> <?php /*$row['preco'] = $row['preco'] * */ ?> </td>
+												<?php 
+												}
+											}
+											
+										//teste para adicionar mais linhas na tabela para produtos diferentes
+										$continuarComprando = $_SESSION['continuarComprando'];
+										while($continuarComprando == true){	
+											if(isset($_GET['adicionar'])){
+												$idProduto = $_SESSION['idProduto'];
+												$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $idProduto") or die("erro ao selecionar");
+												while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
 													<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
 													<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
 													<td class="product-name"> <?php echo $row['nome']; ?> </td>
 													<td class="product-price"> <?php echo $row['preco']; ?></td>
 													<td class="product-quantity"><input type="number" placeholder="1" name="qtprod"></td>
-													<?php
-														$qtprod = $_GET["qtprod"];
-														$preco = $row['preco'] * $qtprod;
-													?>
-													<td class="product-total"> <?php echo /*$row['preco'] = $row['preco'] * */$qtprod ?> </td>
+													<td class="product-total"> <?php /*$row['preco'] = $row['preco'] * */ ?> </td>
 													<?php 
-											}
-										} ?>		
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-2.jpg" alt=""></td>
-									<td class="product-name">Berry</td>
-									<td class="product-price">$70</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-3.jpg" alt=""></td>
-									<td class="product-name">Lemon</td>
-									<td class="product-price">$35</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
+													}
+												
+											} else $continuarComprando = false;
+										} 
+										?>		
 							</tbody>
 						</table>
 					</div>
@@ -111,8 +111,8 @@
 							</tbody>
 						</table>
 						<div class="cart-buttons">
-							<a href="cart.html" class="boxed-btn">Update Cart</a>
-							<a href="checkout.html" class="boxed-btn black">Check Out</a>
+							<a href="produtos.php?continuar=" class="boxed-btn"><?php $_SESSION['continuarComprando'] = true;?>Continuar comprando</a>
+							<a href="ger_pedidos.php" class="boxed-btn black"><?php $_SESSION['continuarComprando'] = false;?>Finalizar</a>
 						</div>
 					</div>
 
