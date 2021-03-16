@@ -63,7 +63,7 @@
 												while($row = mysqli_fetch_assoc($resultadoCodigo)){
 													echo "<td class='product-remove'><a href='#'><i class='far fa-window-close'></i></a></td>
 															<td class='product-image'><img src='assets/img-upload/"<?php echo $row['imagem']; ?>"'></td>
-														<td class='product-name'>"
+														<td class='product-name'>";
 												}
 											/*for($i = 0; $i < $cont; $i++){
 												$_SESSION['produtosCarrinho'][$i] = $idProduto;
