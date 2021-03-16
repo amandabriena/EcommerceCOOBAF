@@ -28,7 +28,30 @@
 	<div class="product-section mt-80 mb-150">
 		<div class="container">
 			<div class="row product-lists" id="aberto">
-
+			<?php
+                    $sql="SELECT -- Aqui você informa os dados que quer no retorno 
+					P.valor_total,
+					P.status,-- nome do func 
+					C.nome, -- nome do proj 
+					V.id_pedido -- todos os dados de vinculo 
+					FROM -- Aqui voce informa de onde os dados vem e como associa os dados de uma tabela com outra 
+					pedido P INNER JOIN -- junta os dados de matricula com vinculo 
+					cliente_pedido V ON P.id_pedido = V.id_pedido -- onde essa condicao for verdadeira 
+					INNER JOIN 
+					usuarios C -- a mesma coisa acontece para vinculo e projeto 
+					ON C.id_usuario = V.id_cliente where P.status == 2 limit 3";
+                    $resultado = mysqli_query($connect, $sql);
+                    $row['status']
+                    while($row = mysqli_fetch_assoc($resultado)){
+						echo '<div class="col-lg-4 col-md-6 pt-4 text-center berry">
+								<div class="pedido">
+									<h3>'.$row['nome'].'</h3>
+									<p class="product-price"><span>'.$row['id_pedido'].'</span> '.$row['data'].' </p>
+									<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+								</div>
+							</div>'
+                    
+                    ?>
 				<div class="col-lg-4 col-md-6 pt-4 text-center berry">
 					<div class="pedido">
                         <h3>Cliente</h3>
