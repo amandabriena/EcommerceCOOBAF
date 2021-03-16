@@ -58,13 +58,13 @@
 											$idProduto = (int) $_GET['adicionar'];
 											adicionar_produto($idProduto);
 											foreach ($_SESSION['carrinho'] as &$value) {
-												$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$value'") or die("erro ao selecionar");
+												echo '<tr class="table-body-row"> '
+												$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $value") or die("erro ao selecionar");
 												while($row = mysqli_fetch_assoc($resultadoCodigo)){
-												echo 
-												'
-
-												'$value;
-											}
+													echo "<td class='product-remove'><a href='#'><i class='far fa-window-close'></i></a></td>
+															<td class='product-image'><img src='assets/img-upload/"<?php echo $row['imagem']; ?>"'></td>
+														<td class='product-name'>"
+												}
 											/*for($i = 0; $i < $cont; $i++){
 												$_SESSION['produtosCarrinho'][$i] = $idProduto;
 											}
