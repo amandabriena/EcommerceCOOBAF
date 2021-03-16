@@ -55,16 +55,18 @@
 						<h2>Atualizar Produto</h2>
 					</div>
 					<div class="cadastro-form">
-						<form action = "conexao_db/incluirProduto.php" method="POST" enctype="multipart/form-data" >
+						<form action = "conexao_db/atualizarProduto.php" method="POST" enctype="multipart/form-data" >
 							<div class="single-product-img mb-4">
 								<img src='assets/img-upload/<?php echo $row['imagem'];  ?>' alt="">
 								<h6>Altere a imagem para o produto:</h6>
-								<input required name="arquivo" type="file">
+								<input name="arquivo" type="file">
 							</div>
 							<h6>Nome:</h6>
 							<p>
                                 <input type="text" placeholder="Nome" name="nome" id="nome" value="<?php echo $row['nome']; ?>">
 							</p>
+							<input type='hidden' name='id_produto' value = "<?php echo $row['id_produto']; ?>">
+							<input type='hidden' name='imagem' value = "<?php echo $row['imagem']; ?>">
 							<h6>Descrição:</h6>
                             <p>
                                 <textarea placeholder="Descrição" name="descricao" id="descricao"><?php echo $row['descricao']; ?></textarea>
@@ -72,14 +74,16 @@
 							<h6>Categoria:</h6>
                             <p>
 								<select name="categoria" id="categoria" onchange="verifica(this.value)">
-									<option disabled="disabled">Categoria</option>
 									<?php 
-										$resultado = mysqli_query($connect,"SELECT * FROM categoria_produto") or die("erro ao selecionar");
+										$resultado_categoria = mysqli_query($connect,"SELECT * FROM categoria_produto") or die("erro ao selecionar");
 		
-										while($row = mysqli_fetch_assoc($resultado)){
-											echo '<option' if()
-											echo '<option value="'.$row['id_categoria'].'">'.$row['nome'].'</option>';
+										while($row_cat = mysqli_fetch_assoc($resultado_categoria)){
+											//echo '<option' if()
+											echo '<option value="'.$row_cat['id_categoria'].'"';
+											if($id_categoria_produto == $row_cat['id_categoria']){ echo 'selected ';}
+											echo '>'.$row_cat['nome'].'</option>';
 										}
+										
 									?>
 									<option value='Outra'>Outra</option>
 								</select>
