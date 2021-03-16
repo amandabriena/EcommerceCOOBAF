@@ -1,27 +1,15 @@
 <?php
-    include_once("conexao.php");
-    $emailUsuario = $_SESSION['email'];
-    $idUsuario =  mysqli_query($connect,"SELECT id_usuario FROM usuarios WHERE email = $emailUsuario");
-    $pedidos =  mysqli_query($connect,"SELECT * FROM pedido WHERE id_usuario = $idUsuario");
+    include_once('conexao.php');
+    session_start();
+    $id_pedido = $_POST['id_pedido'];
 
-    //Ai tem que aparecer a lista de pedidos 
-    if(mysqli_num_rows($pedidos)<=0){
-        echo "<tr>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    <td> </td>
-                    </tr>";
+    $query = "UPDATE pedido SET status = 4 where id_pedido = '$id_pedido'";
+    $delete = mysqli_query($connect,$query);
+
+    if($delete){
+        $_SESSION['mensagem'] = "excluir";
+        header('location:../ger_pedidos.php');
     }else{
-        while($row = mysqli_fetch_assoc($pedidos)){
-            echo "<tr>
-                    <td>".$row['valor_total']."</td>
-                    <td>". $row['status'] ."</td>
-                    </tr>";
-        }
+        echo mysqli_error($connect);
     }
-    
-    //pegar o id do pedido através da tabela
-    mysqli_query($connect,"DELETE FROM pedido WHERE id_pedido = $idPedido");
-    
 ?>
