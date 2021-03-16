@@ -59,9 +59,7 @@
 						$quantProd++;
 						
 						$_SESSION['idProduto'] = $row['id_produto'];
-						if(isset($_GET['continuar'])){
-							$_SESSION['idProduto'] =+ $row['id_produto'];
-						}
+						
 						$idProduto = $row['id_produto'];
 						$nomeCategoria = mysqli_query($connect,"SELECT nome FROM categoria_produto where id_categoria = select id_categoria from produto
 						where id_produto = $idProduto");
@@ -72,20 +70,21 @@
 									</div>
 									<h3>".$row['nome']."</h3>
 									<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
-									<a href='carrinho.php?adicionar=' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>  
+									<a href='carrinho.php?adicionar=".$row['id_produto']." class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>  
 
 								</div>
 							</div>";
-						if(isset($_GET['adicionar'])){
-							$_SESSION['idProduto'] = $row['id_produto'];
-						}			
-					}echo $quantProd;
-					
+						
+									
+					}
+					if(isset($_GET['continuar'])){
+						$_SESSION['continuarComprando'] = 1; 
+						echo $_SESSION['continuarComprando'];
+						
+					}
+					else $_SESSION['continuarComprando'] = 2;
+					echo $_SESSION['continuarComprando'];
 				?>
-				var btn= document.getElementById('id-do-botao');
-       			btn.addEventListener('click', function(e){
-					// função aqui
-				});    
 			</div>
 
 			<div class="row">

@@ -48,25 +48,11 @@
 								<tr class="table-body-row">
 									<?php
 										if(isset($_GET['adicionar'])){
-											$idProduto = $_SESSION['idProduto'];
-											echo $idProduto;
-											$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $idProduto") or die("erro ao selecionar");
-											while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
-												<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-												<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
-												<td class="product-name"> <?php echo $row['nome']; ?> </td>
-												<td class="product-price"> <?php echo $row['preco']; ?></td>
-												<td class="product-quantity"><input type="number" placeholder="1" name="qtprod"></td>
-												<td class="product-total"> <?php /*$row['preco'] = $row['preco'] * */ ?> </td>
-												<?php 
-												}
-											}
-											
-										//teste para adicionar mais linhas na tabela para produtos diferentes
-										$continuarComprando = $_SESSION['continuarComprando'];
-										while($continuarComprando == true){	
-											if(isset($_GET['adicionar'])){
-												$idProduto = $_SESSION['idProduto'];
+											//while(isset($_GET['adicionar'])){
+												$idProduto = (int) $_GET['adicionar']; 
+												$listaProdutos = array();
+												array_push($listaProdutos, $idProduto);
+												var_dump($listaProdutos);
 												$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $idProduto") or die("erro ao selecionar");
 												while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
 													<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
@@ -76,11 +62,35 @@
 													<td class="product-quantity"><input type="number" placeholder="1" name="qtprod"></td>
 													<td class="product-total"> <?php /*$row['preco'] = $row['preco'] * */ ?> </td>
 													<?php 
-													}
-												
-											} else $continuarComprando = false;
-										} 
-										?>		
+												}
+										}
+									?>
+								</tr>	
+									<?php $continuarComprando = $_SESSION['continuarComprando'];
+										if($continuarComprando == 1){	?>
+											<tr class="table-body-row">
+											<?php
+
+												//teste para adicionar mais linhas na tabela para produtos diferentes
+												if(isset($_GET['adicionar'])){
+														$idProduto = (int) $_GET['adicionar']; 
+														$listaProdutos = array();
+														array_push($listaProdutos, $idProduto);
+														$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $idProduto") or die("erro ao selecionar");
+														while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
+															<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
+															<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
+															<td class="product-name"> <?php echo $row['nome']; ?> </td>
+															<td class="product-price"> <?php echo $row['preco']; ?></td>
+															<td class="product-quantity"><input type="number" placeholder="1" name="qtprod"></td>
+															<td class="product-total"> <?php echo $continuarComprando ?> </td>
+															<?php 
+															}
+													$_SESSION['produtosCarrinho'] = $listaProdutos;
+												}
+											?>	
+											</tr>
+										<?php } ?>
 							</tbody>
 						</table>
 					</div>
@@ -111,8 +121,8 @@
 							</tbody>
 						</table>
 						<div class="cart-buttons">
-							<a href="produtos.php?continuar=" class="boxed-btn"><?php $_SESSION['continuarComprando'] = true;?>Continuar comprando</a>
-							<a href="ger_pedidos.php" class="boxed-btn black"><?php $_SESSION['continuarComprando'] = false;?>Finalizar</a>
+							<a href="produtos.php?continuar=" class="boxed-btn">Continuar comprando</a>
+							<a href="ger_pedidos.php" class="boxed-btn black">Finalizar</a>
 						</div>
 					</div>
 
