@@ -9,8 +9,12 @@
 <body>
 	<!--MENU-->
 	<?php require_once("src/components/menu.php");?>
-	<?php session_start();?>
-	<?php include_once('conexao_db/conexao.php');?>
+	<?php session_start();
+	
+	?>
+	<?php include_once('conexao_db/conexao.php');
+			include_once('conexao_db/adicionarCarrinho.php');
+	?>
 
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -51,15 +55,25 @@
 										$cont = 0;
 										if(isset($_GET['adicionar'])){
 											$cont = $cont +1;
-											$idProduto = (int) $_GET['adicionar']; 
-											for($i = 0; $i < $cont; $i++){
+											$idProduto = (int) $_GET['adicionar'];
+											adicionar_produto($idProduto);
+											foreach ($_SESSION['carrinho'] as &$value) {
+												$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$value'") or die("erro ao selecionar");
+												while($row = mysqli_fetch_assoc($resultadoCodigo)){
+												echo 
+												'
+
+												'$value;
+											}
+											/*for($i = 0; $i < $cont; $i++){
 												$_SESSION['produtosCarrinho'][$i] = $idProduto;
 											}
 
 											var_dump($listaProdutos);
 											foreach($_SESSION['produtosCarrinho'] as $key=>$value){
 												echo "posição: " . $key ." valor " . $value;
-											}
+											}*/
+											/*
 											if($continuarComprando == 2){?>
 													<tr class="table-body-row"> <?php 
 													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $idProduto") or die("erro ao selecionar");

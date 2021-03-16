@@ -29,16 +29,16 @@
 		<div class="container">
 			<div class="row product-lists" id="aberto">
 			<?php
-                    $sql="SELECT -- Aqui você informa os dados que quer no retorno 
+                    $sql="SELECT
 					P.valor_total,
-					P.status,-- nome do func 
-					C.nome, -- nome do proj 
-					V.id_pedido -- todos os dados de vinculo 
-					FROM -- Aqui voce informa de onde os dados vem e como associa os dados de uma tabela com outra 
-					pedido P INNER JOIN -- junta os dados de matricula com vinculo 
-					cliente_pedido V ON P.id_pedido = V.id_pedido -- onde essa condicao for verdadeira 
+					P.status,
+					C.nome, 
+					V.id_pedido 
+					FROM
+					pedido P INNER JOIN  
+					cliente_pedido V ON P.id_pedido = V.id_pedido 
 					INNER JOIN 
-					usuarios C -- a mesma coisa acontece para vinculo e projeto 
+					usuarios C
 					ON C.id_usuario = V.id_cliente where P.status == 2 limit 3";
                     $resultado = mysqli_query($connect, $sql);
                     $row['status']
