@@ -62,8 +62,11 @@
 				<?php 
 					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 limit 3");
 					while($row = mysqli_fetch_assoc($resultadogeral)){
+						$idProduto = $row['id_produto'];
 						$_SESSION['idProduto'] = $row['id_produto'];
-						echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
+						$nomeCategoria = mysqli_query($connect,"SELECT nome FROM categoria_produto where id_categoria = select id_categoria from produto
+						where id_produto = $idProduto");
+						echo "<div class='col-lg-4 col-md-6 text-center ".$nomeCategoria."'>
 								<div class='single-product-item'>
 									<div class='product-image'>
 										<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>

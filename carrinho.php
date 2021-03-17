@@ -49,70 +49,30 @@
 								</tr>
 							</thead>
 							<tbody id = "resultado_carrinho">
-									<?php $continuarComprando = $_SESSION['continuarComprando'];
-										$listaProdutos = array();
-										$_SESSION['produtosCarrinho'] = $listaProdutos;
-										$cont = 0;
+									<?php //$continuarComprando = $_SESSION['continuarComprando'];
+										//$listaProdutos = array();
+										//$cont = 0;
 										if(isset($_GET['adicionar'])){
-											$cont = $cont +1;
+											//$cont = $cont +1;
 											$idProduto = (int) $_GET['adicionar'];
 											adicionar_produto($idProduto);
-											foreach ($_SESSION['carrinho'] as &$value) {
-												echo '<tr class="table-body-row"> '
-												$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $value") or die("erro ao selecionar");
-												while($row = mysqli_fetch_assoc($resultadoCodigo)){
-													echo "<td class='product-remove'><a href='#'><i class='far fa-window-close'></i></a></td>
-															<td class='product-image'><img src='assets/img-upload/"<?php echo $row['imagem']; ?>"'></td>
-														<td class='product-name'>";
-												}
-											/*for($i = 0; $i < $cont; $i++){
-												$_SESSION['produtosCarrinho'][$i] = $idProduto;
-											}
-
-											var_dump($listaProdutos);
-											foreach($_SESSION['produtosCarrinho'] as $key=>$value){
-												echo "posição: " . $key ." valor " . $value;
-											}*/
-											/*
-											if($continuarComprando == 2){?>
-													<tr class="table-body-row"> <?php 
-													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $idProduto") or die("erro ao selecionar");
+											foreach ($_SESSION['carrinho'] as &$value) {?>
+												<tr class="table-body-row"> <?php 
+													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $value") or die("erro ao selecionar");
 													while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
 														<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
 														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
 														<td class="product-name"> <?php echo $row['nome']; ?> </td>
 														<td class="product-price"> <?php echo $row['preco']; ?></td>
-														<td class="product-quantity"><input type="number" placeholder="1" name="qtprod"></td>
-														<td class="product-total"> <?php /*$row['preco'] = $row['preco'] * */ ?> </td>
+														<td class="product-quantity"><form action="carrinho.php" method="post">
+																						<input type="number" placeholder="1" name=qntprod><?php //$qnt = $_POST['qntProd'];?> </td>
+																					</form>
+														<td class="product-total"> <?php //echo $row['preco'] * $qnt; ?> </td>
 														<?php 
 													}?>
-												<?php 
-												var_dump($listaProdutos);
-											}else{
-												//teste para adicionar mais linhas na tabela para produtos diferentes
-												for($x = 1; $x <= count($_SESSION['produtosCarrinho']); $x++){	
-													?><tr class="table-body-row"><?php
-													$codProd = $_SESSION['produtosCarrinho'][$x];
-													echo "aqui: " . $codProd;
-													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $codProd") or die("erro ao selecionar");
-													while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
-														<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
-														<td class="product-name"> <?php echo $row['nome']; ?> </td>
-														<td class="product-price"> <?php echo $row['preco']; ?></td>
-														<td class="product-quantity"><input type="number" placeholder="1" name="qtprod"></td>
-														<td class="product-total"> <?php echo "aqui";?> </td>
-																	
-													<?php }?>
 												</tr>
-												<?php }	
-												var_dump($listaProdutos);
-												echo "o array tem ".count($listaProdutos). " produtos";
-												$cont++;	
-												
-											}
-										}
-										?>
+											<?php }
+									} ?>
 							</tbody>
 						</table>
 					</div>
@@ -144,8 +104,10 @@
 						</table>
 						<div class="cart-buttons">
 							<a href="produtos.php?continuar=" class="boxed-btn">Continuar comprando</a>
-							<?php //fazer verificação de logado?>
-							<a href="ger_pedidos.php" class="boxed-btn black">Finalizar</a>
+							<?php if(isset($_SESSION['email'])){ ?>
+										<a href="ger_pedidos.php" class="boxed-btn black">Finalizar</a>
+									<?php } else ?> <a href="login.php" class="boxed-btn black">Finalizar</a>
+													
 						</div>
 					</div>
 
