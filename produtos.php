@@ -70,7 +70,7 @@
 									</div>
 									<h3>".$row['nome']."</h3>
 									<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
-									<a href='carrinho.php?adicionar=".$row['id_produto']." class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>  
+									<a href='carrinho.php?adicionar=".$row['id_produto']."' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>  
 
 								</div>
 							</div>";
