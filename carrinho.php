@@ -9,8 +9,12 @@
 <body>
 	<!--MENU-->
 	<?php require_once("src/components/menu.php");?>
-	<?php session_start();?>
-	<?php include_once('conexao_db/conexao.php');?>
+	<?php session_start();
+	
+	?>
+	<?php include_once('conexao_db/conexao.php');
+			include_once('conexao_db/adicionarCarrinho.php');
+	?>
 
 	<!-- breadcrumb-section -->
 	<div class="breadcrumb-section breadcrumb-bg">
@@ -45,18 +49,16 @@
 								</tr>
 							</thead>
 							<tbody id = "resultado_carrinho">
-									<?php $continuarComprando = $_SESSION['continuarComprando'];
-										$listaProdutos = array();
-										$cont = 0;
+									<?php //$continuarComprando = $_SESSION['continuarComprando'];
+										//$listaProdutos = array();
+										//$cont = 0;
 										if(isset($_GET['adicionar'])){
-											$cont = $cont +1;
-											$idProduto = (int) $_GET['adicionar']; 
-											for($i = 0; $i < $cont; $i++){
-												$listaProdutos[$i]= $idProduto;
-											}
-											if($continuarComprando == 2){?>
-													<tr class="table-body-row"> <?php 
-													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $idProduto") or die("erro ao selecionar");
+											//$cont = $cont +1;
+											$idProduto = (int) $_GET['adicionar'];
+											adicionar_produto($idProduto);
+											foreach ($_SESSION['carrinho'] as &$value) {?>
+												<tr class="table-body-row"> <?php 
+													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $value") or die("erro ao selecionar");
 													while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
 														<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
 														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
@@ -66,31 +68,9 @@
 														<td class="product-total"> <?php /*$row['preco'] = $row['preco'] * */ ?> </td>
 														<?php 
 													}?>
-													</tr>
-												<?php }
-												var_dump($listaProdutos);
-											}else{
-												//teste para adicionar mais linhas na tabela para produtos diferentes
-												for($x = 1; $x <= count($listaProdutos); $x++){	
-													?><tr class="table-body-row"><?php
-													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $listaProdutos[$x]") or die("erro ao selecionar");
-													while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
-														<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
-														<td class="product-name"> <?php echo $row['nome']; ?> </td>
-														<td class="product-price"> <?php echo $row['preco']; ?></td>
-														<td class="product-quantity"><input type="number" placeholder="1" name="qtprod"></td>
-														<td class="product-total"> <?php echo "aqui";?> </td>
-																	
-													<?php }?>
 												</tr>
-												<?php }	
-												var_dump($listaProdutos);
-												echo "o array tem ".count($listaProdutos). " produtos";
-												$cont++;	
-												$_SESSION['produtosCarrinho'] = $listaProdutos;
-												
-										} ?>
+											<?php }
+									} ?>
 							</tbody>
 						</table>
 					</div>
