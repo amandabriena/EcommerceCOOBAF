@@ -64,8 +64,10 @@
 														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
 														<td class="product-name"> <?php echo $row['nome']; ?> </td>
 														<td class="product-price"> <?php echo $row['preco']; ?></td>
-														<td class="product-quantity"><input type="number" placeholder="1" name="qtprod"></td>
-														<td class="product-total"> <?php /*$row['preco'] = $row['preco'] * */ ?> </td>
+														<td class="product-quantity"><form action="carrinho.php" method="post">
+																						<input type="number" placeholder="1" name=qntprod><?php //$qnt = $_POST['qntProd'];?> </td>
+																					</form>
+														<td class="product-total"> <?php //echo $row['preco'] * $qnt; ?> </td>
 														<?php 
 													}?>
 												</tr>
@@ -102,8 +104,10 @@
 						</table>
 						<div class="cart-buttons">
 							<a href="produtos.php?continuar=" class="boxed-btn">Continuar comprando</a>
-							<?php //fazer verificação de logado?>
-							<a href="ger_pedidos.php" class="boxed-btn black">Finalizar</a>
+							<?php if(isset($_SESSION['email'])){ ?>
+										<a href="ger_pedidos.php" class="boxed-btn black">Finalizar</a>
+									<?php } else ?> <a href="login.php" class="boxed-btn black">Finalizar</a>
+													
 						</div>
 					</div>
 
