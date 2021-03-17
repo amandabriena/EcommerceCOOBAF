@@ -47,18 +47,12 @@
 							<tbody id = "resultado_carrinho">
 									<?php $continuarComprando = $_SESSION['continuarComprando'];
 										$listaProdutos = array();
-										$_SESSION['produtosCarrinho'] = $listaProdutos;
 										$cont = 0;
 										if(isset($_GET['adicionar'])){
 											$cont = $cont +1;
 											$idProduto = (int) $_GET['adicionar']; 
 											for($i = 0; $i < $cont; $i++){
-												$_SESSION['produtosCarrinho'][$i] = $idProduto;
-											}
-
-											var_dump($listaProdutos);
-											foreach($_SESSION['produtosCarrinho'] as $key=>$value){
-												echo "posição: " . $key ." valor " . $value;
+												$listaProdutos[$i]= $idProduto;
 											}
 											if($continuarComprando == 2){?>
 													<tr class="table-body-row"> <?php 
@@ -72,15 +66,14 @@
 														<td class="product-total"> <?php /*$row['preco'] = $row['preco'] * */ ?> </td>
 														<?php 
 													}?>
-												<?php 
+													</tr>
+												<?php }
 												var_dump($listaProdutos);
 											}else{
 												//teste para adicionar mais linhas na tabela para produtos diferentes
-												for($x = 1; $x <= count($_SESSION['produtosCarrinho']); $x++){	
+												for($x = 1; $x <= count($listaProdutos); $x++){	
 													?><tr class="table-body-row"><?php
-													$codProd = $_SESSION['produtosCarrinho'][$x];
-													echo "aqui: " . $codProd;
-													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $codProd") or die("erro ao selecionar");
+													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $listaProdutos[$x]") or die("erro ao selecionar");
 													while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
 														<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
 														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
@@ -95,10 +88,9 @@
 												var_dump($listaProdutos);
 												echo "o array tem ".count($listaProdutos). " produtos";
 												$cont++;	
+												$_SESSION['produtosCarrinho'] = $listaProdutos;
 												
-											}
-										}
-										?>
+										} ?>
 							</tbody>
 						</table>
 					</div>
