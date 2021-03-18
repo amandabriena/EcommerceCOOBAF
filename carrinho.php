@@ -4,7 +4,7 @@
 	<?php require_once("src/components/head.php");?>
 	<!-- title -->
 	<title>Meu Carrinho</title>
-
+	
 </head>
 <body>
 	<!--MENU-->
@@ -55,24 +55,25 @@
 										if(isset($_GET['adicionar'])){
 											//$cont = $cont +1;
 											$idProduto = (int) $_GET['adicionar'];
-											adicionar_produto($idProduto);
-											foreach ($_SESSION['carrinho'] as &$value) {?>
+											adicionar_produto($idProduto,1);
+										}
+											for($i = 0 ; $i < count($_SESSION['carrinho']) ; $i=$i+2){
+											$produto_id = $_SESSION['carrinho'][$i];
+											$quantidade = $_SESSION['carrinho'][$i+1];?>
 												<tr class="table-body-row"> <?php 
-													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = $value") or die("erro ao selecionar");
+													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$produto_id'") or die("erro ao selecionar");
 													while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
 														<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
 														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
 														<td class="product-name"> <?php echo $row['nome']; ?> </td>
-														<td class="product-price"> <?php echo $row['preco']; ?></td>
-														<td class="product-quantity"><form action="carrinho.php" method="post">
-																						<input type="number" placeholder="1" name=qntprod><?php //$qnt = $_POST['qntProd'];?> </td>
-																					</form>
-														<td class="product-total"> <?php //echo $row['preco'] * $qnt; ?> </td>
+														<td class="product-pricee"> R$ <?php echo $row['preco']; ?></td>
+														<td class="product-quantity"><input type="number" placeholder="1" value = <?php echo $quantidade?> name=qntprod > </td>
+														<td class="product-total" id = "preco"> R$ <?php echo $row['preco'] * $quantidade; ?> </td>
 														<?php 
 													}?>
 												</tr>
 											<?php }
-									} ?>
+									 ?>
 							</tbody>
 						</table>
 					</div>
