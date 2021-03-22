@@ -3,6 +3,16 @@
 <head>
 	<?php require_once("src/components/head.php");?>
 	<!-- title -->
+	<script type="text/javascript">
+		function alterar(quantidade, produto){
+			//função para alterar a quantidade do produto
+			var dados = {
+                    nova_quantidade : quantidade,
+                    id_produto : produto
+                }
+                $.post('alterar_quantidade.php', dados, function(){});
+		};
+	</script>
 	<title>Meu Carrinho</title>
 	
 </head>
@@ -11,6 +21,7 @@
 	<?php require_once("src/components/menu.php");?>
 	<?php session_start();
 	
+
 	?>
 	<?php include_once('conexao_db/conexao.php');
 			include_once('conexao_db/adicionarCarrinho.php');
@@ -48,7 +59,7 @@
 									<th class="product-total">Total</th>
 								</tr>
 							</thead>
-							<tbody id = "resultado_carrinho">
+							<tbody>
 									<?php //$continuarComprando = $_SESSION['continuarComprando'];
 										//$listaProdutos = array();
 										//$cont = 0;
@@ -57,6 +68,7 @@
 											$idProduto = (int) $_GET['adicionar'];
 											adicionar_produto($idProduto,1);
 										}
+										if(isset($_SESSION['carrinho'])){
 											for($i = 0 ; $i < count($_SESSION['carrinho']) ; $i=$i+2){
 											$produto_id = $_SESSION['carrinho'][$i];
 											$quantidade = $_SESSION['carrinho'][$i+1];?>
@@ -67,12 +79,16 @@
 														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
 														<td class="product-name"> <?php echo $row['nome']; ?> </td>
 														<td class="product-pricee"> R$ <?php echo $row['preco']; ?></td>
-														<td class="product-quantity"><input type="number" placeholder="1" value = <?php echo $quantidade?> name=qntprod > </td>
+														<td class="product-quantity"><input type="number" placeholder="1" value = <?php echo $quantidade?> name=qntprod id= "quantidade_produto" onchange="alterar(this.value, <?php echo $produto_id; ?>)"> </td>
 														<td class="product-total" id = "preco"> R$ <?php echo $row['preco'] * $quantidade; ?> </td>
 														<?php 
 													}?>
 												</tr>
-											<?php }
+											<?php }}else{
+												echo " </tbody>
+												</table>
+												<h6 class= 'text-center'>Nenhum produto adicionado ao carrinho!</h6>";
+											}
 									 ?>
 							</tbody>
 						</table>

@@ -113,7 +113,10 @@ INSERT INTO `categoria_produto` (`id_categoria`, `nome`)
 VALUES (NULL, 'Temperos');
 
 INSERT INTO `produto` (`id_produto`, `nome`, `imagem`, `descricao`, `preco`, `status`, `id_categoria`, `visibilidade`) VALUES 
-(NULL, 'Coentro', '1615769734604eb086bf322.jpg', 'Melhor coentro organ', '2', '1', '1', '1'), (NULL, 'Banana', '1615770298604eb2bac47a2.jpeg', 'Bananas plantadas na', '', '5.5', '1', '2', '1'), (NULL, 'Sequilho', '1615770486604eb3762119a.jpg', 'Sequilhos de qualida', '', '4.55', '1', '5', '1'), (NULL, 'Tempero Pronto ', '1615771915604eb90b20489.jpg', 'Temperos prontos', '', '1.5', '1', '7', '1');
+(NULL, 'Coentro', '1615769734604eb086bf322.jpg', 'Melhor coentro organ', '2', '1', '1', '1'), 
+(NULL, 'Banana', '1615770298604eb2bac47a2.jpeg', 'Bananas plantadas na', '', '5.5', '1', '2', '1'), 
+(NULL, 'Sequilho', '1615770486604eb3762119a.jpg', 'Sequilhos de qualida', '', '4.55', '1', '5', '1'), 
+(NULL, 'Tempero Pronto ', '1615771915604eb90b20489.jpg', 'Temperos prontos', '', '1.5', '1', '7', '1');
 
 INSERT INTO `produto` (`id_produto`, `nome`, `imagem`, `descricao`, `preco`, `status`, `id_categoria`, `visibilidade`) VALUES (NULL, 'uva', '1615698530604d9a62efc75.jpg', 'melhor uva ever', '5', '1', '2', '1');
 
