@@ -1,3 +1,7 @@
+<?php
+
+    require('conexao_db/conexao.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,36 +33,21 @@
 		<div class="container">
 			<div class="row product-lists" id="aberto">
 			<?php
-                    $sql="SELECT
-					P.valor_total,
-					P.status,
-					C.nome, 
-					V.id_pedido 
-					FROM
-					pedido P INNER JOIN  
-					cliente_pedido V ON P.id_pedido = V.id_pedido 
-					INNER JOIN 
-					usuarios C
-					ON C.id_usuario = V.id_cliente where P.status == 2 limit 3";
+                    $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.status, pedido.valor_total
+					FROM pedido 
+					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where pedido.status = 2 limit 3";
                     $resultado = mysqli_query($connect, $sql);
-                    $row['status']
                     while($row = mysqli_fetch_assoc($resultado)){
 						echo '<div class="col-lg-4 col-md-6 pt-4 text-center berry">
 								<div class="pedido">
 									<h3>'.$row['nome'].'</h3>
-									<p class="product-price"><span>'.$row['id_pedido'].'</span> '.$row['data'].' </p>
+									<p class="product-price"><span>'.$row['id_pedido'].'</span> '.$row['status'].' </p>
 									<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
 								</div>
-							</div>'
-                    
+							</div>';
+					}
                     ?>
-				<div class="col-lg-4 col-md-6 pt-4 text-center berry">
-					<div class="pedido">
-                        <h3>Cliente</h3>
-						<p class="product-price"><span>ID do Pedido</span> 07/03/2021 </p>
-                        <a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
-					</div>
-				</div>
+				
 				<div class="col-lg-4 col-md-6 pt-4 text-center berry">
 					<div class="pedido">
 						<h3>Berry</h3>
@@ -73,7 +62,6 @@
 						<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
 					</div>
 				</div>
-                
             </div>
 
             <div class= "text-right mb-80 d-block" id="aberto">
