@@ -1,9 +1,12 @@
-<?php
-session_start();
-for($i = 0 ; $i < count($_SESSION['carrinho']) ; $i=$i+2){
-    echo "Produto:".$_SESSION['carrinho'][$i];
-    echo " QT:".$_SESSION['carrinho'][$i+1];
-    echo "</br>";
-    
-}
-?>
+<?php session_start(); ?>
+<table class="table"> 
+    <tr>
+      <th>ID</th>
+      <th>QUANT</th>
+    </tr>
+     <?php for($i = 0 ; $i < sizeof($_SESSION['carrinho']['id']) ; $i=$i+1) {
+         //console.log();
+        echo '<tr> <td>'.$_SESSION['carrinho']['id'][$i].'</td>';
+        echo '<td>'.$_SESSION['carrinho']['qt'][$i].'</td></tr>';
+     }  ?>
+</table>

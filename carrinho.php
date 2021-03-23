@@ -24,7 +24,7 @@
 
 	?>
 	<?php include_once('conexao_db/conexao.php');
-			include_once('conexao_db/adicionarCarrinho.php');
+			include_once('src/functions/funcoes_carrinho.php');
 	?>
 
 	<!-- breadcrumb-section -->
@@ -66,12 +66,12 @@
 										if(isset($_GET['adicionar'])){
 											//$cont = $cont +1;
 											$idProduto = (int) $_GET['adicionar'];
-											adicionar_produto($idProduto,1);
+											add_carrinho($idProduto,1);
 										}
 										if(isset($_SESSION['carrinho'])){
-											for($i = 0 ; $i < count($_SESSION['carrinho']) ; $i=$i+2){
-											$produto_id = $_SESSION['carrinho'][$i];
-											$quantidade = $_SESSION['carrinho'][$i+1];?>
+											for($i = 0 ; $i < count($_SESSION['carrinho']['id']) ; $i++){
+											$produto_id = $_SESSION['carrinho']['id'][$i];
+											$quantidade = $_SESSION['carrinho']['qt'][$i];?>
 												<tr class="table-body-row"> <?php 
 													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$produto_id'") or die("erro ao selecionar");
 													while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
