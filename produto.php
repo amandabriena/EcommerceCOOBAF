@@ -77,7 +77,7 @@
 							<form action="index.html">
 								<input type="number" placeholder="0">
 							</form>
-							<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</a>
+							<a href='carrinho.php?adicionar=<?php $id_produto; ?>' class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</a>
 							<p><strong>Categoria: </strong><?php echo $row['categoria']; } ?></p>
 						</div>
 					</div>

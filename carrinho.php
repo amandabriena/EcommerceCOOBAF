@@ -5,13 +5,15 @@
 	<!-- title -->
 	<script type="text/javascript">
 		function alterar(quantidade, produto){
-			//função para alterar a quantidade do produto
+			//função para alterar a quantidade do produto na sessão
 			var dados = {
                     nova_quantidade : quantidade,
                     id_produto : produto
                 }
+				
                 $.post('alterar_quantidade.php', dados, function(retorna){
-					document.getElementById("total_produtos").innerHTML = retorna;
+					//para atualizar o valor (preço * quantidade do produto)
+					document.getElementById("preco_total_").innerHTML = retorna;
 				});
 		};
 	</script>
