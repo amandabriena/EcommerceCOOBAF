@@ -1,79 +1,69 @@
 <?php
+
+$id_produto = 1;
+
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-
+//Função para adicionar produto ao carrinho:
 function add_carrinho($produto, $quantidade){
+    //Caso o carrinho esteja sendo inicializado
     if(!isset($_SESSION['carrinho']['id'])){
         $_SESSION['carrinho']['id'][] = $produto;
         $_SESSION['carrinho']['qt'][] = $quantidade; 
     }else{
+        //verificando se o produto já está no carrinho para somar a sua quantidade
         $posicao = buscar_carrinho($produto);
         if($posicao != null or $posicao === 0){
             $quantidade_anterior = $_SESSION['carrinho']['qt'][$posicao];
             $nova_quantidade = $quantidade + $quantidade_anterior;
             $_SESSION['carrinho']['qt'][$posicao] = $nova_quantidade;
         }else{
+            //caso não esteja, o novo produto e sua quantidade são adicionados ao carrinho
             $_SESSION['carrinho']['id'][] = $produto;
             $_SESSION['carrinho']['qt'][] = $quantidade;
         }
     }
 }
 
+//Função para buscar um produto no carrinho
 function buscar_carrinho($id_produto){
     for($i = 0 ; $i < sizeof($_SESSION['carrinho']['id']) ; $i=$i+1) {
         if($_SESSION['carrinho']['id'][$i] == $id_produto){
-            //echo "PRODUTO ID: ".$_SESSION['carrinho']['id'][$i]."</br>";
             return $i;
         }
     }
     return null;
 }
 
+//Função para alterar a quantidade de um produto no carrinho
 function alterar_quantidade($id_produto, $nova_quantidade){
     $posicao = buscar_carrinho($id_produto);
     $_SESSION['carrinho']['qt'][$posicao] = $nova_quantidade;
 }
 
-/*
-add_carrinho('pd1', 1);
-add_carrinho('pd2', 3);
-add_carrinho('pd2', 10);
-add_carrinho('pd1', 10);
-add_carrinho('pd2', 10);
-add_carrinho('pd1', 10);
-add_carrinho('pd1', 10);
-add_carrinho('pd2', 10);
-add_carrinho('pd3', 10);
-add_carrinho('pd2', 10);
-add_carrinho('pd2', 10);
-add_carrinho('pd3', 10);
+//Função para calcular preço * quantidade adicionada de um produto do carrinho
+function total_preco_produto($id_produto){
+    require('conexao_db/conexao.php');
+    $posicao = buscar_carrinho($id_produto);
+    $quantidade = $_SESSION['carrinho']['qt'][$posicao];
+    $resultado = mysqli_query($connect,"SELECT preco FROM produto where id_produto = '$id_produto'");
+    while($row = mysqli_fetch_assoc($resultado)){
+        $total = floatval($row['preco']) * $quantidade;
+        return $total;
+    }
+}
 
-<table class="table"> 
-    <tr>
-      <th>ID</th>
-      <th>QUANT</th>
-    </tr>
-     <?php for($i = 0 ; $i < sizeof($_SESSION['carrinho']['id']) ; $i=$i+1) {
-         //console.log();
-        echo '<tr> <td>'.$_SESSION['carrinho']['id'][$i].'</td>';
-        echo '<td>'.$_SESSION['carrinho']['qt'][$i].'</td></tr>';
-     }  ?>
-</table>
+//Função para calcular o valor total da soma dos produtos do carrinho
+function total_carrinho(){
+    require('conexao_db/conexao.php');
+    $total_carrinho = 0;
+    for($i = 0 ; $i < sizeof($_SESSION['carrinho']['id']) ; $i=$i+1) {
+        $total_carrinho = $total_carrinho + total_preco_produto($i);
+    }
+    return $total_carrinho;
+}
 
-<?php
-$busca = buscar_carrinho('pd2');
-echo 'RESULTADO BUSCA: '.$busca?>
-
-/*
-$teste = array_search('pd1', $_SESSION['carrinho']);
-if($teste==0){
-    echo "zero";
-    echo $teste;
-}else{
-    echo "diff";
-    echo $teste;
-} 
-*/
 ?>
 

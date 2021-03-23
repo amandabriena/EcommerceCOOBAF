@@ -6,5 +6,7 @@ $quantidade = $_POST['nova_quantidade'];
 $produto = $_POST['id_produto'];
 
 alterar_quantidade($produto, $quantidade);
+$total = total_carrinho();
+echo $total;
 
 ?>

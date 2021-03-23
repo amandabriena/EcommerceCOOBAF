@@ -149,23 +149,6 @@
                 
             });
         });
-        /*
-        //Função para alterar quantidade na sessão do carrinho
-        $(function(){
-            $("#quantidade_produto").keyup(function(){
-                var quantidade = $(this).val();
-                //coletando o que foi informado no campo de pesquisa para buscar no db
-                var dados = {
-                    nova_quantidade : quantidade,
-                    id_produto : id_produto
-                }
-                $.post('alterar_quantidade.php', dados, function(retorna){
-                    //Mostra noa ul os resultados da pesquisa
-                    $(".teste").html(retorna);
-                });
-                
-            });
-        });*/
         // magnific popup
         $('.popup-youtube').magnificPopup({
             disableOn: 700,

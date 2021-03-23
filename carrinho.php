@@ -10,7 +10,9 @@
                     nova_quantidade : quantidade,
                     id_produto : produto
                 }
-                $.post('alterar_quantidade.php', dados, function(){});
+                $.post('alterar_quantidade.php', dados, function(retorna){
+					document.getElementById("total_produtos").innerHTML = retorna;
+				});
 		};
 	</script>
 	<title>Meu Carrinho</title>
@@ -23,8 +25,9 @@
 	
 
 	?>
-	<?php include_once('conexao_db/conexao.php');
-			include_once('src/functions/funcoes_carrinho.php');
+	<?php 
+		include_once('conexao_db/conexao.php');
+		include_once('src/functions/funcoes_carrinho.php');
 	?>
 
 	<!-- breadcrumb-section -->
@@ -60,11 +63,9 @@
 								</tr>
 							</thead>
 							<tbody>
-									<?php //$continuarComprando = $_SESSION['continuarComprando'];
-										//$listaProdutos = array();
-										//$cont = 0;
+									<?php 
+										$total_produtos = 0.00;
 										if(isset($_GET['adicionar'])){
-											//$cont = $cont +1;
 											$idProduto = (int) $_GET['adicionar'];
 											add_carrinho($idProduto,1);
 										}
@@ -80,8 +81,9 @@
 														<td class="product-name"> <?php echo $row['nome']; ?> </td>
 														<td class="product-pricee"> R$ <?php echo $row['preco']; ?></td>
 														<td class="product-quantity"><input type="number" placeholder="1" value = <?php echo $quantidade?> name=qntprod id= "quantidade_produto" onchange="alterar(this.value, <?php echo $produto_id; ?>)"> </td>
-														<td class="product-total" id = "preco"> R$ <?php echo $row['preco'] * $quantidade; ?> </td>
+														<td class="product-total" id = "preco_total_<?php echo $produto_id?>"> R$ <?php echo $row['preco'] * $quantidade; ?> </td>
 														<?php 
+														$total_produtos = $total_produtos + ($row['preco'] * $quantidade);
 													}?>
 												</tr>
 											<?php }}else{
@@ -106,16 +108,8 @@
 							</thead>
 							<tbody>
 								<tr class="total-data">
-									<td><strong>Subtotal: </strong></td>
-									<td>$500</td>
-								</tr>
-								<tr class="total-data">
-									<td><strong>Entrega: </strong></td>
-									<td>$45</td>
-								</tr>
-								<tr class="total-data">
 									<td><strong>Total: </strong></td>
-									<td>$545</td>
+									<td id = "total_produtos">R$<?php echo $total_produtos?></td>
 								</tr>
 							</tbody>
 						</table>
@@ -125,16 +119,6 @@
 										<a href="ger_pedidos.php" class="boxed-btn black">Finalizar</a>
 									<?php } else ?> <a href="login.php" class="boxed-btn black">Finalizar</a>
 													
-						</div>
-					</div>
-
-					<div class="coupon-section">
-						<h3>Apply Coupon</h3>
-						<div class="coupon-form-wrap">
-							<form action="index.html">
-								<p><input type="text" placeholder="Coupon"></p>
-								<p><input type="submit" value="Apply"></p>
-							</form>
 						</div>
 					</div>
 				</div>
