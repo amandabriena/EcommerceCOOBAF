@@ -48,7 +48,8 @@ CREATE TABLE IF NOT EXISTS item_pedido (
 	id_item_pedido smallint(10) not null primary key AUTO_INCREMENT,
 	id_pedido smallint(10) not null,
 	id_produto smallint(10) not null,
-	quantidade int(10) not null
+	quantidade int(10) not null,
+  valor_item float(10)
 );
 
 CREATE TABLE IF NOT EXISTS cliente_pedido (

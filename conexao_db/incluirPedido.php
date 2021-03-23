@@ -1,7 +1,7 @@
 <?php
 
 include_once("conexao.php");
-
+include_once('src/functions/funcoes_carrinho.php');
 //Buscando usuário do pedido
 session_start();
 $email = $_SESSION['email'];
@@ -29,14 +29,16 @@ if($insert){
     for($i = 0 ; $i < sizeof($_SESSION['carrinho']['id']) ; $i=$i+1) {
         $id_produto = $_SESSION['carrinho']['id'][$i]
         $quantidade = $_SESSION['carrinho']['qt'][$i];
-        $query = "INSERT INTO item_pedido(id_item_pedido, id_pedido, id_produto, quantidade) 
-        VALUES (NULL, '$id_pedido', '$id_produto', '$quantidade')";
+        $valor_item = total_preco_produto($id_produto, $quantidade);
+        
+        $query = "INSERT INTO item_pedido(id_item_pedido, id_pedido, id_produto, quantidade, valor_item) 
+        VALUES (NULL, '$id_pedido', '$id_produto', '$quantidade', '$valor_item')";
         $insert = mysqli_query($connect,$query);
     }
 
     $_SESSION['mensagem'] = "finalizado";
     header('location:../pedido.php');
-    
+
 }else header('location:../404.php');
 
 
