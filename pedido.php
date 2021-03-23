@@ -3,7 +3,7 @@
     require('conexao_db/conexao.php');
     //PEGAR INFORMAÇÃO DO ID DO PRODUTO PELO GET
 	$id_pedido = $_GET['pedido'];
-    $resultado_pedido = mysqli_query($connect,"SELECT * FROM produto where id_pedido = '$id_pedido'") or die("erro ao selecionar");
+    $resultado_pedido = mysqli_query($connect,"SELECT * FROM pedido where id_pedido = '$id_pedido'") or die("erro ao selecionar pedido");
 	$row_pedido = mysqli_fetch_assoc($resultado_pedido);
 ?>
 <!DOCTYPE html>
@@ -27,33 +27,21 @@
 	?>
 
 	<!-- breadcrumb-section -->
-	<div class="breadcrumb-section breadcrumb-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-						<p>COOBAF-FS</p>
-						<h1>Meu Pedido</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="breadcrumb-section2 breadcrumb-bg"></div>
 	<!-- end breadcrumb section -->
     <div class="form-title text-center">
 		<h2>Informações do Pedido</h2>
 		<p>Confira o andamento do seu pedido</p>
 	</div>
 	<!-- cart -->
-	<div class="cart-section mt-150 mb-150">
+	<div class="cart-section mt-4 mb-150">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-md-12">
+				<div class="col-lg-8 col-md-12 offset-lg-2">
 					<div class="cart-table-wrap">
 						<table class="cart-table">
 							<thead class="cart-table-head">
 								<tr class="table-head-row">
-									<th class="product-remove"></th>
 									<th class="product-image"></th>
 									<th class="product-name">Nome</th>
 									<th class="product-price">Preço</th>
@@ -62,19 +50,17 @@
 								</tr>
 							</thead>
 							<tbody>
-									<tr class="table-body-row"> 
                                     <?php 
-										$resultadoCodigo = mysqli_query($connect,"SELECT * FROM item_pedido where id_pedido = '$id_pedido'") or die("erro ao selecionar");
+										$resultadoCodigo = mysqli_query($connect,"SELECT * FROM item_pedido where id_pedido = '$id_pedido'") or die("erro ao selecionar item");
 										while($row_item = mysqli_fetch_assoc($resultadoCodigo)){
-                                            $id_produto = $row['id_produto'];
-                                            $resultado = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$id_produto'") or die("erro ao selecionar");
+                                            $id_produto = $row_item['id_produto'];
+                                            $resultado = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$id_produto'") or die("erro ao selecionar poduto");
 										    $row_produto = mysqli_fetch_assoc($resultado)?>
-                                            ?>
-										<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
+									<tr class="table-body-row"> 
 										<td class="product-image"><img src='assets/img-upload/<?php echo $row_produto['imagem']; ?>'></td>
 										<td class="product-name"> <?php echo $row_produto['nome']; ?> </td>
-										<td class="product-pricee"> R$ <?php echo $row_item['preco']; ?></td>
-										<td class="product-quantity"><input type="number" placeholder="1" id= "quantidade_produto" ><?php echo $row['quantidade'];?> </td>
+										<td class="product-pricee"> R$ <?php echo $row_produto['preco']; ?></td>
+										<td class="product-quantity"><?php echo $row_item['quantidade'];?> </td>
 										<td class="product-total" id = "preco_total"> R$ <?php echo $row_item['valor_item']; }?> </td>
 									</tr>
                                     <tr class="total-data">
@@ -85,8 +71,8 @@
 						</table>
 					</div>
 				</div>
-
-				<div class="col-lg-4">
+			</div>
+            <div class="row offset-lg-4">
 					<div class="total-section">
                     <div class="cart-buttons">
 							<a href="produtos.php?continuar=" class="boxed-btn">Cancelar Compra</a>
@@ -98,7 +84,6 @@
 						
 					</div>
 				</div>
-			</div>
 		</div>
 	</div>
 	<!-- end cart -->
