@@ -1,5 +1,5 @@
 <?php
-
+	require_once("conexao_db/logado_coop.php");
     require('conexao_db/conexao.php');
 ?>
 <!DOCTYPE html>
@@ -42,19 +42,12 @@
 								<div class="pedido">
 									<h3>'.$row['nome'].'</h3>
 									<p class="product-price"><span>'.$row['id_pedido'].'</span> '.$row['status'].' </p>
-									<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+									<a href="pedido.php?pedido='.$row['id_pedido'].'" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
 								</div>
 							</div>';
 					}
                     ?>
 				
-				<div class="col-lg-4 col-md-6 pt-4 text-center berry">
-					<div class="pedido">
-						<h3>Berry</h3>
-						<p class="product-price"><span>Per Kg</span> 70$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
-					</div>
-				</div>
 				<div class="col-lg-4 col-md-6 pt-4 text-center lemon">
 					<div class="pedido">
 						<h3>Lemon</h3>
@@ -69,21 +62,21 @@
             </div>
             
             <div class="row product-lists" id="fechado">
-
-				<div class="col-lg-4 col-md-6 pt-4 text-center">
-					<div class="pedido">
-						<h3>Avocado</h3>
-						<p class="product-price"><span>Per Kg</span> 50$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 pt-4 text-center">
-					<div class="pedido">
-						<h3>Green Apple</h3>
-						<p class="product-price"><span>Per Kg</span> 45$ </p>
-						<a href="cart.html" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
-					</div>
-				</div>
+				<?php
+                    $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.status, pedido.valor_total
+					FROM pedido 
+					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where pedido.status = 2 limit 3";
+                    $resultado = mysqli_query($connect, $sql);
+                    while($row = mysqli_fetch_assoc($resultado)){
+						echo '<div class="col-lg-4 col-md-6 pt-4 text-center berry">
+								<div class="pedido">
+									<h3>'.$row['nome'].'</h3>
+									<p class="product-price"><span>'.$row['id_pedido'].'</span> '.$row['status'].' </p>
+									<a href="pedido.php?pedido='.$row['id_pedido'].'" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+								</div>
+							</div>';
+					}
+                    ?>
 				<div class="col-lg-4  col-md-6 pt-4 text-center strawberry">
 					<div class="pedido">
 						<h3>Strawberry</h3>
