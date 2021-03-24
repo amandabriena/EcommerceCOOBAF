@@ -18,7 +18,6 @@ $query = "INSERT INTO pedido(id_pedido, id_usuario, valor_total, status)
 
 $insert = mysqli_query($connect,$query);
 if($insert){
-    echo 'inseriu?';
     //buscando ID do pedido recém cadastrado:
     $resultado = mysqli_query($connect, "SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES 
     WHERE TABLE_SCHEMA = 'db_coobaf' AND TABLE_NAME = 'pedido';");

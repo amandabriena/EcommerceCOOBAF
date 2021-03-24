@@ -83,7 +83,7 @@
 													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$produto_id'") or die("erro ao selecionar");
 													while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
 														<td data-toggle='modal' data-target='#exampleModal<?php echo $produto_id?>' class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-														<!-- Modal -->
+														<!-- Modal para excluir produto do carrinho -->
 														<form id = 'deletar_produto' name = 'deletar_item' action='exclui_item_carrinho.php' method='POST'>
 														<div class='modal fade' id='exampleModal<?php echo $produto_id?>' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
 														<div class='modal-dialog' role='document'>
@@ -106,7 +106,7 @@
 														</div>
 														</div>
 														</form>
-
+														<!-- fim do Modal -->
 														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
 														<td class="product-name"> <?php echo $row['nome']; ?> </td>
 														<td class="product-pricee <? echo $produto_id?>"> R$ <?php echo $row['preco']; ?></td>
@@ -148,13 +148,49 @@
 							</tbody>
 						</table>
 						<div class="cart-buttons text-center">
-							<form action = "conexao_db/incluirPedido.php" method="POST" id="finalizar_pedido">
-								<?php if(isset($_SESSION['email'])){
-									echo '<input type="submit" class="boxed-btn black text-center" name="finalizar_compra" value="Finalizar Compra!">';
+							
+								<?php 
+								
+								if(isset($_SESSION['email'])){
+									echo '<form action = "conexao_db/incluirPedido.php" method="POST" id="finalizar_pedido">
+											<input type="submit" class="boxed-btn black text-center" name="finalizar_compra" value="Finalizar Compra!">
+										</form>	';
 								}else{
-									echo '<input type="submit" class="boxed-btn black text-center" name="finalizar_compra" value="Finalizar Compra!">';
+									//Finalizar pedido com modal de login
+									echo '<input type="submit" data-toggle="modal" data-target="#exampleModal" class="boxed-btn black text-center" name="finalizar_compra" value="Finalizar Compra!">
+										
+									<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									  <div class="modal-dialog" role="document">
+										<div class="modal-content">
+										  <div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">Faça o login para finalizar sua compra!</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											  <span aria-hidden="true">&times;</span>
+											</button>
+										  </div>
+										  <div class="modal-body">
+											<form action = "conexao_db/validarLogin.php" method="POST">
+												<p>
+													<input type="email" placeholder="Email" name="email" id="email">
+												</p>
+												<p>
+													<input type="password" placeholder="Senha" name="senha" id="senha">
+												</p>
+												<p><input type="submit" name= "bt-carrinho" value="Entrar"></p>
+											</form>
+										  </div>
+										  <div class="modal-footer">
+										  	<p>Não possui uma conta? <a href="cadastro.php">Cadastre-se</a></p>
+										  	<p><a href="recuperarsenha.php">Esqueci minha senha</a></p>
+										  </div>
+										  
+										</div>
+									  </div>
+									</div>
+											
+									';
 								}?>
-							</form>			
+									
 						</div>
 					</div>
 				</div>

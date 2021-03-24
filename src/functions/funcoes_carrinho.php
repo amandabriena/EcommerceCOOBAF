@@ -45,15 +45,25 @@ function alterar_quantidade($id_produto, $nova_quantidade){
 
 //Função para calcular preço * quantidade adicionada de um produto do carrinho
 function total_preco_produto($id_produto, $quantidade){
-    require('conexao_db/conexao.php');
+    //return ($_SERVER["REQUEST_URI"]);
     if($quantidade == null){
         $posicao = buscar_carrinho($id_produto);
         $quantidade = $_SESSION['carrinho']['qt'][$posicao];
     }
-    $resultado = mysqli_query($connect,"SELECT preco FROM produto where id_produto = '$id_produto'");
-    while($row = mysqli_fetch_assoc($resultado)){
-        $total = floatval($row['preco']) * $quantidade;
-        return $total;
+    if($_SERVER["REQUEST_URI"] == "EcommerceCOOBAF/carrinho.php"){
+        require_once('conexao.php');
+        $resultado = mysqli_query($connect,"SELECT preco FROM produto where id_produto = '$id_produto'");
+        while($row = mysqli_fetch_assoc($resultado)){
+            $total = floatval($row['preco']) * $quantidade;
+            return $total;
+        }
+    }else{
+        require('conexao_db/conexao.php');
+        $resultado = mysqli_query($connect,"SELECT preco FROM produto where id_produto = '$id_produto'");
+        while($row = mysqli_fetch_assoc($resultado)){
+            $total = floatval($row['preco']) * $quantidade;
+            return $total;
+        }
     }
 }
 

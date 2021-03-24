@@ -20,7 +20,9 @@
                 header('location:../cooperado.php');
             }else{
                 unset($_SESSION['cooperado']);
-                header('location:../produtos.php');
+                if(isset($_POST["bt-carrinho"])){
+                    header('location:incluirPedido.php');
+                }else header('location:../produtos.php');
             }
         }else{
             //caso não esteja, é setado erro de usuário inativo

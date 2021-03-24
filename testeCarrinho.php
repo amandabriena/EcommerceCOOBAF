@@ -9,15 +9,15 @@ echo $total;
     <tr>
       <th>ID</th>
       <th>QUANT</th>
-      <th>PREÇO</th>
+      
     </tr>
      <?php for($i = 0 ; $i < sizeof($_SESSION['carrinho']['id']) ; $i=$i+1) {
         $id_produto = $_SESSION['carrinho']['id'][$i];
         echo '<tr> <td>'.$_SESSION['carrinho']['id'][$i].'</td>';
         echo '<td>'.$_SESSION['carrinho']['qt'][$i].'</td>';
-        echo '<td>'.total_preco_produto($id_produto, null).'</td></tr>';
+        //echo '<td>'.total_preco_produto($id_produto, null).'</td></tr>';
      }  ?>
-</table> <?php echo total_carrinho();
+</table> <?php echo total_preco_produto($id_produto, null);
 
 ?>
 <?php 
