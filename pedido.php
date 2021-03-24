@@ -1,5 +1,9 @@
 <?php
-
+	if(!isset($_SESSION['cooperado'])){
+		require_once("conexao_db/logado.php");
+	}else{
+		require_once("conexao_db/logado_coop.php");
+	}
     require('conexao_db/conexao.php');
     //PEGAR INFORMAÇÃO DO ID DO PRODUTO PELO GET
 	$id_pedido = $_GET['pedido'];

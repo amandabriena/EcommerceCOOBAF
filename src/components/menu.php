@@ -46,7 +46,7 @@
 									<li><a class='shopping-cart' href='carrinho.php'>MINHA CONTA <i class= 'fa fa-user'></i></a>
 										<ul class= 'sub-menu'>
 											<li><a href= 'atualizar_usuario.php'>Atualizar Dados</a></li>
-											<li><a href= 'produtos.php'>Meus Pedidos</a></li>
+											<li><a href= 'meus_pedidos.php'>Meus Pedidos</a></li>
 											<li><a href= 'conexao_db/sair.php'>Sair</a></li>
 										</ul>
 									</li>
