@@ -7,7 +7,7 @@
 		function alterar(quantidade, produto, preco){
 			//laterando o preço do produto baseado na nova quantidade
 			document.getElementById(produto).innerHTML = "R$" + quantidade * preco;
-
+			
 			//função para alterar a quantidade do produto na sessão
 			var dados = {
                     nova_quantidade : quantidade,
@@ -15,8 +15,9 @@
                 }
 				
                 $.post('alterar_quantidade.php', dados, function(resultado){
-					//alterando novo preço total dos produtos
-					document.getElementById("total_produtos").innerHTML = "R$ " + resultado;
+					if(quantidade == 0){
+						window.location.href = "carrinho.php";
+					}else document.getElementById("total_produtos").innerHTML = "R$ " + resultado;
 				});
 		};
 	</script>
