@@ -6,7 +6,9 @@ $quantidade = $_POST['nova_quantidade'];
 $id_produto = $_POST['id_produto'];
 
 alterar_quantidade($id_produto , $quantidade);
-$total = total_preco_produto($id_produto );
+
+$total = total_carrinho();
+
 echo $total;
 
 ?>

@@ -5,7 +5,7 @@
 	<!-- title -->
 	<script type="text/javascript">
 		function alterar(quantidade, produto, preco){
-			//preco = $(item).text();
+			//laterando o preço do produto baseado na nova quantidade
 			document.getElementById(produto).innerHTML = "R$" + quantidade * preco;
 
 			//função para alterar a quantidade do produto na sessão
@@ -14,9 +14,9 @@
                     id_produto : produto
                 }
 				
-                $.post('alterar_quantidade.php', dados, function(){
-					//para atualizar o valor (preço * quantidade do produto)
-					//document.getElementById("preco_total_").innerHTML = retorna;
+                $.post('alterar_quantidade.php', dados, function(resultado){
+					//alterando novo preço total dos produtos
+					document.getElementById("total_produtos").innerHTML = "R$ " + resultado;
 				});
 		};
 	</script>
@@ -81,7 +81,31 @@
 												<tr class="table-body-row"> <?php 
 													$resultadoCodigo = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$produto_id'") or die("erro ao selecionar");
 													while($row = mysqli_fetch_assoc($resultadoCodigo)){?>
-														<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
+														<td data-toggle='modal' data-target='#exampleModal<?php echo $produto_id?>' class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
+														<!-- Modal -->
+														<form id = 'deletar_produto' name = 'deletar_item' action='exclui_item_carrinho.php' method='POST'>
+														<div class='modal fade' id='exampleModal<?php echo $produto_id?>' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+														<div class='modal-dialog' role='document'>
+															<div class='modal-content'>
+															<div class='modal-header'>
+																<h5 class='modal-title' id='exampleModalLabel'>EXCLUIR ITEM CARRINHO</h5>
+																<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+																<span aria-hidden='true'>&times;</span>
+																</button>
+															</div>
+															<div class='modal-body'>
+																Deseja mesmo exluir o item "<?php echo $row['nome']; ?>" do carrinho?
+															</div>
+															<input type='hidden' name='id_item' value = '<?php echo $produto_id?>' >
+															<div class='modal-footer'>
+																<button type='submit' name = 'upload' value = 'Cadastrar' class='btn btn-secondary' data-dismiss='modal'>Cancelar</button>
+																<button type='submit' name = 'upload' value = 'Cancelar' class='btn btn-outline-danger'>Excluir</button>
+															</div>
+															</div>
+														</div>
+														</div>
+														</form>
+
 														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
 														<td class="product-name"> <?php echo $row['nome']; ?> </td>
 														<td class="product-pricee <? echo $produto_id?>"> R$ <?php echo $row['preco']; ?></td>
@@ -89,7 +113,7 @@
 														<td class="product-total" id="<?php echo $produto_id?>"> R$ <?php echo $row['preco'] * $quantidade; ?> </td>
 														<?php 
 														$total_produtos = $total_produtos + ($row['preco'] * $quantidade);
-													}?>
+														}?>
 												</tr>
 											<?php }}else{
 												echo " </tbody>
@@ -124,7 +148,11 @@
 						</table>
 						<div class="cart-buttons text-center">
 							<form action = "conexao_db/incluirPedido.php" method="POST" id="finalizar_pedido">
-								<input type="submit" class="boxed-btn black text-center" name="cadastro_cliente" value="Finalizar Compra!">
+								<?php if(isset($_SESSION['email'])){
+									echo '<input type="submit" class="boxed-btn black text-center" name="finalizar_compra" value="Finalizar Compra!">';
+								}else{
+									echo '<input type="submit" class="boxed-btn black text-center" name="finalizar_compra" value="Finalizar Compra!">';
+								}?>
 							</form>			
 						</div>
 					</div>

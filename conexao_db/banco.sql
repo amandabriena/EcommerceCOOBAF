@@ -29,6 +29,13 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `data` date() NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS `mensagem_pedido` (
+  `id_mensagem` smallint(10) NOT NULL PRIMARY KEY auto_increment,
+  `id_pedido` smallint(10) NOT NULL,
+  `id_usuario` smallint(10) NOT NULL,
+  `mensagem` varchar(200)
+);
+
 CREATE TABLE IF NOT EXISTS produto (
 	id_produto smallint(10) not null primary key AUTO_INCREMENT,
 	nome varchar(15) not null,
@@ -72,6 +79,7 @@ CREATE TABLE IF NOT EXISTS noticia (
 ALTER TABLE pedido ADD FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario);
 ALTER TABLE item_pedido ADD FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido);
 ALTER TABLE item_pedido ADD FOREIGN KEY (id_produto) REFERENCES produto(id_produto);
+ALTER TABLE mensagem_pedido ADD FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido);
 ALTER TABLE cliente_pedido ADD FOREIGN KEY (id_cliente) REFERENCES usuarios(id_usuario);
 ALTER TABLE cliente_pedido ADD FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedido);
 ALTER TABLE usuarios ADD FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco);

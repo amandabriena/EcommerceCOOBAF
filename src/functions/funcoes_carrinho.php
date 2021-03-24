@@ -45,8 +45,8 @@ function alterar_quantidade($id_produto, $nova_quantidade){
 
 //Função para calcular preço * quantidade adicionada de um produto do carrinho
 function total_preco_produto($id_produto, $quantidade){
-    require('conexao.php');
-    if($quantidade != null){
+    require('conexao_db/conexao.php');
+    if($quantidade == null){
         $posicao = buscar_carrinho($id_produto);
         $quantidade = $_SESSION['carrinho']['qt'][$posicao];
     }
@@ -59,12 +59,24 @@ function total_preco_produto($id_produto, $quantidade){
 
 //Função para calcular o valor total da soma dos produtos do carrinho
 function total_carrinho(){
-    //require('conexao.php');
     $total_carrinho = 0;
-    for($i = 0 ; $i < sizeof($_SESSION['carrinho']['id']) ; $i=$i+1) {
-        $total_carrinho = $total_carrinho + total_preco_produto($i,null);
+    for($i = 0 ; $i < sizeof($_SESSION['carrinho']['id']); $i=$i+1) {
+        $total_carrinho = $total_carrinho + total_preco_produto(($_SESSION['carrinho']['id'][$i]),null);
     }
     return $total_carrinho;
+}
+function excluir_item_carrinho($id_produto){
+    $posicao = buscar_carrinho($id_produto);
+    for($i = $posicao ; $i < sizeof($_SESSION['carrinho']['id']) ; $i=$i+1) {
+        if($i!=(sizeof($_SESSION['carrinho']['id'])-1)){
+            $_SESSION['carrinho']['id'][$i] = $_SESSION['carrinho']['id'][$i+1];
+            $_SESSION['carrinho']['qt'][$i] = $_SESSION['carrinho']['qt'][$i+1];
+        }else{
+            unset($_SESSION['carrinho']['id'][$i]);
+            unset($_SESSION['carrinho']['qt'][$i]);
+        }
+    }
+
 }
 
 ?>

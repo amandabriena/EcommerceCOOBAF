@@ -1,6 +1,7 @@
 <?php session_start();
 
 include_once('src/functions/funcoes_carrinho.php');
+//excluir_item_carrinho(1);
 /*$total = total_preco(1);
 echo $total;
 */?>
@@ -14,9 +15,11 @@ echo $total;
         $id_produto = $_SESSION['carrinho']['id'][$i];
         echo '<tr> <td>'.$_SESSION['carrinho']['id'][$i].'</td>';
         echo '<td>'.$_SESSION['carrinho']['qt'][$i].'</td>';
-        echo '<td>'.total_preco_produto($id_produto).'</td></tr>';
+        echo '<td>'.total_preco_produto($id_produto, null).'</td></tr>';
      }  ?>
-</table>
+</table> <?php echo total_carrinho();
+
+?>
 <?php 
 /*
 

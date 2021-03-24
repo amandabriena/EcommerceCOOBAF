@@ -3,7 +3,6 @@
 include_once("conexao.php");
 include_once('../src/functions/funcoes_carrinho.php');
 //Buscando usuário do pedido
-//session_start();
 $email = $_SESSION['email'];
 $usuario = mysqli_query($connect,"SELECT * FROM usuarios WHERE email =
 '$email'");
@@ -36,6 +35,7 @@ if($insert){
         VALUES (NULL, '$id_pedido', '$id_produto', '$quantidade', '$valor_item')";
         mysqli_query($connect,$query);
     }
+    unset($_SESSION['carrinho']);
     header('location:../pedido.php?pedido='.$id_pedido.'.php');
 
 }else header('location:../404.php');
