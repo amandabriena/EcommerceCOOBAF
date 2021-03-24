@@ -11,7 +11,7 @@
     $rua = $_POST['rua'];
     $bairro = $_POST['bairro'];
     $cidade = $_POST['cidade'];
-    $uf = $_POST['estado'];
+    $uf = $_POST['uf'];
     $numero = $_POST['numero'];
     $logradouro = $_POST['logradouro'];
 

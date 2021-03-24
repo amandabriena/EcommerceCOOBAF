@@ -45,7 +45,7 @@ function alterar_quantidade($id_produto, $nova_quantidade){
 
 //Função para calcular preço * quantidade adicionada de um produto do carrinho
 function total_preco_produto($id_produto, $quantidade){
-    require('conexao_db/conexao.php');
+    require('conexao.php');
     if($quantidade != null){
         $posicao = buscar_carrinho($id_produto);
         $quantidade = $_SESSION['carrinho']['qt'][$posicao];
@@ -59,10 +59,10 @@ function total_preco_produto($id_produto, $quantidade){
 
 //Função para calcular o valor total da soma dos produtos do carrinho
 function total_carrinho(){
-    require('conexao_db/conexao.php');
+    //require('conexao.php');
     $total_carrinho = 0;
     for($i = 0 ; $i < sizeof($_SESSION['carrinho']['id']) ; $i=$i+1) {
-        $total_carrinho = $total_carrinho + total_preco_produto($i);
+        $total_carrinho = $total_carrinho + total_preco_produto($i,null);
     }
     return $total_carrinho;
 }

@@ -22,6 +22,7 @@
 	
 	<!--MENU-->
 	<?php 
+		session_start();
 		require_once("src/components/menu.php");
 	?>
 	

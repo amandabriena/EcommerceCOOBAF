@@ -4,16 +4,19 @@
 	<?php require_once("src/components/head.php");?>
 	<!-- title -->
 	<script type="text/javascript">
-		function alterar(quantidade, produto){
+		function alterar(quantidade, produto, preco){
+			//preco = $(item).text();
+			document.getElementById(produto).innerHTML = "R$" + quantidade * preco;
+
 			//função para alterar a quantidade do produto na sessão
 			var dados = {
                     nova_quantidade : quantidade,
                     id_produto : produto
                 }
 				
-                $.post('alterar_quantidade.php', dados, function(retorna){
+                $.post('alterar_quantidade.php', dados, function(){
 					//para atualizar o valor (preço * quantidade do produto)
-					document.getElementById("preco_total_").innerHTML = retorna;
+					//document.getElementById("preco_total_").innerHTML = retorna;
 				});
 		};
 	</script>
@@ -81,9 +84,9 @@
 														<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
 														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
 														<td class="product-name"> <?php echo $row['nome']; ?> </td>
-														<td class="product-pricee"> R$ <?php echo $row['preco']; ?></td>
-														<td class="product-quantity"><input type="number" placeholder="1" value = <?php echo $quantidade?> name=qntprod id= "quantidade_produto" onchange="alterar(this.value, <?php echo $produto_id; ?>)"> </td>
-														<td class="product-total" id = "preco_total_<?php echo $produto_id?>"> R$ <?php echo $row['preco'] * $quantidade; ?> </td>
+														<td class="product-pricee <? echo $produto_id?>"> R$ <?php echo $row['preco']; ?></td>
+														<td class="product-quantity"><input type="number" placeholder="1" value = <?php echo $quantidade?>  onchange="alterar(this.value, <?php echo $produto_id; ?>, <?php echo $row['preco']; ?>)"> </td>
+														<td class="product-total" id="<?php echo $produto_id?>"> R$ <?php echo $row['preco'] * $quantidade; ?> </td>
 														<?php 
 														$total_produtos = $total_produtos + ($row['preco'] * $quantidade);
 													}?>
@@ -97,7 +100,11 @@
 							</tbody>
 						</table>
 					</div>
+					<div class="cart-buttons">
+						<a href="produtos.php" class="boxed-btn">Continuar comprando</a>			
+					</div>
 				</div>
+				
 
 				<div class="col-lg-4">
 					<div class="total-section">
@@ -112,15 +119,13 @@
 								<tr class="total-data">
 									<td><strong>Total: </strong></td>
 									<td id = "total_produtos">R$<?php echo $total_produtos?></td>
-								</tr>
+								</tr> 
 							</tbody>
 						</table>
-						<div class="cart-buttons">
-							<a href="produtos.php?continuar=" class="boxed-btn">Continuar comprando</a>
-							<?php if(isset($_SESSION['email'])){ ?>
-										<a href="ger_pedidos.php" class="boxed-btn black">Finalizar</a>
-									<?php } else ?> <a href="login.php" class="boxed-btn black">Finalizar</a>
-													
+						<div class="cart-buttons text-center">
+							<form action = "conexao_db/incluirPedido.php" method="POST" id="finalizar_pedido">
+								<input type="submit" class="boxed-btn black text-center" name="cadastro_cliente" value="Finalizar Compra!">
+							</form>			
 						</div>
 					</div>
 				</div>

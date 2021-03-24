@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `id_pedido` smallint(10) NOT NULL PRIMARY KEY auto_increment,
   `id_usuario` smallint(10) NOT NULL,
   `valor_total` float(20),
-  `status` tinyint(1) NOT NULL
+  `status` tinyint(1) NOT NULL,
+  `data` date() NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS produto (

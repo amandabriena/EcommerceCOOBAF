@@ -21,19 +21,15 @@
 <body>
 	<!--MENU-->
 	<?php require_once("src/components/menu.php");?>
-	<?php session_start();
-	
-
-	?>
 	<?php 
 		include_once('conexao_db/conexao.php');
 		include_once('src/functions/funcoes_carrinho.php');
 	?>
 
 	<!-- breadcrumb-section -->
-	<div class="breadcrumb-section2 breadcrumb-bg"></div>
+	<div class="breadcrumb-section2 breadcrumb-bg "></div>
 	<!-- end breadcrumb section -->
-    <div class="form-title text-center">
+    <div class="form-title text-center mt-4">
 		<h2>Informações do Pedido</h2>
 		<p>Confira o andamento do seu pedido</p>
 	</div>
@@ -48,9 +44,9 @@
 								<tr class="table-head-row">
 									<th class="product-image"></th>
 									<th class="product-name">Nome</th>
-									<th class="product-price">Preço</th>
+									<th class="product-price">Preço Unitário</th>
 									<th class="product-quantity">Quantidade</th>
-									<th class="product-total">Total</th>
+									<th class="product-total">Total do Item</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -67,27 +63,19 @@
 										<td class="product-quantity"><?php echo $row_item['quantidade'];?> </td>
 										<td class="product-total" id = "preco_total"> R$ <?php echo $row_item['valor_item']; }?> </td>
 									</tr>
-                                    <tr class="total-data">
-									    <td><strong>Total: </strong></td>
-									    <td id = "total_produtos">R$<?php echo $row_pedido['valor_total'];?></td>
-								    </tr>
 							</tbody>
 						</table>
+						<h4 class = "text-center"><strong>Valor total do pedido: R$<?php echo $row_pedido['valor_total'];?></strong></h4>
 					</div>
 				</div>
 			</div>
-            <div class="row offset-lg-4">
-					<div class="total-section">
+            <div class="row text-center">
                     <div class="cart-buttons">
-							<a href="produtos.php?continuar=" class="boxed-btn">Cancelar Compra</a>
-							<?php if(isset($_SESSION['email'])){ ?>
-								<a href="ger_pedidos.php" class="boxed-btn black">Finalizar</a>
-							<?php } else ?> <a href="login.php" class="boxed-btn black">Finalizar</a>
-													
+						<form action = "conexao_db/atualizarPedido.php" method="POST" id="cancelar_pedido">
+							<input type="submit" class="boxed-btn black text-center" value="Cancelar Pedido">
+						</form>
 					</div>
-						
-					</div>
-				</div>
+			</div>
 		</div>
 	</div>
 	<!-- end cart -->

@@ -32,20 +32,27 @@
 	<!-- products -->
 	<div class="product-section mt-80 mb-150">
 		<div class="container">
-			<div class="row product-lists">
+			<div class="row product-lists" id="aberto">
 			<?php
                     $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.status, pedido.valor_total
 					FROM pedido 
-					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where usuarios.email = '$id_usuario' limit 3";
+					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where usuarios.email = '$usuario' limit 3";
                     $resultado = mysqli_query($connect, $sql);
-                    while($row = mysqli_fetch_assoc($resultado)){
-						echo '<div class="col-lg-4 col-md-6 pt-4 text-center berry">
-								<div class="pedido">
-									<h3>'.$row['nome'].'</h3>
-									<p class="product-price"><span>'.$row['id_pedido'].'</span> '.$row['status'].' </p>
-									<a href="pedido.php?pedido='.$row['id_pedido'].'" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
-								</div>
-							</div>';
+					if(mysqli_num_rows($resultado)>0){
+						while($row = mysqli_fetch_assoc($resultado)){
+							echo '<div class="col-lg-4 col-md-6 pt-4 text-center">
+									<div class="pedido">
+										<h3>'.$row['nome'].'</h3>
+										<p class="product-price"><span>'.$row['id_pedido'].'</span> '.$row['status'].' </p>
+										<a href="pedido.php?pedido='.$row['id_pedido'].'" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
+									</div>
+								</div>';
+						}
+					}else{
+						echo '<div class="cart-buttons">
+							<h5>Você ainda não fez nenhum pedido :( </h5>
+							<a href="produtos.php" class="boxed-btn">Continuar comprando</a>			
+						</div>';
 					}
                     ?>
             </div>
