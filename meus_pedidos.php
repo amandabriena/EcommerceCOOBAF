@@ -34,16 +34,19 @@
 		<div class="container">
 			<div class="row product-lists" id="aberto">
 			<?php
-                    $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.status, pedido.valor_total
+                    $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.valor_total, pedido.data_pedido, pedido.status, pedido.valor_total
 					FROM pedido 
 					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where usuarios.email = '$usuario' limit 3";
                     $resultado = mysqli_query($connect, $sql);
 					if(mysqli_num_rows($resultado)>0){
 						while($row = mysqli_fetch_assoc($resultado)){
+							if($row['status'] == 2){
+								$status = "Em andamento";
+							}
 							echo '<div class="col-lg-4 col-md-6 pt-4 text-center">
 									<div class="pedido">
-										<h3>'.$row['nome'].'</h3>
-										<p class="product-price"><span>'.$row['id_pedido'].'</span> '.$row['status'].' </p>
+										<h3>'.$row['data_pedido'].'</h3>
+										<p class="product-price"><span>Valor: R$'.$row['valor_total'].'</span> '.$status.' </p>
 										<a href="pedido.php?pedido='.$row['id_pedido'].'" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
 									</div>
 								</div>';

@@ -33,15 +33,15 @@
 		<div class="container">
 			<div class="row product-lists" id="aberto">
 			<?php
-                    $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.status, pedido.valor_total
+                    $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.status, pedido.data_pedido, pedido.valor_total
 					FROM pedido 
-					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where pedido.status = 2 limit 3";
+					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where pedido.status = 2 ORDER BY pedido.data_pedido ASC limit 3";
                     $resultado = mysqli_query($connect, $sql);
                     while($row = mysqli_fetch_assoc($resultado)){
 						echo '<div class="col-lg-4 col-md-6 pt-4 text-center berry">
 								<div class="pedido">
-									<h3>'.$row['nome'].'</h3>
-									<p class="product-price"><span>'.$row['id_pedido'].'</span> '.$row['status'].' </p>
+									<h3> Cliente: '.$row['nome'].'</h3>
+									<p class="product-price"><span>Valor Pedido: R$'.$row['valor_total'].'</span>  ID Pedido: '.$row['id_pedido'].' </p>
 									<a href="pedido.php?pedido='.$row['id_pedido'].'" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
 								</div>
 							</div>';
@@ -63,7 +63,7 @@
             
             <div class="row product-lists" id="fechado">
 				<?php
-                    $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.status, pedido.valor_total
+                    $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.status, pedido.data_pedido, pedido.valor_total
 					FROM pedido 
 					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where pedido.status = 2 limit 3";
                     $resultado = mysqli_query($connect, $sql);
@@ -71,7 +71,7 @@
 						echo '<div class="col-lg-4 col-md-6 pt-4 text-center berry">
 								<div class="pedido">
 									<h3>'.$row['nome'].'</h3>
-									<p class="product-price"><span>'.$row['id_pedido'].'</span> '.$row['status'].' </p>
+									<p class="product-price"><span>Valor Pedido: R$'.$row['valor_total'].'</span>  ID Pedido: '.$row['id_pedido'].' </p>
 									<a href="pedido.php?pedido='.$row['id_pedido'].'" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
 								</div>
 							</div>';

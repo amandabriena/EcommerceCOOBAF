@@ -50,8 +50,8 @@ function total_preco_produto($id_produto, $quantidade){
         $posicao = buscar_carrinho($id_produto);
         $quantidade = $_SESSION['carrinho']['qt'][$posicao];
     }
-    if($_SERVER["REQUEST_URI"] == "EcommerceCOOBAF/carrinho.php"){
-        require_once('conexao.php');
+    if($_SERVER["REQUEST_URI"] == "/EcommerceCOOBAF/conexao_db/incluirPedido.php"){
+        require('conexao.php');
         $resultado = mysqli_query($connect,"SELECT preco FROM produto where id_produto = '$id_produto'");
         while($row = mysqli_fetch_assoc($resultado)){
             $total = floatval($row['preco']) * $quantidade;

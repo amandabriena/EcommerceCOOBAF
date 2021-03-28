@@ -71,7 +71,11 @@
 							<tbody>
 									<?php 
 										$total_produtos = 0.00;
-										if(isset($_GET['adicionar'])){
+										if(isset($_GET['quantidade'])){
+											$quantidade = (int) $_GET['quantidade'];
+											$idProduto = (int) $_GET['adicionar'];
+											add_carrinho($idProduto,$quantidade);
+										}else if(isset($_GET['adicionar'])){
 											$idProduto = (int) $_GET['adicionar'];
 											add_carrinho($idProduto,1);
 										}

@@ -64,6 +64,9 @@
 						<?php 
 							$resultado = mysqli_query($connect,"SELECT * FROM produto where id_produto = '$id_produto'") or die("erro ao selecionar");
 							while($row = mysqli_fetch_assoc($resultado)){
+								$id_categoria = $row['id_categoria'];
+								$categoria = mysqli_query($connect,"SELECT nome FROM categoria_produto where id_categoria = '$id_categoria'");
+								$row_categoria = mysqli_fetch_assoc($categoria);
 						?>
 						<img src='assets/img-upload/<?php echo $row['imagem'];  ?>' alt="">
 					</div>
@@ -74,11 +77,13 @@
 						<p class="single-product-pricing"><span>Por quilo</span>R$<?php echo $row['preco']; ?></p>
 						<p><?php echo $row['descricao']; ?></p>
 						<div class="single-product-form">
-							<form action="index.html">
-								<input type="number" placeholder="0">
+							<form  method = "GET" action="carrinho.php">
+								<input type='hidden' name='adicionar' value = "<?php echo $id_produto; ?>">
+								<input name = "quantidade" type="number" value = '1'>
+								<button type="submit" class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</button>
 							</form>
-							<a href='carrinho.php?adicionar=<?php $id_produto; ?>' class="cart-btn"><i class="fas fa-shopping-cart"></i> Adicionar ao carrinho</a>
-							<p><strong>Categoria: </strong><?php echo $row['categoria']; } ?></p>
+							
+							<p><strong>Categoria: </strong><?php echo $row_categoria['nome']; } ?></p>
 						</div>
 					</div>
 				</div>
@@ -102,7 +107,7 @@
 			<?php 
 				$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 and visibilidade = 1 limit 3") or die("erro ao selecionar");
 				while($row = mysqli_fetch_assoc($resultadogeral)){
-					echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
+					echo "<div class='col-lg-4 col-md-6 text-center ".$row['id_categoria']."'>
 							<div class='single-product-item'>
 							<div class='product-image'>
 								<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>

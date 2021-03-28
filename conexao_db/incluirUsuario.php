@@ -51,7 +51,7 @@
                 if(isset($_POST["cadastro_cliente"])){
                     $_SESSION['email'] = $email;
                     $_SESSION['nome'] = $nome;
-                    header('location:../produtos.php');
+                    header('location:../carrinho.php');
                 }else{ 
                     header('location:../ger_cooperados.php');
                 }
