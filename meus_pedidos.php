@@ -36,12 +36,18 @@
 			<?php
                     $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.valor_total, pedido.data_pedido, pedido.status, pedido.valor_total
 					FROM pedido 
-					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where usuarios.email = '$usuario' limit 3";
+					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where usuarios.email = '$usuario' ORDER BY pedido.data_pedido DESC limit 3";
                     $resultado = mysqli_query($connect, $sql);
 					if(mysqli_num_rows($resultado)>0){
 						while($row = mysqli_fetch_assoc($resultado)){
 							if($row['status'] == 2){
+								$status = "Pedido Realizado";
+							}else if($row['status'] == 3){
 								$status = "Em andamento";
+							}else if($row['status'] == 4){
+								$status = "Finalizado";
+							}else{
+								$status = "Cancelado";
 							}
 							echo '<div class="col-lg-4 col-md-6 pt-4 text-center">
 									<div class="pedido">
