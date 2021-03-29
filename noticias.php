@@ -53,7 +53,7 @@
 				<?php 
 					$resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1 and visibilidade = 1") or die("erro ao selecionar");
 					while($row = mysqli_fetch_assoc($resultadogeral)){
-						
+						/*
 					$altura = "200";
 					$largura = "300";
 					echo "Altura pretendida: $altura - largura pretendida: $largura <br>";
@@ -76,7 +76,7 @@
 							imagejpeg($imagem_redimensionada, 'assets/img-upload/' . $row['imagem']);
 							
 							//echo "<img src='arquivo/".$_FILES['arquivo']['name']."'>";
-							
+							*/
 							
 						
 						echo "<div class='col-lg-4 col-md-6'>

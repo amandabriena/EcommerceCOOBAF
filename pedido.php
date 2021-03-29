@@ -9,13 +9,16 @@
 	$id_pedido = $_GET['pedido'];
     $resultado_pedido = mysqli_query($connect,"SELECT * FROM pedido where id_pedido = '$id_pedido'") or die("erro ao selecionar pedido");
 	$row_pedido = mysqli_fetch_assoc($resultado_pedido);
+	if(!isset($_SESSION['cooperado']) and ($row_produto['id_usuario'] != $_SESSION['user']) ){
+		header('location:meus_pedidos.php');
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<?php require_once("src/components/head.php");?>
 	<!-- title -->
-	<title>Meu Carrinho</title>
+	<title>Pedido de Compra</title>
 	
 </head>
 <body>
@@ -36,6 +39,9 @@
 	<!-- cart -->
 	<div class="cart-section mt-4 mb-150">
 		<div class="container">
+		<div class="row">
+
+		</div>
 			<div class="row">
 				<div class="col-lg-8 col-md-12 offset-lg-2">
 					<div class="cart-table-wrap">

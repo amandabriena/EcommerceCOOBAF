@@ -78,8 +78,10 @@
 					<div class="search-bar">
 						<div class="search-bar-tablecell">
 							<h3>Busque produtos:</h3>
-							<input type="text" placeholder="">
-							<button type="submit">Buscar<i class="fas fa-search"></i></button>
+							<form method = "GET" action="produtos.php">
+								<input name ="produto" type="text" placeholder="" value= "">
+								<button type="submit">Buscar<i class="fas fa-search"></i></button>
+							</form>
 						</div>
 					</div>
 				</div>

@@ -3,7 +3,7 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    if(isset($_SESSION['email']) &&  $_SESSION['cooperado']){
+    if(isset($_SESSION['email']) &&  isset($_SESSION['cooperado'])){
         $logado = $_SESSION['email'];
     }else{
         $_SESSION['erro'] = "erro_login";

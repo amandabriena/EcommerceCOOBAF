@@ -26,10 +26,11 @@
 </head>
 <body>
 	<!--MENU-->
-	<?php require_once("src/components/menu.php");?>
-	<?php session_start();
-	
-
+	<?php 
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
+	require_once("src/components/menu.php");
 	?>
 	<?php 
 		include_once('conexao_db/conexao.php');

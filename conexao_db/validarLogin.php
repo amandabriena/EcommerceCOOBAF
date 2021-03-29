@@ -13,6 +13,7 @@
         if($row['status']==1){
             $_SESSION['email'] = $email;
             $_SESSION['nome'] = $row['nome'];
+            $_SESSION['user'] = $row['id_usuario'];
             unset($_SESSION['erro']);
             //Verificando se o usuário é cooperado ou cliente para redirecionamento da página
             if($row['tipo_usuario']==0){

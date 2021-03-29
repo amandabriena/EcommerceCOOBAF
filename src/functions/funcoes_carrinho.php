@@ -1,8 +1,4 @@
 <?php
-
-$id_produto = 1;
-
-
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }

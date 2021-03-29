@@ -28,7 +28,7 @@
     </div>
     <!-- end breadcrumb section -->
 
-	<!-- products -->
+	<!-- pedidos -->
 	<div class="product-section mt-80 mb-150">
 		<div class="container">
 			<div class="row product-lists" id="aberto">

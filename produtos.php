@@ -1,6 +1,7 @@
 <?php
     //CONEXÃO COM O BANCO DE DADOS
     include("conexao_db/conexao.php");
+
     
 ?>
 <!DOCTYPE html>
@@ -54,36 +55,38 @@
 			<div class="resultado_produto row product-lists">
 				<?php 
 					$quantProd = 0;
-					$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 and visibilidade = 1") or die("erro ao selecionar");
-					while($row = mysqli_fetch_assoc($resultadogeral)){
-						$quantProd++;
-						
-						$_SESSION['idProduto'] = $row['id_produto'];
-						
-						$idProduto = $row['id_produto'];
-						$nomeCategoria = mysqli_query($connect,"SELECT nome FROM categoria_produto where id_categoria = select id_categoria from produto
-						where id_produto = $idProduto");
-						echo "<div class='col-lg-4 col-md-6 text-center '>
-								<div class='single-product-item'>
-									<div class='product-image'>
-										<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
+					if(isset($_GET['produto'])){
+						$produto_busca = $_GET['produto'];
+						$resultadogeral = mysqli_query($connect,"SELECT * FROM produto WHERE nome LIKE '%$produto_busca%' and status = 1 and visibilidade = 1") or die("erro ao selecionar");
+					}else{
+						$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 and visibilidade = 1") or die("erro ao selecionar");
+					}
+					if(mysqli_num_rows($resultadogeral)>0){
+						while($row = mysqli_fetch_assoc($resultadogeral)){
+							$quantProd++;
+							
+							$_SESSION['idProduto'] = $row['id_produto'];
+							
+							$idProduto = $row['id_produto'];
+							$nomeCategoria = mysqli_query($connect,"SELECT nome FROM categoria_produto where id_categoria = select id_categoria from produto
+							where id_produto = $idProduto");
+							echo "<div class='col-lg-4 col-md-6 text-center '>
+									<div class='single-product-item'>
+										<div class='product-image'>
+											<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
+										</div>
+										<h3>".$row['nome']."</h3>
+										<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
+										<a href='carrinho.php?adicionar=".$row['id_produto']."' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>  
+	
 									</div>
-									<h3>".$row['id_produto']."</h3>
-									<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
-									<a href='carrinho.php?adicionar=".$row['id_produto']."' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>  
-
-								</div>
-							</div>";
-						
-									
+								</div>";
+							
+										
+						}
+					}else{
+						echo "<p class = text-center> Nenhum produto encontrado!</p>";
 					}
-					if(isset($_GET['continuar'])){
-						$_SESSION['continuarComprando'] = 1; 
-						echo $_SESSION['continuarComprando'];
-						
-					}
-					else $_SESSION['continuarComprando'] = 2;
-					echo $_SESSION['continuarComprando'];
 				?>
 			</div>
 

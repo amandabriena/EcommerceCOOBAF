@@ -42,7 +42,7 @@
 						unset($_SESSION['mensagem']);
 			}else if(isset($_SESSION['mensagem']) and $_SESSION['mensagem'] == "excluir"){
 				echo '
-						<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
+						<div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
 						<strong>Produto excluído com sucesso!</strong> 
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						    <span aria-hidden="true">&times;</span>
@@ -64,7 +64,7 @@
 					<?php 
 						$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where visibilidade = 1") or die("erro ao selecionar");
 						while($row = mysqli_fetch_assoc($resultadogeral)){
-							echo "<div class='col-lg-4 col-md-6 text-center ".$row['categoria']."'>
+							echo "<div class='col-lg-4 col-md-6 text-center'>
 									<div class='single-product-item'>
 									<div class='product-image'>
 										<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
