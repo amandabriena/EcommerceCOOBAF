@@ -161,7 +161,7 @@
 											<td class="product-name"> <?php echo $row_produto['nome']; ?> </td>
 											<td class="product-pricee"> R$ <?php echo $row_produto['preco']; ?></td>
 											<td class="product-quantity"><?php echo $row_item['quantidade'];?> </td>
-											<td class="product-total" id = "preco_total"> R$ <?php echo $row_item['valor_item']; }?> </td>
+											<td class="product-total" id = "preco_total"> R$ <?php echo number_format($row_item['valor_item'],2,",",""); }?> </td>
 										</tr>
 								</tbody>
 							</table>
@@ -179,8 +179,8 @@
       					<div class="card-body">
 						  <h5 class="card-title">Detalhes:</h5>
 						  <p class="card-text">Pedido: <?php echo $id_pedido;?></p>
-						  <p class="card-text">Data da Compra: <?php echo $row_pedido['data_pedido'];?></p>
-						  <p class="card-text">Valor Total: R$<?php echo $row_pedido['valor_total'];?></p>
+						  <p class="card-text">Data da Compra: <?php echo $data = date("d/m/Y", strtotime($row_pedido['data_pedido']));?></p>
+						  <p class="card-text">Valor Total: R$<?php echo  number_format($row_pedido['valor_total'],2,",","");?></p>
 						</div>
 					</div>
 				</div>						
