@@ -22,7 +22,7 @@
                                 <li><a href="ger_noticias.php">Notícias</a>
 								</li>
                                 <li><a href="ger_pedidos.php">Pedidos</a></li>
-								<li><a class='shopping-cart' href='carrinho.php'>MINHA CONTA <i class="fa fa-user"></i></a>
+								<li><a class='shopping-cart' href='#'>MINHA CONTA <i class="fa fa-user"></i></a>
 									<ul class="sub-menu">
 										<li><a href="atualizar_usuario.php">Atualizar Dados</a></li>
 										<li><a href="atualizar_usuario.php">Alterar minha Senha</a></li>
