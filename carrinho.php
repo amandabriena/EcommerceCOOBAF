@@ -6,7 +6,9 @@
 	<script type="text/javascript">
 		function alterar(quantidade, produto, preco){
 			//alterando o preço do produto baseado na nova quantidade
-			document.getElementById(produto).innerHTML = "R$" + quantidade * preco;
+			var total_item = quantidade * preco;
+			var valorFormatado = total_item.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+			document.getElementById(produto).innerHTML = "R$" + valorFormatado;
 			
 			//função para alterar a quantidade do produto na sessão
 			var dados = {
@@ -118,7 +120,7 @@
 														<td class="product-name"> <?php echo $row['nome']; ?> </td>
 														<td class="product-pricee <? echo $produto_id?>"> R$ <?php echo number_format($row['preco'],2,",",""); ?></td>
 														<td class="product-quantity"><input type="number" placeholder="1" value = <?php echo $quantidade?>  onchange="alterar(this.value, <?php echo $produto_id; ?>, <?php echo $row['preco']; ?>)"> </td>
-														<td class="product-total" id="<?php echo $produto_id?>" onchange="formatador()"> R$ <?php echo $subtotal = $row['preco'] * $quantidade; echo number_format($subtotal,2,",","");?> </td>
+														<td class="product-total" id="<?php echo $produto_id?>" onchange="formatador()"> R$ <?php $subtotal = $row['preco'] * $quantidade; echo number_format($subtotal,2,",","");?> </td>
 														<?php 
 														$total_produtos = $total_produtos + ($row['preco'] * $quantidade);
 														}?>
