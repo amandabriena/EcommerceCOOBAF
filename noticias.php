@@ -78,7 +78,8 @@
 							//echo "<img src='arquivo/".$_FILES['arquivo']['name']."'>";
 							*/
 							
-						
+						//$data = formatarData($row['data']);
+
 						echo "<div class='col-lg-4 col-md-6'>
 						<div class='single-latest-news'>
 						<?php
@@ -86,7 +87,8 @@
 							<div class='news-text-box'>
 								<h3><a href='noticia.php?noticia=".$row['id_noticia']."'>".$row['titulo']."</a></h3>
 								<p class='blog-meta'>
-									<span class='date'><i class='fas fa-calendar'></i>".$row['data']."</span>
+									
+									<span class='date'><i class='fas fa-calendar'></i>".date("d/m/Y", strtotime($row['data']))."</span>
 								</p>
 								<a href='noticia.php?noticia=".$row['id_noticia']."' class='read-more-btn'>leia mais <i class='fas fa-angle-right'></i></a>
 							</div>

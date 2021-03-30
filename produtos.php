@@ -76,7 +76,7 @@
 											<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
 										</div>
 										<h3>".$row['nome']."</h3>
-										<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
+										<p class='product-price'><span>Por quilo</span> R$".number_format($row['preco'],2,",","")." </p>
 										<a href='carrinho.php?adicionar=".$row['id_produto']."' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>  
 	
 									</div>

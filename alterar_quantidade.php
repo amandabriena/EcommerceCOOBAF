@@ -11,6 +11,6 @@ if($quantidade == 0){
 }else{
     alterar_quantidade($id_produto , $quantidade);
     $total = total_carrinho();
-    echo $total;
+    echo number_format($total,2,",","");
 }
 ?>

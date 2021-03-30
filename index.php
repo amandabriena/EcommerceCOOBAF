@@ -73,7 +73,7 @@
 										<a href='produto.php?produto=".$row['id_produto']."'><img src='assets/img-upload/".$row['imagem']."' ></a>
 									</div>
 									<h3>".$row['nome']."</h3>
-									<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>
+									<p class='product-price'><span>Por quilo</span> R$".number_format($row['preco'],2,",","")." </p>
 									<a href='carrinho.php?adicionar=' class='cart-btn'><i class='fas fa-shopping-cart'></i> Adicionar ao Carrinho</a>
 								</div>
 							</div>";
@@ -136,7 +136,7 @@
 								<div class='news-text-box'>
 								<h3><a href='single-news.html'>".$row['titulo']."</a></h3>
 								<p class='blog-meta'>
-									<span class='date'><i class='fas fa-calendar'></i>".$row['data']."</span>
+									<span class='date'><i class='fas fa-calendar'></i>".date("d/m/Y", strtotime($row['data']))."</span>
 								</p>
 								<a href='noticia.php?noticia=".$row['id_noticia']."' class='read-more-btn'>leia mais <i class='fas fa-angle-right'></i></a>
 							</div>

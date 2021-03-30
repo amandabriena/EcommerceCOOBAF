@@ -70,7 +70,7 @@
 								<input type="text" name="outraCat" id="outraCat" disabled>
 							</p>
 							<p>
-                                <input type="number" pattern="[0-9]+([\.,][0-9]+)?" step="0.01" placeholder="Preço" name="preco" id="preco">
+                                <input type="number" pattern="[0-9]+([\.,][0-9]+)?" step="1.01" placeholder="Preço" name="preco" id="preco">
                             </p>
 							<div class= "text-left">
 								<h6>Selecione uma imagem para o produto:</h6>

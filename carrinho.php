@@ -5,7 +5,7 @@
 	<!-- title -->
 	<script type="text/javascript">
 		function alterar(quantidade, produto, preco){
-			//laterando o preço do produto baseado na nova quantidade
+			//alterando o preço do produto baseado na nova quantidade
 			document.getElementById(produto).innerHTML = "R$" + quantidade * preco;
 			
 			//função para alterar a quantidade do produto na sessão
@@ -114,9 +114,9 @@
 														<!-- fim do Modal -->
 														<td class="product-image"><img src='assets/img-upload/<?php echo $row['imagem']; ?>'></td>
 														<td class="product-name"> <?php echo $row['nome']; ?> </td>
-														<td class="product-pricee <? echo $produto_id?>"> R$ <?php echo $row['preco']; ?></td>
+														<td class="product-pricee <? echo $produto_id?>"> R$ <?php echo number_format($row['preco'],2,",",""); ?></td>
 														<td class="product-quantity"><input type="number" placeholder="1" value = <?php echo $quantidade?>  onchange="alterar(this.value, <?php echo $produto_id; ?>, <?php echo $row['preco']; ?>)"> </td>
-														<td class="product-total" id="<?php echo $produto_id?>"> R$ <?php echo $row['preco'] * $quantidade; ?> </td>
+														<td class="product-total" id="<?php echo $produto_id?>" input type= "number" onchange=""> R$ <?php $subtotal = $row['preco'] * $quantidade; echo number_format($subtotal,2,",","");  ?> </td>
 														<?php 
 														$total_produtos = $total_produtos + ($row['preco'] * $quantidade);
 														}?>
@@ -148,7 +148,7 @@
 							<tbody>
 								<tr class="total-data">
 									<td><strong>Total: </strong></td>
-									<td id = "total_produtos">R$<?php echo $total_produtos?></td>
+									<td id = "total_produtos">R$<?php echo number_format($total_produtos,2,",","");?></td>
 								</tr> 
 							</tbody>
 						</table>
