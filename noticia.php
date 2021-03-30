@@ -54,7 +54,7 @@
 							?>
 							<div class="single-artcile-bg"><img src='assets/img-upload/<?php echo $row['imagem'];  ?>'></div>
 							<p class="blog-meta">
-								<span class="date"><i class="fas fa-calendar"></i> <?php echo $row['data'];  ?></span>
+								<span class="date"><i class="fas fa-calendar"></i> <?php echo date("d/m/Y", strtotime($row['data']));  ?></span>
 							</p>
 							<h2><?php echo $row['titulo']; ?></h2>
 							<p><?php echo $row['corpo']; } ?></p>

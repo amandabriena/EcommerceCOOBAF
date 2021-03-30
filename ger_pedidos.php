@@ -38,10 +38,11 @@
 					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where pedido.status = 2 ORDER BY pedido.data_pedido ASC limit 3";
                     $resultado = mysqli_query($connect, $sql);
                     while($row = mysqli_fetch_assoc($resultado)){
+						$valor = number_format($row['valor_total'],2,",","");
 						echo '<div class="col-lg-4 col-md-6 pt-4 text-center berry">
 								<div class="pedido">
 									<h3> Cliente: '.$row['nome'].'</h3>
-									<p class="product-price"><span>Valor Pedido: R$'.$row['valor_total'].'</span>  ID Pedido: '.$row['id_pedido'].' </p>
+									<p class="product-price"><span>Valor Pedido: R$'.$valor.'</span>  ID Pedido: '.$row['id_pedido'].' </p>
 									<a href="pedido.php?pedido='.$row['id_pedido'].'" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
 								</div>
 							</div>';

@@ -49,10 +49,12 @@
 							}else{
 								$status = "Cancelado";
 							}
+							$valor = number_format($row['valor_total'],2,",","");
+							$data = date("d/m/Y", strtotime($row['data_pedido']));
 							echo '<div class="col-lg-4 col-md-6 pt-4 text-center">
 									<div class="pedido">
-										<h3>'.$row['data_pedido'].'</h3>
-										<p class="product-price"><span>Valor: R$'.$row['valor_total'].'</span> '.$status.' </p>
+										<h3>'.$data.'</h3>
+										<p class="product-price"><span>Valor: R$'.$valor.'</span> '.$status.' </p>
 										<a href="pedido.php?pedido='.$row['id_pedido'].'" class="cart-btn"><i class="fas fa-eye"></i> Ver</a>
 									</div>
 								</div>';
