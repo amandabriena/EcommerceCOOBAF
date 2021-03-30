@@ -33,7 +33,8 @@ CREATE TABLE IF NOT EXISTS `mensagem_pedido` (
   `id_mensagem` smallint(10) NOT NULL PRIMARY KEY auto_increment,
   `id_pedido` smallint(10) NOT NULL,
   `id_usuario` smallint(10) NOT NULL,
-  `mensagem` varchar(200)
+  `mensagem` varchar(200),
+  `data_msg` DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS produto (

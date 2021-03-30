@@ -123,14 +123,16 @@
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-						<textarea id="btn-input" type="textarea" class="form-control input-sm" placeholder="Digite aqui..">
-						</textarea>
-                        
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" id="btn-chat">
-                                Enviar Mensagem</button>
-                        </span>
-                    </div>
+						<form action = "conexao_db/enviarMensagem.php" method="POST">
+							<textarea name = "mensagem" id="btn-input" type="textarea" class="form-control input-sm" placeholder="Digite aqui..">
+							</textarea>
+							<input type='hidden' name='id_pedido' value = "<?php echo $id_pedido; ?>">
+							<input type='hidden' name='id_usuario' value = "<?php echo $row_pedido['id_usuario']; ?>">
+							<span class="input-group-btn">
+								<button type = "submit" class="btn btn-success" id="btn-chat">Enviar Mensagem</button>
+							</span>
+						</form>
+					</div>
                 </div>
             </div>
 				</div>
@@ -179,7 +181,7 @@
       					<div class="card-body">
 						  <h5 class="card-title">Detalhes:</h5>
 						  <p class="card-text">Pedido: <?php echo $id_pedido;?></p>
-						  <p class="card-text">Data da Compra: <?php echo $data = date("d/m/Y", strtotime($row_pedido['data_pedido']));?></p>
+						  <p class="card-text">Data da Compra: <?php echo date("d/m/Y", strtotime($row_pedido['data_pedido']));?></p>
 						  <p class="card-text">Valor Total: R$<?php echo  number_format($row_pedido['valor_total'],2,",","");?></p>
 						</div>
 					</div>
