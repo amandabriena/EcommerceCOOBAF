@@ -76,7 +76,7 @@
 							<div class='news-text-box'>
 								<h3><a href='single-news.html'>".$row['titulo']."</a></h3>
 								<p class='blog-meta'>
-									<span class='date'><i class='fas fa-calendar'></i>".$row['data']."</span>
+									<span class='date'><i class='fas fa-calendar'></i>".date("d/m/Y", strtotime($row['data']))."</span>
 								</p>
 								<div class='text-center'>
 									<a href='atualizar_noticia.php?noticia=".$row['id_noticia']."' class='cart-btn'><i class='fas fa-wrench'></i> Ver</a>

@@ -71,7 +71,7 @@
 									</div>
 									<h3>".$row['nome']."</h3>";
 									if($row['status'] == 1){
-										echo "<p class='product-price'><span>Por quilo</span> R$".$row['preco']." </p>";
+										echo "<p class='product-price'><span>Por quilo</span> R$".number_format($row['preco'],2,",","")." </p>";
 									}else{
 										echo "<p class='product-price'><span style='background-color: red; color: white;'>PRODUTO INATIVO</span> R$".$row['preco']."  </p>";
 									}									

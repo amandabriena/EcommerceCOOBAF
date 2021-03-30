@@ -20,6 +20,8 @@
 					}else document.getElementById("total_produtos").innerHTML = "R$ " + resultado;
 				});
 		};
+
+		
 	</script>
 	<title>Meu Carrinho</title>
 	
@@ -116,7 +118,7 @@
 														<td class="product-name"> <?php echo $row['nome']; ?> </td>
 														<td class="product-pricee <? echo $produto_id?>"> R$ <?php echo number_format($row['preco'],2,",",""); ?></td>
 														<td class="product-quantity"><input type="number" placeholder="1" value = <?php echo $quantidade?>  onchange="alterar(this.value, <?php echo $produto_id; ?>, <?php echo $row['preco']; ?>)"> </td>
-														<td class="product-total" id="<?php echo $produto_id?>" input type= "number" onchange=""> R$ <?php $subtotal = $row['preco'] * $quantidade; echo number_format($subtotal,2,",","");  ?> </td>
+														<td class="product-total" id="<?php echo $produto_id?>" onchange="formatador()"> R$ <?php echo $subtotal = $row['preco'] * $quantidade; echo number_format($subtotal,2,",","");?> </td>
 														<?php 
 														$total_produtos = $total_produtos + ($row['preco'] * $quantidade);
 														}?>
@@ -228,5 +230,14 @@
 	<!-- main js -->
 	<script src="assets/js/main.js"></script>
 
+	<script type="text/javascript">							
+		function formatador(){
+				let texto_campo = $(this).val(); // e/ou $(this).text()  ;
+				let texto_separado = texto_campo.split(".");
+				let texto_concat = texto_separado[0]+","+texto_separado[1];
+				//$(this).val(number_format(texto_concat,2,",","")) // e/ou $(this).text(texto_concat)
+				$(this).val(texto_concat) // e/ou $(this).text(texto_concat)
+			};
+	</script>
 </body>
 </html>
