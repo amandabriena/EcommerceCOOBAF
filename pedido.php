@@ -23,7 +23,12 @@
 	<link rel="stylesheet" href="assets/css/chat.css">
 	<!-- title -->
 	<title>Pedido de Compra</title>
-	
+	<script type="text/javascript">
+		function scroll() {
+		var objScrDiv = document.getElementById("chatscroll");
+		objScrDiv.scrollTop = objScrDiv.scrollHeight;
+		}
+	</script>
 </head>
 <body>
 	<!--MENU-->
@@ -64,76 +69,77 @@
 			<div class="col-lg-4 col-md-12 offset-lg-1">
 				<h4><strong>Contato com a COOBAF-FS</strong></h4>
 				<div class="panel panel-primary">
-                	<div class="panel-body">
-                    <ul class="chat">
-						<li class=" clearfix">
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="primary-font">COOBAF</strong> <small class="pull-right text-muted">
+                	<div class="panel-body"  id="chatscroll">
+						<ul class="chat" >
+							<li class="main_msg clearfix">
+									<div class="chat-body clearfix">
+										<div class="header">
+											<strong class="primary-font">COOBAF</strong> <small class="pull-right text-muted">
+										</div>
+										<p>
+										Obrigada por apoiar a agricultura familiar! Para que possamos agendar a entrega do seu pedido, 
+										nos informe no chat abaixo, um local para entrega e sua disponibilidade.
+										</p>
 									</div>
-									<p>
-										Informe aqui os dados de localização e disponibilidade para entrega do pedido para acordamos
-									</p>
-								</div>
-						</li>
-					<?php $resultado_msg = mysqli_query($connect,"SELECT * FROM mensagem_pedido where id_pedido = '$id_pedido'"); 
-						while($row_msg = mysqli_fetch_assoc($resultado_msg)){
-							$id_usuario = $row_msg['id_usuario'];
-							$usuario = mysqli_query($connect,"SELECT * FROM usuarios WHERE id_usuario = '$id_usuario'");
-							$row = mysqli_fetch_array($usuario);
-							if($row['tipo_usuario'] == 0){
-								echo '
-									<li class="left clearfix">
-										<div class="chat-body clearfix">
-											<div class="header">
-												<strong class="pull-left primary-font">COOBAF:</strong>
-											</div>
-											<p>
-												'.$row_msg['mensagem'].'
-											</p>
-											<small  class="text-muted"><span style="color: white" class="glyphicon glyphicon-time"></span>'.$row_msg['data_msg'].'</small>
-										</div>
-									</li>
-									';
-							}else{
-								echo '
-									<li class="right clearfix">
-										<div class="chat-body clearfix">
-											<div class= "name">
-												<strong>Eu:</strong>
-											</div>
-											<p>
-												'.$row_msg['mensagem'].'
-											</p>
-											<small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'.$row_msg['data_msg'].'</small>
-										</div>
-									</li>
-									';
-							}
+							</li>
+							<?php $resultado_msg = mysqli_query($connect,"SELECT * FROM mensagem_pedido where id_pedido = '$id_pedido'"); 
+								while($row_msg = mysqli_fetch_assoc($resultado_msg)){
+									$id_usuario = $row_msg['id_usuario'];
+									$usuario = mysqli_query($connect,"SELECT * FROM usuarios WHERE id_usuario = '$id_usuario'");
+									$row = mysqli_fetch_array($usuario);
+									if($row['tipo_usuario'] == 0){
+										echo '
+											<li class="left clearfix">
+												<div class="chat-body clearfix">
+													<div class="header">
+														<strong class="pull-left primary-font">COOBAF:</strong>
+													</div>
+													<p>
+														'.$row_msg['mensagem'].'
+													</p>
+													<small  class="text-muted"><span style="color: white" class="glyphicon glyphicon-time"></span>'.$row_msg['data_msg'].'</small>
+												</div>
+											</li>
+											';
+									}else{
+										echo '
+											<li class="right clearfix">
+												<div class="chat-body clearfix">
+													<div class= "name">
+														<strong>Eu:</strong>
+													</div>
+													<p>
+														'.$row_msg['mensagem'].'
+													</p>
+													<small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'.$row_msg['data_msg'].'</small>
+												</div>
+											</li>
+											';
+									}
+									
+								}
+							?>
 							
-						}
-					?>
-                        
-                    </ul>
-                </div>
-                <div class="panel-footer">
-                    <div class="input-group">
-						<form action = "conexao_db/enviarMensagem.php" method="POST">
-							<textarea name = "mensagem" id="btn-input" type="textarea" class="form-control input-sm" placeholder="Digite aqui..">
-							</textarea>
-							<input type='hidden' name='id_pedido' value = "<?php echo $id_pedido; ?>">
-							<input type='hidden' name='id_usuario' value = "<?php echo $_SESSION['user']; ?>">
-							<span class="input-group-btn">
-								<button type = "submit" class="btn btn-success" id="btn-chat">Enviar Mensagem</button>
-							</span>
-						</form>
+						</ul>
+               		</div>
+					<div class="panel-footer">
+						<div class="input-group">
+							<form action = "conexao_db/enviarMensagem.php" method="POST">
+								<textarea name = "mensagem" id="btn-input" type="textarea" class="form-control input-sm" placeholder="Digite aqui..">
+								</textarea>
+								<input type='hidden' name='id_pedido' value = "<?php echo $id_pedido; ?>">
+								<input type='hidden' name='id_usuario' value = "<?php echo $_SESSION['user']; ?>">
+								<span class="input-group-btn">
+									<button type = "submit" class="btn btn-success" id="btn-chat">Enviar Mensagem</button>
+								</span>
+							</form>
+						</div>
 					</div>
-                </div>
             </div>
 				</div>
 				<div class="col-lg-4 col-md-12 offset-lg-1">
-					<button type="button" class="btn btn-success" data-toggle="collapse" href="#collapseDetalhes" aria-controls="collapseDetalhes">Detalhes do Pedido</button>
-					<button type="button" class="btn btn-success" data-toggle="collapse" href="#collapseProdutos" aria-controls="collapseProdutos">Ver Produtos</button>
+					<button class="btn btn-success" data-toggle="collapse" href="#collapseDetalhes" aria-controls="collapseDetalhes">Detalhes do Pedido</button>
+					<button class="btn btn-success" data-toggle="collapse" href="#collapseProdutos" aria-controls="collapseProdutos">Ver Produtos</button>
 					<div class="collapse" id="collapseProdutos">
 						<div class="cart-table-wrap">
 							<table class="cart-table">

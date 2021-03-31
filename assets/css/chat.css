@@ -12,8 +12,7 @@
 }
 
 .chat li.main_msg .chat-body{
-    background-color: #F8F8FF;
-    color: white;
+    margin: 25px;
 }
 
 /*LEFT seram as mensagem dos cooperados*/
@@ -46,22 +45,22 @@
     margin-right: 5px;
 }
 
-.panel-body
-{
+.panel-body{
     overflow-y: scroll;
-    height: 300px;
+    height: 300px;    
 }
 
-::-webkit-scrollbar-track
-{
+::-webkit-scrollbar-track{
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #F5F5F5;
+    
 }
 
 ::-webkit-scrollbar
 {
     width: 12px;
     background-color: #F5F5F5;
+    
 }
 
 ::-webkit-scrollbar-thumb
