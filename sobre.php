@@ -167,7 +167,30 @@
 		</div>
 	</div>
 	<!-- end team section -->
-	
+
+	<!-- IMAGENS -->
+	<div class="mt-80 mb-80">
+		<div class="container">
+			<div class="row imagens-coobaf">
+				<div class="col-lg-10 offset-lg-1 text-center">
+					<img src="assets/img/coobaf-1.jpeg" alt="..." class="img-thumbnail">
+					<img src="assets/img/coobaf-2.jpeg" alt="..." class="img-thumbnail">
+					<img src="assets/img/coobaf-3.jpeg" alt="..." class="img-thumbnail">
+					<img src="assets/img/coobaf-4.jpeg" alt="..." class="img-thumbnail">
+					<img src="assets/img/coobaf-5.jpeg" alt="..." class="img-thumbnail">
+					<img src="assets/img/coobaf-6.jpeg" alt="..." class="img-thumbnail">
+					<img src="assets/img/coobaf-7.jpeg" alt="..." class="img-thumbnail">
+					<img src="assets/img/coobaf-8.jpeg" alt="..." class="img-thumbnail">
+					<img src="assets/img/coobaf-9.jpeg" alt="..." class="img-thumbnail">
+					<img src="assets/img/coobaf-10.jpeg" alt="..." class="img-thumbnail">
+					<img src="assets/img/coobaf-11.jpeg" alt="..." class="img-thumbnail">
+					<img src="assets/img/coobaf-12.jpeg" alt="..." class="img-thumbnail">
+				</div>
+			</div>
+		</div>
+	</div>	
+	<!-- end IMAGENS -->
+
 	<!-- FOOTER -->
 	<?php require_once("src/components/footer.php");?>
 	<?php require_once("src/components/extensoes.php");?>

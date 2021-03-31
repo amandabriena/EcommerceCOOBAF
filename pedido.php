@@ -74,7 +74,7 @@
 							<li class="main_msg clearfix">
 									<div class="chat-body clearfix">
 										<div class="header">
-											<strong class="primary-font">COOBAF</strong> <small class="pull-right text-muted">
+											<strong class="primary-font">COOBAF-FS</strong> <small class="pull-right text-muted">
 										</div>
 										<p>
 										Obrigada por apoiar a agricultura familiar! Para que possamos agendar a entrega do seu pedido, 

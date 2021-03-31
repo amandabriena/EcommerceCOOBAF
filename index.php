@@ -92,7 +92,7 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
 					<div class="abt-bg">
-						<a href="https://www.youtube.com/watch?v=DBLlFWYcIGQ" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
+						<div href='single-news.html' class="video-play-btn popup-youtube"></div>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-12">
