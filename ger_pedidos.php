@@ -35,7 +35,7 @@
 			<?php
                     $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.status, pedido.data_pedido, pedido.valor_total
 					FROM pedido 
-					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where pedido.status = 2 ORDER BY pedido.data_pedido ASC limit 3";
+					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario where pedido.status = 2 ORDER BY pedido.data_pedido DESC limit 3";
                     $resultado = mysqli_query($connect, $sql);
                     while($row = mysqli_fetch_assoc($resultado)){
 						$valor = number_format($row['valor_total'],2,",","");
@@ -47,7 +47,7 @@
 								</div>
 							</div>';
 					}
-                    ?>
+                    ?> 
 				
 				<div class="col-lg-4 col-md-6 pt-4 text-center lemon">
 					<div class="pedido">
