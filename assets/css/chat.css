@@ -1,33 +1,45 @@
-.chat
-{
+.chat{
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-.chat li
-{
+.chat li{
     margin-bottom: 10px;
     padding-bottom: 5px;
     border-bottom: 1px dotted #B3A9A9;
+    border-radius:50px;
 }
 
-.chat li.left .chat-body
-{
-    margin-left: 60px;
+.chat li.main_msg .chat-body{
+    background-color: #F8F8FF;
+    color: white;
 }
 
-.chat li.right .chat-body
-{
-    margin-right: 60px;
+/*LEFT seram as mensagem dos cooperados*/
+.chat li.left{
+    margin-right: 50px;
+    padding-left: 2%;
+    background-color: #548B54;
+    color: white;
+}
+.chat li.left .chat-body p{
+    text-align: left;
+    padding-left: 15px;
+    color: white;
 }
 
-
-.chat li .chat-body p
-{
-    margin: 0;
-    color: #777777;
+/*RIGHT seram as mensagem dos clientes*/
+.chat li.right{
+    margin-left: 50px;
+    padding-right: 2%;
+    background-color: #F0FFF0;
 }
+.chat li.right .chat-body p, .chat li.right .chat-body small{
+    text-align: right;
+    padding-right: 20px;
+}
+
 
 .panel .slidedown .glyphicon, .chat .glyphicon
 {
@@ -37,7 +49,7 @@
 .panel-body
 {
     overflow-y: scroll;
-    height: 250px;
+    height: 300px;
 }
 
 ::-webkit-scrollbar-track
@@ -61,7 +73,6 @@
 textarea{
     text-align: left;
     border: 1px solid #ddd;
-  padding: 15px;
   font-size: 15px;
   color: #051922;
   border-radius: 5px;

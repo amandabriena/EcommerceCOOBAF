@@ -1,4 +1,7 @@
 <?php
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 	if(!isset($_SESSION['cooperado'])){
 		require_once("conexao_db/logado.php");
 	}else{
@@ -57,68 +60,60 @@
 						echo "<h6>Pedido cancelado :(</h6>";
 					}
 				?>
-				</div>
-				<div class="col-lg-4 col-md-12 offset-lg-1">
-					<h4><strong>Contato com a COOBAF-FS</strong></h4>
+			</div>
+			<div class="col-lg-4 col-md-12 offset-lg-1">
+				<h4><strong>Contato com a COOBAF-FS</strong></h4>
 				<div class="panel panel-primary">
-                <div class="panel-body">
+                	<div class="panel-body">
                     <ul class="chat">
-                        <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>13 mins ago</small>
-                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="left clearfix"><span class="chat-img pull-left">
-                            <img src="http://placehold.it/50/55C1E7/fff&text=U" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-                                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
-                        <li class="right clearfix"><span class="chat-img pull-right">
-                            <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="User Avatar" class="img-circle" />
-                        </span>
-                            <div class="chat-body clearfix">
-                                <div class="header">
-                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>15 mins ago</small>
-                                    <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                </div>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
-                                    dolor, quis ullamcorper ligula sodales.
-                                </p>
-                            </div>
-                        </li>
+						<li class=" clearfix">
+								<div class="chat-body clearfix">
+									<div class="header">
+										<strong class="primary-font">COOBAF</strong> <small class="pull-right text-muted">
+									</div>
+									<p>
+										Informe aqui os dados de localização e disponibilidade para entrega do pedido para acordamos
+									</p>
+								</div>
+						</li>
+					<?php $resultado_msg = mysqli_query($connect,"SELECT * FROM mensagem_pedido where id_pedido = '$id_pedido'"); 
+						while($row_msg = mysqli_fetch_assoc($resultado_msg)){
+							$id_usuario = $row_msg['id_usuario'];
+							$usuario = mysqli_query($connect,"SELECT * FROM usuarios WHERE id_usuario = '$id_usuario'");
+							$row = mysqli_fetch_array($usuario);
+							if($row['tipo_usuario'] == 0){
+								echo '
+									<li class="left clearfix">
+										<div class="chat-body clearfix">
+											<div class="header">
+												<strong class="pull-left primary-font">COOBAF:</strong>
+											</div>
+											<p>
+												'.$row_msg['mensagem'].'
+											</p>
+											<small  class="text-muted"><span style="color: white" class="glyphicon glyphicon-time"></span>'.$row_msg['data_msg'].'</small>
+										</div>
+									</li>
+									';
+							}else{
+								echo '
+									<li class="right clearfix">
+										<div class="chat-body clearfix">
+											<div class= "name">
+												<strong>Eu:</strong>
+											</div>
+											<p>
+												'.$row_msg['mensagem'].'
+											</p>
+											<small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'.$row_msg['data_msg'].'</small>
+										</div>
+									</li>
+									';
+							}
+							
+						}
+					?>
+                        
                     </ul>
                 </div>
                 <div class="panel-footer">
@@ -127,7 +122,7 @@
 							<textarea name = "mensagem" id="btn-input" type="textarea" class="form-control input-sm" placeholder="Digite aqui..">
 							</textarea>
 							<input type='hidden' name='id_pedido' value = "<?php echo $id_pedido; ?>">
-							<input type='hidden' name='id_usuario' value = "<?php echo $row_pedido['id_usuario']; ?>">
+							<input type='hidden' name='id_usuario' value = "<?php echo $_SESSION['user']; ?>">
 							<span class="input-group-btn">
 								<button type = "submit" class="btn btn-success" id="btn-chat">Enviar Mensagem</button>
 							</span>

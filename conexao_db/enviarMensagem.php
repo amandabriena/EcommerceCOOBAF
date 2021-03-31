@@ -10,7 +10,7 @@ $query = "INSERT INTO mensagem_pedido(id_mensagem, id_pedido, id_usuario, mensag
 $insert = mysqli_query($connect,$query);
 
 if($insert){
-    header('location:../pedido.php?pedido='.$id_pedido.'.php');
+    header('location:../pedido.php?pedido='.$id_pedido);
 }else header('location:../404.php');
 
 ?>
