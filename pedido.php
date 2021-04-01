@@ -55,13 +55,13 @@ if (!isset($_SESSION['cooperado']) and ($row_pedido['id_usuario'] != $_SESSION['
 					<div>
 						<h4><strong>Status do Pedido:</strong></h4>
 						<?php
-						if ($row_pedido['status'] == 2) {
+						if ($row_pedido['status'] == 1) {
 							echo "<img src='assets\img\img-status-pedido\status_01.png'>";
 							echo "<h6>Pedido realizado!</h6>";
-						} else if ($row_pedido['status'] == 3) {
+						} else if ($row_pedido['status'] == 2) {
 							echo "<img src='assets\img\img-status-pedido\status_02.png'>";
 							echo "<h6>Pedido em tramitação! Contato com a COOBAF-FS para que a entrega seja realizada!</h6>";
-						} else if ($row_pedido['status'] == 4) {
+						} else if ($row_pedido['status'] == 3) {
 							echo "<img src='assets\img\img-status-pedido\status_03.png'>";
 							echo "<h6>Pedido finalizado!</h6>";
 						} else {
@@ -76,15 +76,71 @@ if (!isset($_SESSION['cooperado']) and ($row_pedido['id_usuario'] != $_SESSION['
 							<p class="card-text">Pedido: <?php echo $id_pedido; ?></p>
 							<p class="card-text">Data da Compra: <?php echo date("d/m/Y", strtotime($row_pedido['data_pedido'])); ?></p>
 							<p class="card-text">Valor Total: R$<?php echo  number_format($row_pedido['valor_total'], 2, ",", ""); ?></p>
+							<?php if(($row_pedido['status'] == 1 or $row_pedido['status'] == 2) or isset($_SESSION['cooperado'])){
+								echo "
+								<a class='btn btn-danger' data-toggle='modal' data-target='#cancelModal".$id_pedido."'>Cancelar Pedido <i class='fa fa-times'></i></a>
+								<a class='btn btn-success' data-toggle='modal' data-target='#entregueModal".$id_pedido."'>Confirmar Entrega <i class='fa fa-check'></i></a>
+								<!-- Modal para cancelar pedido -->
+								<form id='cancelar_pedido' name='cancelar_pedido' action='conexao_db\atualizarStatusPedido.php' method='POST'>
+									<div class='modal fade' id='cancelModal".$id_pedido."' tabindex='-1' role='dialog' aria-labelledby='cancelModalLabel' aria-hidden='true'>
+										<div class='modal-dialog' role='document'>
+											<div class='modal-content'>
+												<div class='modal-header'>
+													<h5 class='modal-title' id='cancelModalLabel'>Cancelar Pedido</h5>
+													<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+														<span aria-hidden='true'>&times;</span>
+													</button>
+												</div>
+												<div class='modal-body'>
+													Deseja mesmo cancelar o pedido?
+												</div>
+												<input type='hidden' name='id_pedido' value='".$id_pedido."'>
+												<div class='modal-footer'>
+													<button type='submit' name='upload' value='Voltar' class='btn btn-secondary' data-dismiss='modal'>Voltar</button>
+													<button type='submit' name='cancelar_pedido' value='Cancelar' class='btn btn-outline-danger'>Cancelar pedido</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+								<!-- fim do Modal para cancelar pedido -->
+								<!-- Modal para finalizar pedido -->
+								<form id='finalizar_pedido' name='finalizar_pedido' action='conexao_db\atualizarStatusPedido.php' method='POST'>
+									<div class='modal fade' id='entregueModal".$id_pedido."' tabindex='-1' role='dialog' aria-labelledby='entregueModalLabel' aria-hidden='true'>
+										<div class='modal-dialog' role='document'>
+											<div class='modal-content'>
+												<div class='modal-header'>
+													<h5 class='modal-title' id='entregueModalLabel'>Finalizar Pedido</h5>
+													<button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+														<span aria-hidden='true'>&times;</span>
+													</button>
+												</div>
+												<div class='modal-body'>
+													O pedido foi entregue?
+												</div>
+												<input type='hidden' name='id_pedido' value='".$id_pedido."'>
+												<div class='modal-footer'>
+													<button type='submit' name='upload' value='Voltar' class='btn btn-secondary' data-dismiss='modal'>Voltar</button>
+													<button type='submit' name='finalizar_pedido' value='Finalizar' class='btn btn-outline-success'>Sim! Finalizar</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+								<!-- fim do Modal para finalizar pedido -->
+								";
+							}?>
+
+							
 						</div>
 					</div>
-					<div>
-						<?php 
-							if(isset($_SESSION['cooperado']) and $_SESSION['cooperado'] == "S"){
-								echo '<button class="btn btn-success" data-toggle="collapse" href="#collapseDetalhes" aria-controls="collapseDetalhes">Detalhes do Cliente</button>';
-							}
+					<div class="mb-4">
+						<?php
+						if (isset($_SESSION['cooperado']) and $_SESSION['cooperado'] == "S") {
+							echo '<button class="btn btn-secondary" data-toggle="collapse" href="#collapseDetalhes" aria-controls="collapseDetalhes">Detalhes do Cliente</button>';
+						}
 						?>
-						<button class="btn btn-success" data-toggle="collapse" href="#collapseProdutos" aria-controls="collapseProdutos">Ver Produtos</button>
+						<button class="btn btn-secondary" data-toggle="collapse" href="#collapseProdutos" aria-controls="collapseProdutos">Ver Produtos</button>
 						<div class="collapse" id="collapseProdutos">
 							<div class="cart-table-wrap mt-3 mb-3">
 								<table class="cart-table">
@@ -120,9 +176,9 @@ if (!isset($_SESSION['cooperado']) and ($row_pedido['id_usuario'] != $_SESSION['
 						<div class="collapse" id="collapseDetalhes">
 							<div class="card mt-4 mb-4">
 								<div class="card-body">
-									<?php 
+									<?php
 									$id_cliente = $row_pedido['id_usuario'];
-									$sql="SELECT usuarios.*, endereco.*
+									$sql = "SELECT usuarios.*, endereco.*
 									FROM usuarios 
 									INNER JOIN endereco ON usuarios.id_endereco = endereco.id_endereco where usuarios.id_usuario = '$id_cliente'";
 									$resultado_user = mysqli_query($connect, $sql);
@@ -130,14 +186,14 @@ if (!isset($_SESSION['cooperado']) and ($row_pedido['id_usuario'] != $_SESSION['
 									?>
 									<h5 class="card-title">Detalhes do Cliente:</h5>
 									<p class="card-text">Nome: <?php echo $row_cliente['nome']; ?>
-									</br> Email: <?php echo $row_cliente['email']; ?>
-									</br> Telefone: <?php echo $row_cliente['telefone']; ?>
+										</br> Email: <?php echo $row_cliente['email']; ?>
+										</br> Telefone: <?php echo $row_cliente['telefone']; ?>
 									</p>
 									<h5 class="card-title">Endereço:</h5>
 									<p class="card-text"><?php echo $row_cliente['rua']; ?>, Bairro <?php echo $row_cliente['bairro']; ?>, número <?php echo $row_cliente['numero']; ?>
-									</br> <?php echo $row_cliente['logradouro']; ?>
-									</br> <?php echo $row_cliente['cidade']; ?> - <?php echo $row_cliente['uf']; ?>
-									</br> CEP: <?php echo $row_cliente['cep']; ?>
+										</br> <?php echo $row_cliente['logradouro']; ?>
+										</br> <?php echo $row_cliente['cidade']; ?> - <?php echo $row_cliente['uf']; ?>
+										</br> CEP: <?php echo $row_cliente['cep']; ?>
 									</p>
 								</div>
 							</div>
@@ -149,7 +205,7 @@ if (!isset($_SESSION['cooperado']) and ($row_pedido['id_usuario'] != $_SESSION['
 				<!-- end status do pedido -->
 
 				<!-- chat para contato -->
-				<div class="col-lg-4 col-md-12 offset-lg-1 mb-4">
+				<div class="col-lg-4 col-md-12 offset-lg-1 mt-2 mb-4">
 					<h4><strong>Contato com a COOBAF-FS</strong></h4>
 					<div class="panel panel-primary">
 						<div class="panel-body" id="chatscroll">
@@ -209,18 +265,28 @@ if (!isset($_SESSION['cooperado']) and ($row_pedido['id_usuario'] != $_SESSION['
 						<div class="panel-footer">
 							<div class="input-group">
 								<form action="conexao_db/enviarMensagem.php" method="POST">
-									<textarea name="mensagem" id="btn-input" type="textarea" class="form-control input-sm" placeholder="Digite aqui..">
+									<textarea name="mensagem" id="btn-input" type="textarea" class="form-control input-sm" placeholder="Digite aqui sua mensagem..">
 								</textarea>
 									<input type='hidden' name='id_pedido' value="<?php echo $id_pedido; ?>">
 									<input type='hidden' name='id_usuario' value="<?php echo $_SESSION['user']; ?>">
 									<span class="input-group-btn">
-										<button type="submit" class="btn btn-success" id="btn-chat">Enviar Mensagem</button>
+										<button type="submit" class="btn btn-success" id="btn-chat">Enviar Mensagem <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
 									</span>
 								</form>
 							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class = "text-left mb-80">
+				<?php
+					if(isset($_SESSION['cooperado'])){
+						echo '<a href="ger_pedidos.php" class="cart-btn"><i class="fa fa-arrow-left"></i> Voltar</a>';
+					}else{
+						echo '<a href="meus_pedidos.php" class="cart-btn"><i class="fa fa-arrow-left"></i> Voltar</a>';
+					}
+				?>
+				
 			</div>
 		</div>
 		<!-- end  -->

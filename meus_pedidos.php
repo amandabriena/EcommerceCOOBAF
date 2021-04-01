@@ -32,7 +32,7 @@
 	<!-- products -->
 	<div class="product-section mt-80 mb-150">
 		<div class="container">
-			<div class="row product-lists" id="aberto">
+			<div class="row product-lists">
 			<?php
                     $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.valor_total, pedido.data_pedido, pedido.status, pedido.valor_total
 					FROM pedido 
@@ -40,18 +40,20 @@
                     $resultado = mysqli_query($connect, $sql);
 					if(mysqli_num_rows($resultado)>0){
 						while($row = mysqli_fetch_assoc($resultado)){
-							if($row['status'] == 2){
+							$cor = "aberto";
+							if($row['status'] == 1){
 								$status = "Pedido Realizado";
-							}else if($row['status'] == 3){
+							}else if($row['status'] == 2){
 								$status = "Em andamento";
-							}else if($row['status'] == 4){
+							}else if($row['status'] == 3){
 								$status = "Finalizado";
 							}else{
 								$status = "Cancelado";
+								$cor = "fechado";
 							}
 							$valor = number_format($row['valor_total'],2,",","");
 							$data = date("d/m/Y", strtotime($row['data_pedido']));
-							echo '<div class="col-lg-4 col-md-6 pt-4 text-center">
+							echo '<div class="col-lg-4 col-md-6 pt-4 text-center" id="'.$cor.'">
 									<div class="pedido">
 										<h3>'.$data.'</h3>
 										<p class="product-price"><span>Valor: R$'.$valor.'</span> '.$status.' </p>
