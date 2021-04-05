@@ -8,7 +8,7 @@
 			//alterando o preço do produto baseado na nova quantidade
 			var total_item = quantidade * preco;
 			var valorFormatado = total_item.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-			document.getElementById(produto).innerHTML = "R$" + valorFormatado;
+			document.getElementById(produto).innerHTML = valorFormatado;
 			
 			//função para alterar a quantidade do produto na sessão
 			var dados = {

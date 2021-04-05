@@ -73,7 +73,7 @@ if (!isset($_SESSION['cooperado']) and ($row_pedido['id_usuario'] != $_SESSION['
 					<div class="card mt-3 mb-3">
 						<div class="card-body">
 							<h5 class="card-title">Detalhes do Pedido:</h5>
-							<p class="card-text">Pedido: <?php echo $id_pedido; ?></p>
+							<p class="card-text">Pedido: <?php echo $id_pedido;?></p>
 							<p class="card-text">Data da Compra: <?php echo date("d/m/Y", strtotime($row_pedido['data_pedido'])); ?></p>
 							<p class="card-text">Valor Total: R$<?php echo  number_format($row_pedido['valor_total'], 2, ",", ""); ?></p>
 							<?php if(($row_pedido['status'] == 1 or $row_pedido['status'] == 2) or isset($_SESSION['cooperado'])){
@@ -95,6 +95,11 @@ if (!isset($_SESSION['cooperado']) and ($row_pedido['id_usuario'] != $_SESSION['
 													Deseja mesmo cancelar o pedido?
 												</div>
 												<input type='hidden' name='id_pedido' value='".$id_pedido."'>
+												<input type='hidden' name='id_usuario' value='".$_SESSION['user']."'>
+												<div class='form-group'>
+													<label for='message-text' class='col-form-label'>Motivo do cancelamento:</label>
+													<textarea class='form-control' name='motivo_cancel' required></textarea>
+												</div>
 												<div class='modal-footer'>
 													<button type='submit' name='upload' value='Voltar' class='btn btn-secondary' data-dismiss='modal'>Voltar</button>
 													<button type='submit' name='cancelar_pedido' value='Cancelar' class='btn btn-outline-danger'>Cancelar pedido</button>
@@ -170,7 +175,6 @@ if (!isset($_SESSION['cooperado']) and ($row_pedido['id_usuario'] != $_SESSION['
 											</tr>
 									</tbody>
 								</table>
-								<h4 class="text-center"><strong>Valor total do pedido: R$<?php echo $row_pedido['valor_total']; ?></strong></h4>
 							</div>
 						</div>
 						<div class="collapse" id="collapseDetalhes">

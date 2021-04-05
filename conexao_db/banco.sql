@@ -26,7 +26,8 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   `id_usuario` smallint(10) NOT NULL,
   `valor_total` float(20),
   `status` tinyint(1) NOT NULL,
-  `data_pedido` DATETIME DEFAULT CURRENT_TIMESTAMP
+  `data_pedido` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `motivo_cancelamento` varchar(100)
 );
 
 CREATE TABLE IF NOT EXISTS `mensagem_pedido` (
@@ -86,13 +87,14 @@ ALTER TABLE cliente_pedido ADD FOREIGN KEY (id_pedido) REFERENCES pedido(id_pedi
 ALTER TABLE usuarios ADD FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco);
 ALTER TABLE produto ADD FOREIGN KEY (id_categoria) REFERENCES categoria_produto(id_categoria);
 
-/*INSERT USUÁRIO ADMIN COOBAF*/
+/*INSERT USUÁRIO ADMIN COOBAF e USUARIO TESTE*/
 INSERT INTO `endereco` (`id_endereco`, `cep`, `rua`, `bairro`, `numero`, `cidade`, `uf`, `logradouro`) 
 VALUES (NULL, '44110000', 'Fazenda Lagoa Grande', '-', '250', 'Feira de Santana', 'BA', 'Maria Quitéria');
 
 INSERT INTO `usuarios` (`id_usuario`, `nome`, `cpf`, `senha`, `email`, `telefone`, `status`, `tipo_usuario`, `id_endereco`) 
 VALUES (NULL, 'COOBAF-FS', '000.000.000-00', 'admin', 'coobaf.fsa@gmail.com', '(75)3625-9394', '1', '0', '1');
 
+/*INSERT DADOS*/
 INSERT INTO `noticia` (`id_noticia`, `titulo`, `corpo`, `imagem`, `data`, `status`, `visibilidade`) 
 VALUES (NULL, 'oi', 'teste', '161542106860495e8c234b6.jpg', '2021-03-11', '1', '1');
 
@@ -124,11 +126,10 @@ INSERT INTO `categoria_produto` (`id_categoria`, `nome`)
 VALUES (NULL, 'Temperos');
 
 INSERT INTO `produto` (`id_produto`, `nome`, `imagem`, `descricao`, `preco`, `status`, `id_categoria`, `visibilidade`) VALUES 
-(NULL, 'Coentro', '1615769734604eb086bf322.jpg', 'Melhor coentro organ', '2', '1', '1', '1'), 
-(NULL, 'Banana', '1615770298604eb2bac47a2.jpeg', 'Bananas plantadas na', '5.5', '1', '2', '1'), 
-(NULL, 'Sequilho', '1615770486604eb3762119a.jpg', 'Sequilhos de qualida', '4.55', '1', '5', '1'), 
+(NULL, 'Coentro', '1615769734604eb086bf322.jpg', 'Melhor coentro organ', '2', '1', '1', '1');
+INSERT INTO `produto` (`id_produto`, `nome`, `imagem`, `descricao`, `preco`, `status`, `id_categoria`, `visibilidade`) VALUES  
+(NULL, 'Banana', '1615770298604eb2bac47a2.jpeg', 'Bananas plantadas na', '5.5', '1', '2', '1');
+INSERT INTO `produto` (`id_produto`, `nome`, `imagem`, `descricao`, `preco`, `status`, `id_categoria`, `visibilidade`) VALUES  
+(NULL, 'Sequilho', '1615770486604eb3762119a.jpg', 'Sequilhos de qualida', '4.55', '1', '5', '1');
+INSERT INTO `produto` (`id_produto`, `nome`, `imagem`, `descricao`, `preco`, `status`, `id_categoria`, `visibilidade`) VALUES 
 (NULL, 'Tempero Pronto ', '1615771915604eb90b20489.jpg', 'Temperos prontos', '1.5', '1', '7', '1');
-
-INSERT INTO `produto` (`id_produto`, `nome`, `imagem`, `descricao`, `preco`, `status`, `id_categoria`, `visibilidade`) VALUES (NULL, 'uva', '1615698530604d9a62efc75.jpg', 'melhor uva ever', '5', '1', '2', '1');
-
-INSERT INTO `produto` (`id_produto`, `nome`, `imagem`, `descricao`, `preco`, `status`, `id_categoria`, `visibilidade`) VALUES (NULL, 'sequilho', '1615770486604eb3762119a.jpg', 'sequilho de goiabada', '4', '1', '5', '1');

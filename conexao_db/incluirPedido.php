@@ -35,7 +35,7 @@ if($insert){
         mysqli_query($connect,$query);
     }
     unset($_SESSION['carrinho']);
-    header('location:../pedido.php?pedido='.$id_pedido.'.php');
+    header('location:../pedido.php?pedido='.$id_pedido);
 
 }else header('location:../404.php');
 

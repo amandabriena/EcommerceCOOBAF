@@ -46,11 +46,16 @@
 
             $insert = mysqli_query($connect,$query);
             if($insert){
+                $busca = mysqli_query($connect,"SELECT * FROM usuarios where email = '$email'");
+                $row_user = mysqli_fetch_assoc($busca);
+
                 $_SESSION['mensagem'] = "sim";
                 unset($_SESSION['erro']);
                 if(isset($_POST["cadastro_cliente"])){
                     $_SESSION['email'] = $email;
                     $_SESSION['nome'] = $nome;
+
+                    $_SESSION['user'] = $row_user['id_usuario'];
                     header('location:../carrinho.php');
                 }else{ 
                     header('location:../ger_cooperados.php');
