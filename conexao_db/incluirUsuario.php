@@ -36,10 +36,10 @@
             //verificando qual o id gerado para o endereço
             $resultado = mysqli_query($connect, "SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES 
              WHERE TABLE_SCHEMA = 'db_coobaf' AND TABLE_NAME = 'endereco';");
-
+        
             $id_endereco = mysqli_fetch_assoc($resultado);
-            $id_endereco = (int)$id_endereco['AUTO_INCREMENT'] - 1;
-
+            $id_endereco = (int)$id_endereco['AUTO_INCREMENT']-1;
+            echo $id_endereco;
             //inserindo usuario com o id_endereco
             $query = "INSERT INTO usuarios(id_usuario, cpf, nome, senha, email, status, telefone, tipo_usuario, id_endereco) 
             VALUES (NULL, '$cpf', '$nome', '$senha', '$email', 1, '$telefone', '$tipo_usuario', '$id_endereco')";
@@ -57,15 +57,18 @@
 
                     $_SESSION['user'] = $row_user['id_usuario'];
                     header('location:../carrinho.php');
+                    exit();
                 }else{ 
                     header('location:../ger_cooperados.php');
+                    exit();
                 }
                 
             }else{
+                //echo mysqli_error($connect);
                 header('location:../404.php');
             }
 
-        } else echo mysqli_error($conexao);
+        } else echo mysqli_error($connect);
     }
     
 ?>

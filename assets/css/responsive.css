@@ -72,7 +72,9 @@
 	.login-form form p input[type=password], .login-form form p input[type=email] {
 		width: 100%;
 	}
-
+    .central{
+        width: 100%;
+    }
 	.contact-form form p input[type=email] {
 	    margin-left: 0;
 	    margin-top: 15px;
@@ -317,6 +319,9 @@
 	}
 	.login-form form p input[type=password], .login-form form p input[type=email] {
 		width: 100%;
+	}
+	.central{
+	    width: 100%;
 	}
 	.contact-form form p input[type=tel] {
 		margin-bottom: 15px;
@@ -571,6 +576,9 @@
 	    width: 380px;
 	    left: 50%;
 	    margin-left: -190px;
+	}
+	.central{
+	    width: 100%;
 	}
 
 	.hero-btns {

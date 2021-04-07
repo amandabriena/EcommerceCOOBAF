@@ -1,11 +1,11 @@
 <?php
     //CONEXÃO COM O BANCO DE DADOS
     include("conexao_db/conexao.php");
+    require_once("conexao_db/logado_coop.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php require_once("conexao_db/logado_coop.php");?>
 	<?php require_once("src/components/head.php");?>
 	<!-- title -->
 	<title>Espaço do Cooperado</title>

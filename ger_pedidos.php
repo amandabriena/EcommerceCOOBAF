@@ -35,7 +35,7 @@
 			<?php
                     $sql="SELECT pedido.id_pedido, usuarios.nome, pedido.status, pedido.data_pedido, pedido.valor_total
 					FROM pedido 
-					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario ORDER BY pedido.data_pedido DESC limit 3";
+					INNER JOIN usuarios ON pedido.id_usuario = usuarios.id_usuario ORDER BY pedido.data_pedido DESC";
                     $resultado = mysqli_query($connect, $sql);
                     while($row = mysqli_fetch_assoc($resultado)){
 						$cor = "aberto";
