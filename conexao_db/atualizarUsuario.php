@@ -9,7 +9,7 @@
 
     $id_endereco = $_POST['id_endereco'];
     $cep = $_POST['cep'];
-    $rua = $_POST['rua'];
+    $rua = $_POST['rua']; 
     $bairro = $_POST['bairro'];
     $cidade = $_POST['cidade'];
     $uf = $_POST['uf'];
@@ -28,6 +28,7 @@
 
     if($update){
         $_SESSION['mensagem'] = "atualizar";
+        $_SESSION['email'] = $email;
         if (isset($_SESSION['cooperado'])){
             header('location:../cooperado.php');
         }else{

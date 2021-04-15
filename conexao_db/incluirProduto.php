@@ -1,7 +1,8 @@
-<?php
+<?php 
     session_start();
     include_once('conexao.php');
     include_once('incluirImagem.php');
+
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $preco = $_POST['preco'];
@@ -39,12 +40,14 @@
     $query = "INSERT INTO produto(id_produto, nome, descricao, imagem, preco, id_categoria, status, visibilidade) 
                             VALUES (NULL, '$nome', '$descricao', '$destino', '$preco', $categoria, '$status', 1)";
     $insert = mysqli_query($connect,$query);
+
+    
     if($insert){
         $_SESSION['mensagem'] = "cadastro";
         header('location:../ger_produtos.php');
     }else{
-        echo mysqli_error($connect);
-        //header('location:../404.php');
+        //echo mysqli_error($connect);
+        header('location:../404.php');
     }
     
     

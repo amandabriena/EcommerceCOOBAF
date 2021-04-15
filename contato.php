@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,6 @@
     <!--PreLoader Ends-->
 	<!--MENU-->
 	<?php 
-		session_start();
 		require_once("src/components/menu.php");
 	?>
 
@@ -46,18 +46,17 @@
 					</div>
 				 	<div id="form_status"></div>
 					<div class="contact-form">
-						<form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+						<form action= "conexao_db/enviarEmail.php" method="POST" id="fruitkha-contact">
 							<p>
-								<input type="text" placeholder="Nome" name="name" id="name">
+								<input type="text" placeholder="Nome" name="nome" id="name">
 								<input type="email" placeholder="Email" name="email" id="email">
 							</p>
 							<p>
-								<input type="tel" placeholder="Telefone" name="phone" id="phone">
-								<input type="text" placeholder="Assunto" name="subject" id="subject">
+								<input type="tel" placeholder="Telefone" name="telefone" id="phone">
+								<input type="text" placeholder="Assunto" name="assunto" id="subject">
 							</p>
-							<p><textarea name="message" id="message" cols="30" rows="10" placeholder="Messagem"></textarea></p>
-							<input type="hidden" name="token" value="FsWga4&@f6aw" />
-							<p><input type="submit" value="Enviar"></p>
+							<p><textarea name="corpo" id="message" cols="30" rows="10" placeholder="Messagem"></textarea></p>
+							<p><input name= "contato" type="submit" value="Enviar"></p>
 						</form>
 					</div>
 				</div>
@@ -79,24 +78,6 @@
 		</div>
 	</div>
 	<!-- end contact form -->
-
-	<!-- find our location -->
-	<div class="find-location blue-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<p> <i class="fas fa-map-marker-alt"></i> Find Our Location</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end find our location -->
-
-	<!-- google map section -->
-	<div class="embed-responsive embed-responsive-21by9">
-		<iframe src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ-5oP8Y03FAcRpkpveYIP8LU&key=AIzaSyDCBqXfektkuNnZMkJXohjd-bREHA6hk2o" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" class="embed-responsive-item"></iframe>
-	</div>
-	<!-- end google map section -->
 
 	<?php require_once("src/components/footer.php");?>
 
