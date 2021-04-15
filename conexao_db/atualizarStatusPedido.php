@@ -7,8 +7,6 @@ $motivo = "";
 
 $assunto = "Nova atualização no seu pedido COOBAF/FS!";
 
-
-
 if(isset($_POST["cancelar_pedido"])){
     $novo_status = 4;
     $motivo = "O PEDIDO FOI CANCELADO! </br> Motivo do cancelamento: </br>".$_POST["motivo_cancel"];
