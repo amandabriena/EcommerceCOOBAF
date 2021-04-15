@@ -10,10 +10,10 @@ $assunto = "Nova Mensagem de Contato COOBAF/FS - ".$assunto;
 $corpo = $_POST['corpo'];
 
 $mensagem = "Olá! </br>
-    Você recebeu uma mensagem de ".$nome.",
-     (número para contato: ".$telefone.",
-     e-mail: ".$email_envio.")</br>"
-     .$corpo;
+    Você recebeu uma mensagem de ".$nome." via contato no site COOBAF/FS!</br>
+    E-mail:".$email_envio."</br>
+    Telefone: ".$telefone."</br>
+    Mensagem:".$corpo;
 
 $email = "coobaf.feira@gmail.com";
 

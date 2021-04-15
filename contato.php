@@ -5,6 +5,7 @@
 	<?php require_once("src/components/head.php");?>
 	<!-- title -->
 	<title>Contato</title>
+	<script src="assets/js/form-validate.js"></script>
 </head>
 <body>
 	
@@ -52,7 +53,7 @@
 								<input type="email" placeholder="Email" name="email" id="email">
 							</p>
 							<p>
-								<input type="tel" placeholder="Telefone" name="telefone" id="phone">
+								<input type="tel" placeholder="Telefone" name="telefone" id="phone" onkeydown="javascript: fMasc( this, mTel );">  
 								<input type="text" placeholder="Assunto" name="assunto" id="subject">
 							</p>
 							<p><textarea name="corpo" id="message" cols="30" rows="10" placeholder="Messagem"></textarea></p>

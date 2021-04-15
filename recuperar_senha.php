@@ -39,8 +39,29 @@
 					<div class="form-title">
 						<h2>Redefinir Senha</h2>
 					</div>
+					<?php
+				if(isset($_SESSION['mensagem']) and $_SESSION['mensagem'] == "enviado"){
+					echo '
+						<div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align:center;">
+						<strong>Redefinição de senha realizada com sucesso! Por gentileza, verifique seu e-mail para finalizar a redefinição.</strong> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						</button>
+						</div>';
+						unset($_SESSION['mensagem']);
+				}else if(isset($_SESSION['mensagem']) and $_SESSION['mensagem'] == "erro"){
+					echo '
+							<div class="alert alert-danger alert-dismissible fade show" role="alert" style="text-align:center;">
+							<strong>Não há usuário cadastrado com o e-mail informado! Por gentileza, confirme o e-mail digitado.</strong> 
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							</div>';
+							unset($_SESSION['mensagem']);
+				}
+				?>
 					<div class="login-form">
-						<form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
+						<form action= "conexao_db/recuperarSenha.php" method="POST" id="fruitkha-contact" >
 							<p>
                                 <input type="email" placeholder="Email" name="email" id="email">
 							</p>
