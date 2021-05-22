@@ -55,14 +55,35 @@
 			<div class="resultado_produto row product-lists">
 				<?php 
 					$quantProd = 0;
+
+					$busca = "SELECT * FROM produto WHERE status = 1 and visibilidade = 1";
+
+					//FAZENDO A PAGINAÇÃO
+					//total de registros por página:
+					$total_reg = "3";
+					//Verificando a página atual:
+					if (!isset($_GET['pagina'])) {
+						$pc = "1";
+					} else {
+						$pagina=$_GET['pagina'];
+						$pc = $pagina;
+					}
+					$inicio = $pc - 1;
+					$inicio = $inicio * $total_reg;
+
 					if(isset($_GET['produto'])){
 						$produto_busca = $_GET['produto'];
-						$resultadogeral = mysqli_query($connect,"SELECT * FROM produto WHERE nome LIKE '%$produto_busca%' and status = 1 and visibilidade = 1") or die("erro ao selecionar");
+						$resultadogeral = mysqli_query($connect,"SELECT * FROM produto WHERE status = 1 and visibilidade = 1 and nome LIKE '%$produto_busca%'") or die("erro ao selecionar");
 					}else{
-						$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 and visibilidade = 1") or die("erro ao selecionar");
+						$limite = mysqli_query($connect,"$busca LIMIT $inicio,$total_reg");
+						$todos = mysqli_query($connect,"$busca");
+
+						$tr = mysqli_num_rows($todos); // verifica o número total de registros
+						$tp = ceil($tr / $total_reg); // verifica o número total de páginas
+						//$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 and visibilidade = 1") or die("erro ao selecionar");
 					}
-					if(mysqli_num_rows($resultadogeral)>0){
-						while($row = mysqli_fetch_assoc($resultadogeral)){
+					if(mysqli_num_rows($limite)>0){
+						while($row = mysqli_fetch_assoc($limite)){
 							$quantProd++;
 							
 							$_SESSION['idProduto'] = $row['id_produto'];
@@ -94,11 +115,23 @@
 				<div class="col-lg-12 text-center">
 					<div class="pagination-wrap">
 						<ul>
-							<li><a href="#">Prev</a></li>
-							<li><a href="#">1</a></li>
-							<li><a class="active" href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">Next</a></li>
+							<?php 
+								$anterior = $pc -1;
+								$proximo = $pc +1;
+								if($pc>1){
+									echo "<li><a href='?pagina=".$anterior."'>Anterior</a></li>";
+								}
+								for ($i = 1; $i <= $tp; $i++) {
+									if($pc == $i){
+										echo "<li><a class='active' href='?pagina=".$i."'>".$i."</a></li>";
+									}else{
+										echo "<li><a href='?pagina=".$i."'>".$i."</a></li>";
+									}
+								}
+								if($pc<$tp){
+									echo "<li><a href='?pagina=".$proximo."'>Próximo</a></li>";
+								}
+							?>
 						</ul>
 					</div>
 				</div>

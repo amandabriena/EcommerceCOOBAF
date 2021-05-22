@@ -51,35 +51,34 @@
 			</div>
 			<div class="resultado_noticia row">
 				<?php 
-					$resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1 and visibilidade = 1") or die("erro ao selecionar");
-					while($row = mysqli_fetch_assoc($resultadogeral)){
-						/*
-					$altura = "200";
-					$largura = "300";
-					echo "Altura pretendida: $altura - largura pretendida: $largura <br>";
-							$imagem_temporaria = imagecreatefromjpeg($row['imagem']);
-							echo $row['imagem'];
-							
-							$largura_original = imagesx($imagem_temporaria);
-							
-							$altura_original = imagesy($imagem_temporaria);
-							
-							echo "largura original: $largura_original - Altura original: $altura_original <br>";
-							
-							$nova_largura = $largura ? $largura : floor (($largura_original / $altura_original) * $altura);
-							
-							$nova_altura = $altura ? $altura : floor (($altura_original / $largura_original) * $largura);
-							
-							$imagem_redimensionada = imagecreatetruecolor($nova_largura, $nova_altura);
-							imagecopyresampled($imagem_redimensionada, $imagem_temporaria, 0, 0, 0, 0, $nova_largura, $nova_altura, $largura_original, $altura_original);
-							
-							imagejpeg($imagem_redimensionada, 'assets/img-upload/' . $row['imagem']);
-							
-							//echo "<img src='arquivo/".$_FILES['arquivo']['name']."'>";
-							*/
-							
-						//$data = formatarData($row['data']);
+					$busca = "SELECT * FROM noticia WHERE status = 1 and visibilidade = 1";
 
+					//FAZENDO A PAGINAÇÃO
+					//total de registros por página:
+					$total_reg = "9";
+					//Verificando a página atual:
+					if (!isset($_GET['pagina'])) {
+						$pc = "1";
+					} else {
+						$pagina=$_GET['pagina'];
+						$pc = $pagina;
+					}
+					$inicio = $pc - 1;
+					$inicio = $inicio * $total_reg;
+
+					if(isset($_GET['produto'])){
+						$produto_busca = $_GET['produto'];
+						$resultadogeral = mysqli_query($connect,"SELECT * FROM produto WHERE status = 1 and visibilidade = 1 and nome LIKE '%$produto_busca%'") or die("erro ao selecionar");
+					}else{
+						$limite = mysqli_query($connect,"$busca LIMIT $inicio,$total_reg");
+						$todos = mysqli_query($connect,"$busca");
+
+						$tr = mysqli_num_rows($todos); // verifica o número total de registros
+						$tp = ceil($tr / $total_reg); // verifica o número total de páginas
+						//$resultadogeral = mysqli_query($connect,"SELECT * FROM produto where status = 1 and visibilidade = 1") or die("erro ao selecionar");
+					}
+					//$resultadogeral = mysqli_query($connect,"SELECT * FROM noticia where status = 1 and visibilidade = 1") or die("erro ao selecionar");
+					while($row = mysqli_fetch_assoc($limite)){
 						echo "<div class='col-lg-4 col-md-6'>
 						<div class='single-latest-news'>
 						<?php
@@ -106,11 +105,23 @@
 						<div class="col-lg-12 text-center">
 							<div class="pagination-wrap">
 								<ul>
-									<li><a href="#"><</a></li>
-									<li><a href="#">1</a></li>
-									<li><a class="active" href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">></a></li>
+								<?php 
+									$anterior = $pc -1;
+									$proximo = $pc +1;
+									if($pc>1){
+										echo "<li><a href='?pagina=".$anterior."'>Anterior</a></li>";
+									}
+									for ($i = 1; $i <= $tp; $i++) {
+										if($pc == $i){
+											echo "<li><a class='active' href='?pagina=".$i."'>".$i."</a></li>";
+										}else{
+											echo "<li><a href='?pagina=".$i."'>".$i."</a></li>";
+										}
+									}
+									if($pc<$tp){
+										echo "<li><a href='?pagina=".$proximo."'>Próximo</a></li>";
+									}
+								?>
 								</ul>
 							</div>
 						</div>
