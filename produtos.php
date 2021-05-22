@@ -1,7 +1,7 @@
 <?php
     //CONEXÃO COM O BANCO DE DADOS
     include("conexao_db/conexao.php");
-
+	session_start();
     
 ?>
 <!DOCTYPE html>
@@ -15,7 +15,6 @@
 	
 	<!--MENU-->
 	<?php 
-		session_start();
 		require_once("src/components/menu.php");
 	?>
 
