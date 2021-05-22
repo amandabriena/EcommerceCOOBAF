@@ -60,7 +60,7 @@
 
 					//FAZENDO A PAGINAÇÃO
 					//total de registros por página:
-					$total_reg = "3";
+					$total_reg = "9";
 					//Verificando a página atual:
 					if (!isset($_GET['pagina'])) {
 						$pc = "1";
