@@ -1,13 +1,13 @@
 <?php
     //CONEXÃO COM O BANCO DE DADOS
     include("conexao_db/conexao.php");
-    
+    require_once("conexao_db/logado_coop.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<?php require_once("src/components/head.php");?>
-	<?php require_once("conexao_db/logado_coop.php");?>
+	<?php ?>
 	<!-- title -->
 	<title>Gerenciamento de Produtos</title>
 
@@ -62,7 +62,7 @@
 			</div>
 			<div class="resultado_produto row product-lists">
 					<?php 
-						$busca = "SELECT * FROM produto WHERE status = 1 and visibilidade = 1";
+						$busca = "SELECT * FROM produto WHERE visibilidade = 1";
 
 						//FAZENDO A PAGINAÇÃO
 						//total de registros por página:
@@ -97,7 +97,7 @@
 									</div>
 									<h3>".$row['nome']."</h3>";
 									if($row['status'] == 1){
-										echo "<p class='product-price'><span>Por quilo</span> R$".number_format($row['preco'],2,",","")." </p>";
+										echo "<p class='product-price'> R$".number_format($row['preco'],2,",","")." </p>";
 									}else{
 										echo "<p class='product-price'><span style='background-color: red; color: white;'>PRODUTO INATIVO</span> R$".$row['preco']."  </p>";
 									}									

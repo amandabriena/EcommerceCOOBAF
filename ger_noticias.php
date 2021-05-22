@@ -68,7 +68,7 @@
 			
 			<div class="resultado_noticia row">
 				<?php 
-				$busca = "SELECT * FROM noticia WHERE status = 1 and visibilidade = 1";
+				$busca = "SELECT * FROM noticia WHERE visibilidade = 1";
 
 				//FAZENDO A PAGINAÇÃO
 				//total de registros por página:
