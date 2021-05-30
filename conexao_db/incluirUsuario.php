@@ -4,7 +4,7 @@
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $cpf = $_POST['cpf'];
-    $senha = $_POST['senha'];
+    $senha = crypt($_POST["senha"], "coobaf");
     $telefone = $_POST['telefone'];
 
     $cep = $_POST['cep'];

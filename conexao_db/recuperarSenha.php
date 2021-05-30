@@ -5,6 +5,7 @@ session_start();
 
 $email = $_POST['email'];
 $senha = uniqid();
+$senha = crypt($senha,"coobaf");
 
 $usuario = mysqli_query($connect,"SELECT * FROM usuarios WHERE email =
     '$email'") or die("erro ao selecionar");
