@@ -5,12 +5,12 @@ session_start();
 
 $email = $_POST['email'];
 $senha = uniqid();
-$senha = crypt($senha,"coobaf");
+$senhaCrypto = crypt($senha,"coobaf");
 
 $usuario = mysqli_query($connect,"SELECT * FROM usuarios WHERE email =
     '$email'") or die("erro ao selecionar");
     if(mysqli_num_rows($usuario)>0){
-        $query = "UPDATE usuarios SET  senha = '$senha' where email = '$email'";
+        $query = "UPDATE usuarios SET  senha = '$senhaCrypto' where email = '$email'";
 
         $query = mysqli_query($connect,$query);
 
