@@ -17,8 +17,7 @@ function enviarEmail($destinatario, $assunto, $corpo){
         // Configurações do servidor
         $mail->isSMTP();        //Devine o uso de SMTP no envio
         $mail->SMTPAuth = true; //Habilita a autenticação SMTP
-        $mail->Username   = 'amandabriena@hotmail.com';
-        $mail->Password   = 'aMANDA1998*';
+        
         // Criptografia do envio SSL também é aceito
         $mail->SMTPSecure = 'tls';
         // Informações específicadas pelo Google
